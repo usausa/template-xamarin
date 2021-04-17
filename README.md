@@ -1,1 +1,1 @@
-# template-xamarin
+# Template project for Xamarin.Forms
