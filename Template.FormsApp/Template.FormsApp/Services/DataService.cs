@@ -40,11 +40,11 @@ namespace Template.FormsApp.Services
             }
         }
 
-        public async ValueTask RebuildAsync()
+        public async ValueTask PrepareAsync()
         {
             if (File.Exists(options.Path))
             {
-                File.Delete(options.Path);
+                return;
             }
 
             await provider.UsingAsync(async con =>

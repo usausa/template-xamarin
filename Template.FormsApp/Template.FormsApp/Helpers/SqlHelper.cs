@@ -7,7 +7,6 @@ namespace Template.FormsApp.Helpers
 
     using Smart;
     using Smart.Data.Mapper.Attributes;
-    using Smart.Data.Mapper.Builders;
     using Smart.Data.Mapper.Builders.Metadata;
 
     public static class SqlHelper
@@ -15,6 +14,7 @@ namespace Template.FormsApp.Helpers
         private static readonly Dictionary<Type, string> TypeMap = new()
         {
             { typeof(string), "TEXT" },
+            { typeof(Guid), "TEXT" },
             { typeof(DateTime), "INTEGER" },
             { typeof(long), "INTEGER" },
             { typeof(int), "INTEGER" },
@@ -77,30 +77,6 @@ namespace Template.FormsApp.Helpers
             sql.Append(')');
 
             return sql.ToString();
-        }
-
-        public static string SelectByKey<T>() => SqlSelect<T>.ByKey();
-
-        public static string Insert<T>() => SqlInsert<T>.Values();
-
-        public static string Update<T>() => SqlUpdate<T>.ByKey();
-
-        public static string DeleteAll<T>() => DeleteAllHolder<T>.Sql;
-
-        private static class DeleteAllHolder<T>
-        {
-            public static string Sql { get; }
-
-            static DeleteAllHolder()
-            {
-                var tableInfo = TableInfo<T>.Instance;
-                var sql = new StringBuilder(256);
-
-                sql.Append("DELETE FROM ");
-                sql.Append(tableInfo.Name);
-
-                Sql = sql.ToString();
-            }
         }
     }
 }

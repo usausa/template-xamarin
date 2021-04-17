@@ -41,6 +41,7 @@ namespace Template.FormsApp
             SqlMapperConfig.Default.ConfigureTypeHandlers(config =>
             {
                 config[typeof(DateTime)] = new DateTimeTypeHandler();
+                config[typeof(Guid)] = new GuidTypeHandler();
             });
 
             // Config Rest
@@ -124,6 +125,9 @@ namespace Template.FormsApp
         protected override async void OnStart()
         {
             var dialogs = resolver.Get<IApplicationDialog>();
+            var configuration = resolver.Get<Configuration>();
+            var dataService = resolver.Get<DataService>();
+            var networkService = resolver.Get<NetworkService>();
 
             // Crash report
             await CrashReportHelper.ShowReport();
@@ -139,7 +143,12 @@ namespace Template.FormsApp
                 }
             }
 
-            // TODO Initialize
+            // Initialize
+            networkService.SetAddress(configuration.ApiEndPoint);
+            networkService.SetToken(Definition.ApiToken);
+
+            // Database
+            await dataService.PrepareAsync();
 
             // Navigate
             await navigator.ForwardAsync(ViewId.Menu);

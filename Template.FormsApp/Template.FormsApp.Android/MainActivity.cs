@@ -40,8 +40,6 @@ namespace Template.FormsApp.Droid
             base.OnCreate(savedInstanceState);
 
             // Setup crash report
-            //AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
-            //    CrashReportHelper.LogException(args.ExceptionObject as Exception);
             TaskScheduler.UnobservedTaskException += (_, args) =>
                 CrashReportHelper.LogException(args.Exception);
             AndroidEnvironment.UnhandledExceptionRaiser += (_, args) =>
@@ -49,6 +47,9 @@ namespace Template.FormsApp.Droid
 
             // Database
             SQLitePCL.Batteries_V2.Init();
+
+            // Barcode
+            ZXing.Net.Mobile.Forms.Android.Platform.Init();
 
             // Service
             deviceManager = new DeviceManager(this);
