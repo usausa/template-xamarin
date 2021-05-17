@@ -18,7 +18,7 @@
   <ItemGroup>
     <PackageReference Include="Acr.UserDialogs" Version="7.1.0.514" />
     <PackageReference Include="AutoMapper" Version="10.1.1" />
-    <PackageReference Include="Microsoft.Data.Sqlite" Version="5.0.5" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="5.0.6" />
     <PackageReference Include="Rester" Version="2.0.0" />
     <PackageReference Include="Rester.Serializers.System.Text.Json" Version="2.0.0" />
     <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.11" />
@@ -32,9 +32,9 @@
     <PackageReference Include="Usa.Smart.Data" Version="2.0.0" />
     <PackageReference Include="Usa.Smart.Data.Mapper" Version="2.0.0" />
     <PackageReference Include="Usa.Smart.Data.Mapper.Builders" Version="2.0.0" />
-    <PackageReference Include="Usa.Smart.Forms" Version="2.0.0" />
-    <PackageReference Include="Usa.Smart.Forms.Reactive" Version="2.0.0" />
-    <PackageReference Include="Usa.Smart.Forms.Resolver" Version="2.0.0" />
+    <PackageReference Include="Usa.Smart.Forms" Version="2.1.0" />
+    <PackageReference Include="Usa.Smart.Forms.Reactive" Version="2.1.0" />
+    <PackageReference Include="Usa.Smart.Forms.Resolver" Version="2.1.0" />
     <PackageReference Include="Usa.Smart.Navigation" Version="2.0.0" />
     <PackageReference Include="Usa.Smart.Navigation.Forms" Version="2.0.0" />
     <PackageReference Include="Usa.Smart.Navigation.Resolver" Version="2.0.0" />
