@@ -15,7 +15,7 @@ namespace Template.FormsApp.Shell
             typeof(ShellUpdateBehavior),
             propertyChanged: HandlePropertyChanged);
 
-        public INavigator Navigator
+        public INavigator? Navigator
         {
             get => (INavigator)GetValue(NavigatorProperty);
             set => SetValue(NavigatorProperty, value);
