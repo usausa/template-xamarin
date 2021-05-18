@@ -1,6 +1,7 @@
 namespace Template.FormsApp.Services
 {
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using System.Threading.Tasks;
 
@@ -15,6 +16,7 @@ namespace Template.FormsApp.Services
 
     public class DataServiceOptions
     {
+        [AllowNull]
         public string Path { get; set; }
     }
 
@@ -92,7 +94,7 @@ namespace Template.FormsApp.Services
                     SqlDelete<DataEntity>.ByKey(),
                     new { Id = id }));
 
-        public ValueTask<DataEntity> QueryDataAsync(long id) =>
+        public ValueTask<DataEntity?> QueryDataAsync(long id) =>
             provider.UsingAsync(con =>
                 con.QueryFirstOrDefaultAsync<DataEntity>(
                     SqlSelect<DataEntity>.ByKey(),

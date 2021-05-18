@@ -1,5 +1,6 @@
 namespace Template.FormsApp.Droid
 {
+    using System.Diagnostics.CodeAnalysis;
     using System.Threading.Tasks;
 
     using Acr.UserDialogs;
@@ -31,6 +32,7 @@ namespace Template.FormsApp.Droid
         WindowSoftInputMode = SoftInput.AdjustResize)]
     public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+        [AllowNull]
         private DeviceManager deviceManager;
 
         protected override void OnCreate(Bundle savedInstanceState)

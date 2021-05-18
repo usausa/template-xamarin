@@ -18,13 +18,13 @@ namespace Template.FormsApp.Services
 
         public NetworkService()
         {
-            InitializeHttpClient();
+            client = CreateHttpClient();
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Reliability", "CA2000:DisposeObjectsBeforeLosingScope", Justification = "Ignore")]
-        private void InitializeHttpClient()
+        private static HttpClient CreateHttpClient()
         {
-            client = new HttpClient(new HttpClientHandler
+            return new(new HttpClientHandler
             {
                 AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
                 ServerCertificateCustomValidationCallback = (_, _, _, _) => true
@@ -38,7 +38,8 @@ namespace Template.FormsApp.Services
         {
             if (client.BaseAddress is not null)
             {
-                InitializeHttpClient();
+                client.Dispose();
+                client = CreateHttpClient();
             }
 
             client.BaseAddress = new Uri(address);

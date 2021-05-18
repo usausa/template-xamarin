@@ -8,6 +8,6 @@ namespace Template.FormsApp.Components.Device
 
         NetworkState GetNetworkState();
 
-        string GetVersion();
+        string? GetVersion();
     }
 }

@@ -61,7 +61,7 @@ namespace Template.FormsApp.Usecase
                 switch (response.RestResult)
                 {
                     case RestResult.Success:
-                        return Result.Success(response.Content);
+                        return Result.Success(response.Content!);
                     case RestResult.Cancel:
                         if (!verbose)
                         {

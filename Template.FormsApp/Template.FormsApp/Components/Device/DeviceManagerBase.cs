@@ -37,6 +37,6 @@ namespace Template.FormsApp.Components.Device
 
         public NetworkState GetNetworkState() => GetNetworkState(Connectivity.NetworkAccess, Connectivity.ConnectionProfiles);
 
-        public abstract string GetVersion();
+        public abstract string? GetVersion();
     }
 }

@@ -35,9 +35,9 @@
     <PackageReference Include="Usa.Smart.Forms" Version="2.1.0" />
     <PackageReference Include="Usa.Smart.Forms.Reactive" Version="2.1.0" />
     <PackageReference Include="Usa.Smart.Forms.Resolver" Version="2.1.0" />
-    <PackageReference Include="Usa.Smart.Navigation" Version="2.0.0" />
-    <PackageReference Include="Usa.Smart.Navigation.Forms" Version="2.0.0" />
-    <PackageReference Include="Usa.Smart.Navigation.Resolver" Version="2.0.0" />
+    <PackageReference Include="Usa.Smart.Navigation" Version="2.0.1" />
+    <PackageReference Include="Usa.Smart.Navigation.Forms" Version="2.0.1" />
+    <PackageReference Include="Usa.Smart.Navigation.Resolver" Version="2.0.1" />
     <PackageReference Include="Usa.Smart.Reactive" Version="2.0.0" />
     <PackageReference Include="Usa.Smart.Resolver" Version="2.0.0" />
     <PackageReference Include="Usa.Smart.Resolver.Xamarin" Version="2.0.0" />

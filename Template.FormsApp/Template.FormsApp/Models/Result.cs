@@ -15,7 +15,7 @@ namespace Template.FormsApp.Models
 
         private class ResultImpl<T> : IResult<T>
         {
-            public static readonly ResultImpl<T> FailedResult = new(false, default);
+            public static readonly ResultImpl<T> FailedResult = new(false, default!);
 
             public bool IsSuccess { get; }
 

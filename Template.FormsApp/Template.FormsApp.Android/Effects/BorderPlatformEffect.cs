@@ -29,7 +29,7 @@ namespace Template.FormsApp.Droid.Effects
             view.SetBackground(backgroundColor != Color.Default
                 ? new ColorDrawable(backgroundColor.ToAndroid())
                 : null);
-            ((IDisposable)current)?.Dispose();
+            (current as IDisposable)?.Dispose();
 
             Control?.SetPadding(0, 0, 0, 0);
             view.ClipToOutline = false;
@@ -79,7 +79,7 @@ namespace Template.FormsApp.Droid.Effects
 
             var current = view.Background;
             view.SetBackground(border);
-            ((IDisposable)current)?.Dispose();
+            (current as IDisposable)?.Dispose();
         }
 
         private Color ResolveBackgroundColor()

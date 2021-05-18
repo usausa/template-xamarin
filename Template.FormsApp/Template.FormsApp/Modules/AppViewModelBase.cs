@@ -1,5 +1,6 @@
 namespace Template.FormsApp.Modules
 {
+    using System.Diagnostics.CodeAnalysis;
     using System.Threading.Tasks;
 
     using Smart.Forms.ViewModels;
@@ -9,6 +10,7 @@ namespace Template.FormsApp.Modules
 
     public class AppViewModelBase : ViewModelBase, INavigatorAware, INavigationEventSupport, INotifySupportAsync<ShellEvent>
     {
+        [AllowNull]
         public INavigator Navigator { get; set; }
 
         public ApplicationState ApplicationState { get; }

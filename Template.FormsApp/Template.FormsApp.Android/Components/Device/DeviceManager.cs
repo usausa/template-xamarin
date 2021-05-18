@@ -13,10 +13,10 @@ namespace Template.FormsApp.Droid.Components.Device
             this.activity = activity;
         }
 
-        public override string GetVersion()
+        public override string? GetVersion()
         {
-            var pm = activity.PackageManager;
-            var info = pm.GetPackageInfo(activity.PackageName, 0);
+            var pm = activity.PackageManager!;
+            var info = pm.GetPackageInfo(activity.PackageName!, 0)!;
             return info.VersionName;
         }
     }
