@@ -5,8 +5,34 @@ namespace Template.FormsApp
 
     using Smart.Navigation;
 
+    using Template.FormsApp.Behaviors;
+    using Template.FormsApp.Helpers;
+
+    using Xamarin.Forms;
+
     public static class Extensions
     {
+        //--------------------------------------------------------------------------------
+        // Page
+        //--------------------------------------------------------------------------------
+
+        public static void SetDefaultFocus(this Page page)
+        {
+            var first = default(VisualElement);
+            foreach (var visualElement in ElementHelper.EnumerateActive(page))
+            {
+                if (Focus.GetDefault(visualElement))
+                {
+                    visualElement.Focus();
+                    return;
+                }
+
+                first ??= visualElement;
+            }
+
+            first?.Focus();
+        }
+
         //--------------------------------------------------------------------------------
         // Navigation
         //--------------------------------------------------------------------------------

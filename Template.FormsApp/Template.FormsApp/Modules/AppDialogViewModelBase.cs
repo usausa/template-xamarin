@@ -1,6 +1,7 @@
 namespace Template.FormsApp.Modules
 {
     using System.Diagnostics.CodeAnalysis;
+
     using Smart.Forms.ViewModels;
 
     using XamarinFormsComponents.Popup;
