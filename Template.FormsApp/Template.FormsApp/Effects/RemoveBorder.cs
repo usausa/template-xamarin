@@ -14,15 +14,9 @@ namespace Template.FormsApp.Effects
             false,
             propertyChanged: OnOnChanged);
 
-        public static bool GetOn(BindableObject view)
-        {
-            return (bool)view.GetValue(OnProperty);
-        }
+        public static bool GetOn(BindableObject bindable) => (bool)bindable.GetValue(OnProperty);
 
-        public static void SetOn(BindableObject view, bool value)
-        {
-            view.SetValue(OnProperty, value);
-        }
+        public static void SetOn(BindableObject bindable, bool value) => bindable.SetValue(OnProperty, value);
 
         private static void OnOnChanged(BindableObject bindable, object oldValue, object newValue)
         {

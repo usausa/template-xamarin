@@ -11,15 +11,9 @@ namespace Template.FormsApp.Shell
             null,
             propertyChanged: PropertyChanged);
 
-        public static string GetTitle(BindableObject view)
-        {
-            return (string)view.GetValue(TitleProperty);
-        }
+        public static string GetTitle(BindableObject bindable) => (string)bindable.GetValue(TitleProperty);
 
-        public static void SetTitle(BindableObject view, string value)
-        {
-            view.SetValue(TitleProperty, value);
-        }
+        public static void SetTitle(BindableObject bindable, string value) => bindable.SetValue(TitleProperty, value);
 
         private static void PropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
@@ -37,15 +31,9 @@ namespace Template.FormsApp.Shell
             true,
             propertyChanged: PropertyChanged);
 
-        public static bool GetFunctionVisible(BindableObject view)
-        {
-            return (bool)view.GetValue(FunctionVisibleProperty);
-        }
+        public static bool GetFunctionVisible(BindableObject bindable) => (bool)bindable.GetValue(FunctionVisibleProperty);
 
-        public static void SetFunctionVisible(BindableObject view, bool value)
-        {
-            view.SetValue(FunctionVisibleProperty, value);
-        }
+        public static void SetFunctionVisible(BindableObject bindable, bool value) => bindable.SetValue(FunctionVisibleProperty, value);
 
         public static readonly BindableProperty Function1TextProperty = BindableProperty.CreateAttached(
             "Function1Text",
@@ -54,15 +42,9 @@ namespace Template.FormsApp.Shell
             string.Empty,
             propertyChanged: PropertyChanged);
 
-        public static string GetFunction1Text(BindableObject view)
-        {
-            return (string)view.GetValue(Function1TextProperty);
-        }
+        public static string GetFunction1Text(BindableObject bindable) => (string)bindable.GetValue(Function1TextProperty);
 
-        public static void SetFunction1Text(BindableObject view, string value)
-        {
-            view.SetValue(Function1TextProperty, value);
-        }
+        public static void SetFunction1Text(BindableObject bindable, string value) => bindable.SetValue(Function1TextProperty, value);
 
         public static readonly BindableProperty Function2TextProperty = BindableProperty.CreateAttached(
             "Function2Text",
@@ -71,15 +53,9 @@ namespace Template.FormsApp.Shell
             string.Empty,
             propertyChanged: PropertyChanged);
 
-        public static string GetFunction2Text(BindableObject view)
-        {
-            return (string)view.GetValue(Function2TextProperty);
-        }
+        public static string GetFunction2Text(BindableObject bindable) => (string)bindable.GetValue(Function2TextProperty);
 
-        public static void SetFunction2Text(BindableObject view, string value)
-        {
-            view.SetValue(Function2TextProperty, value);
-        }
+        public static void SetFunction2Text(BindableObject bindable, string value) => bindable.SetValue(Function2TextProperty, value);
 
         public static readonly BindableProperty Function3TextProperty = BindableProperty.CreateAttached(
             "Function3Text",
@@ -88,15 +64,9 @@ namespace Template.FormsApp.Shell
             string.Empty,
             propertyChanged: PropertyChanged);
 
-        public static string GetFunction3Text(BindableObject view)
-        {
-            return (string)view.GetValue(Function3TextProperty);
-        }
+        public static string GetFunction3Text(BindableObject bindable) => (string)bindable.GetValue(Function3TextProperty);
 
-        public static void SetFunction3Text(BindableObject view, string value)
-        {
-            view.SetValue(Function3TextProperty, value);
-        }
+        public static void SetFunction3Text(BindableObject bindable, string value) => bindable.SetValue(Function3TextProperty, value);
 
         public static readonly BindableProperty Function4TextProperty = BindableProperty.CreateAttached(
             "Function4Text",
@@ -105,15 +75,9 @@ namespace Template.FormsApp.Shell
             string.Empty,
             propertyChanged: PropertyChanged);
 
-        public static string GetFunction4Text(BindableObject view)
-        {
-            return (string)view.GetValue(Function4TextProperty);
-        }
+        public static string GetFunction4Text(BindableObject bindable) => (string)bindable.GetValue(Function4TextProperty);
 
-        public static void SetFunction4Text(BindableObject view, string value)
-        {
-            view.SetValue(Function4TextProperty, value);
-        }
+        public static void SetFunction4Text(BindableObject bindable, string value) => bindable.SetValue(Function4TextProperty, value);
 
         public static readonly BindableProperty Function1EnabledProperty = BindableProperty.CreateAttached(
             "Function1Enabled",
@@ -122,15 +86,9 @@ namespace Template.FormsApp.Shell
             false,
             propertyChanged: PropertyChanged);
 
-        public static bool GetFunction1Enabled(BindableObject view)
-        {
-            return (bool)view.GetValue(Function1EnabledProperty);
-        }
+        public static bool GetFunction1Enabled(BindableObject bindable) => (bool)bindable.GetValue(Function1EnabledProperty);
 
-        public static void SetFunction1Enabled(BindableObject view, bool value)
-        {
-            view.SetValue(Function1EnabledProperty, value);
-        }
+        public static void SetFunction1Enabled(BindableObject bindable, bool value) => bindable.SetValue(Function1EnabledProperty, value);
 
         public static readonly BindableProperty Function2EnabledProperty = BindableProperty.CreateAttached(
             "Function2Enabled",
@@ -139,15 +97,9 @@ namespace Template.FormsApp.Shell
             false,
             propertyChanged: PropertyChanged);
 
-        public static bool GetFunction2Enabled(BindableObject view)
-        {
-            return (bool)view.GetValue(Function2EnabledProperty);
-        }
+        public static bool GetFunction2Enabled(BindableObject bindable) => (bool)bindable.GetValue(Function2EnabledProperty);
 
-        public static void SetFunction2Enabled(BindableObject view, bool value)
-        {
-            view.SetValue(Function2EnabledProperty, value);
-        }
+        public static void SetFunction2Enabled(BindableObject bindable, bool value) => bindable.SetValue(Function2EnabledProperty, value);
 
         public static readonly BindableProperty Function3EnabledProperty = BindableProperty.CreateAttached(
             "Function3Enabled",
@@ -156,15 +108,9 @@ namespace Template.FormsApp.Shell
             false,
             propertyChanged: PropertyChanged);
 
-        public static bool GetFunction3Enabled(BindableObject view)
-        {
-            return (bool)view.GetValue(Function3EnabledProperty);
-        }
+        public static bool GetFunction3Enabled(BindableObject bindable) => (bool)bindable.GetValue(Function3EnabledProperty);
 
-        public static void SetFunction3Enabled(BindableObject view, bool value)
-        {
-            view.SetValue(Function3EnabledProperty, value);
-        }
+        public static void SetFunction3Enabled(BindableObject bindable, bool value) => bindable.SetValue(Function3EnabledProperty, value);
 
         public static readonly BindableProperty Function4EnabledProperty = BindableProperty.CreateAttached(
             "Function4Enabled",
@@ -173,15 +119,9 @@ namespace Template.FormsApp.Shell
             false,
             propertyChanged: PropertyChanged);
 
-        public static bool GetFunction4Enabled(BindableObject view)
-        {
-            return (bool)view.GetValue(Function4EnabledProperty);
-        }
+        public static bool GetFunction4Enabled(BindableObject bindable) => (bool)bindable.GetValue(Function4EnabledProperty);
 
-        public static void SetFunction4Enabled(BindableObject view, bool value)
-        {
-            view.SetValue(Function4EnabledProperty, value);
-        }
+        public static void SetFunction4Enabled(BindableObject bindable, bool value) => bindable.SetValue(Function4EnabledProperty, value);
 
         public static void UpdateShellControl(IShellControl shell, BindableObject? bindable)
         {

@@ -37,45 +37,21 @@ namespace Template.FormsApp.Effects
                 default(double),
                 propertyChanged: OnPropertyChanged);
 
-        public static void SetPadding(BindableObject view, Thickness value)
-        {
-            view.SetValue(PaddingProperty, value);
-        }
+        public static void SetPadding(BindableObject bindable, Thickness value) => bindable.SetValue(PaddingProperty, value);
 
-        public static Thickness GetPadding(BindableObject view)
-        {
-            return (Thickness)view.GetValue(PaddingProperty);
-        }
+        public static Thickness GetPadding(BindableObject bindable) => (Thickness)bindable.GetValue(PaddingProperty);
 
-        public static void SetWidth(BindableObject view, double value)
-        {
-            view.SetValue(WidthProperty, value);
-        }
+        public static void SetWidth(BindableObject bindable, double value) => bindable.SetValue(WidthProperty, value);
 
-        public static double GetWidth(BindableObject view)
-        {
-            return (double)view.GetValue(WidthProperty);
-        }
+        public static double GetWidth(BindableObject bindable) => (double)bindable.GetValue(WidthProperty);
 
-        public static void SetColor(BindableObject view, Color value)
-        {
-            view.SetValue(ColorProperty, value);
-        }
+        public static void SetColor(BindableObject bindable, Color value) => bindable.SetValue(ColorProperty, value);
 
-        public static Color GetColor(BindableObject view)
-        {
-            return (Color)view.GetValue(ColorProperty);
-        }
+        public static Color GetColor(BindableObject bindable) => (Color)bindable.GetValue(ColorProperty);
 
-        public static void SetRadius(BindableObject view, double value)
-        {
-            view.SetValue(RadiusProperty, value);
-        }
+        public static void SetRadius(BindableObject bindable, double value) => bindable.SetValue(RadiusProperty, value);
 
-        public static double GetRadius(BindableObject view)
-        {
-            return (double)view.GetValue(RadiusProperty);
-        }
+        public static double GetRadius(BindableObject bindable) => (double)bindable.GetValue(RadiusProperty);
 
         private static void OnPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {

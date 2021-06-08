@@ -10,14 +10,8 @@ namespace Template.FormsApp.Behaviors
             typeof(Focus),
             false);
 
-        public static bool GetDefault(BindableObject view)
-        {
-            return (bool)view.GetValue(DefaultProperty);
-        }
+        public static bool GetDefault(BindableObject bindable) => (bool)bindable.GetValue(DefaultProperty);
 
-        public static void SetDefault(BindableObject view, bool value)
-        {
-            view.SetValue(DefaultProperty, value);
-        }
+        public static void SetDefault(BindableObject bindable, bool value) => bindable.SetValue(DefaultProperty, bindable);
     }
 }

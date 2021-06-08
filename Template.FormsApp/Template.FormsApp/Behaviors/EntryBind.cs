@@ -98,15 +98,11 @@ namespace Template.FormsApp.Behaviors
             null,
             propertyChanged: BindChanged);
 
-        public static Template.FormsApp.Models.Entry.IEntryController GetModel(BindableObject view)
-        {
-            return (Template.FormsApp.Models.Entry.IEntryController)view.GetValue(ModelProperty);
-        }
+        public static Template.FormsApp.Models.Entry.IEntryController GetModel(BindableObject bindable) =>
+            (Template.FormsApp.Models.Entry.IEntryController)bindable.GetValue(ModelProperty);
 
-        public static void SetModel(BindableObject view, Template.FormsApp.Models.Entry.IEntryController value)
-        {
-            view.SetValue(ModelProperty, value);
-        }
+        public static void SetModel(BindableObject bindable, Template.FormsApp.Models.Entry.IEntryController value) =>
+            bindable.SetValue(ModelProperty, value);
 
         private static void BindChanged(BindableObject bindable, object? oldValue, object? newValue)
         {

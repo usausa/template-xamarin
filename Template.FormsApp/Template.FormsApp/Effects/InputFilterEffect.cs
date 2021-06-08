@@ -14,15 +14,9 @@ namespace Template.FormsApp.Effects
             null,
             propertyChanged: OnChanged);
 
-        public static Func<string, bool>? GetRule(BindableObject view)
-        {
-            return (Func<string, bool>?)view.GetValue(RuleProperty);
-        }
+        public static Func<string, bool>? GetRule(BindableObject bindable) => (Func<string, bool>?)bindable.GetValue(RuleProperty);
 
-        public static void SetRule(BindableObject view, Func<string, bool?> value)
-        {
-            view.SetValue(RuleProperty, value);
-        }
+        public static void SetRule(BindableObject bindable, Func<string, bool?> value) => bindable.SetValue(RuleProperty, value);
 
         private static void OnChanged(BindableObject bindable, object? oldValue, object? newValue)
         {
