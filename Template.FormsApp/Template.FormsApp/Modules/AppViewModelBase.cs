@@ -46,14 +46,27 @@ namespace Template.FormsApp.Modules
             {
                 case ShellEvent.Back:
                     return OnNotifyBackAsync();
+                case ShellEvent.Function1:
+                    return OnNotifyFunction1();
+                case ShellEvent.Function2:
+                    return OnNotifyFunction2();
+                case ShellEvent.Function3:
+                    return OnNotifyFunction3();
+                case ShellEvent.Function4:
+                    return OnNotifyFunction4();
                 default:
                     return Task.CompletedTask;
             }
         }
 
-        protected virtual Task OnNotifyBackAsync()
-        {
-            return Task.CompletedTask;
-        }
+        protected virtual Task OnNotifyBackAsync() => Task.CompletedTask;
+
+        protected virtual Task OnNotifyFunction1() => Task.CompletedTask;
+
+        protected virtual Task OnNotifyFunction2() => Task.CompletedTask;
+
+        protected virtual Task OnNotifyFunction3() => Task.CompletedTask;
+
+        protected virtual Task OnNotifyFunction4() => Task.CompletedTask;
     }
 }

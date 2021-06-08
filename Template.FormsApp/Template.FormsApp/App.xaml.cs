@@ -16,6 +16,7 @@ namespace Template.FormsApp
     using Smart.Resolver;
 
     using Template.FormsApp.Components.Dialog;
+    using Template.FormsApp.Extender;
     using Template.FormsApp.Helpers;
     using Template.FormsApp.Modules;
     using Template.FormsApp.Services;
@@ -59,6 +60,7 @@ namespace Template.FormsApp
             // Config Navigator
             navigator = new NavigatorConfig()
                 .UseFormsNavigationProvider()
+                .AddPlugin<NavigationFocusPlugin>()
                 .UseResolver(resolver)
                 .UseIdViewMapper(m => m.AutoRegister(Assembly.GetExecutingAssembly().ExportedTypes))
                 .ToNavigator();
@@ -92,6 +94,9 @@ namespace Template.FormsApp
                 adapter.AddPopupNavigator();
                 adapter.AddJsonSerializer();
                 adapter.AddSettings();
+
+                // Custom
+                adapter.UsePopupPageFactory<PopupPageFactory>();
             });
 
             config.BindSingleton<INavigator>(_ => navigator);

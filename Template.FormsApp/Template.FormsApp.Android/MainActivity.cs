@@ -35,6 +35,9 @@ namespace Template.FormsApp.Droid
         [AllowNull]
         private DeviceManager deviceManager;
 
+        [AllowNull]
+        private KeyInputDriver keyInputDriver;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             SetTheme(Resource.Style.MainTheme);
@@ -62,6 +65,9 @@ namespace Template.FormsApp.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
+            // Key input
+            keyInputDriver = new KeyInputDriver(this);
+
             // Boot
             LoadApplication(new App(new ComponentProvider(this)));
         }
@@ -76,6 +82,16 @@ namespace Template.FormsApp.Droid
         public override void OnBackPressed()
         {
             Rg.Plugins.Popup.Popup.SendBackPressed(base.OnBackPressed);
+        }
+
+        public override bool DispatchKeyEvent(KeyEvent? e)
+        {
+            if (keyInputDriver.Process(e!))
+            {
+                return true;
+            }
+
+            return base.DispatchKeyEvent(e);
         }
 
         private sealed class ComponentProvider : IComponentProvider

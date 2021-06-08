@@ -2,6 +2,10 @@ namespace Template.FormsApp.Shell
 {
     public enum ShellEvent
     {
-        Back
+        Back,
+        Function1,
+        Function2,
+        Function3,
+        Function4
     }
 }
