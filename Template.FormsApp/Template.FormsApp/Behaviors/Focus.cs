@@ -12,6 +12,6 @@ namespace Template.FormsApp.Behaviors
 
         public static bool GetDefault(BindableObject bindable) => (bool)bindable.GetValue(DefaultProperty);
 
-        public static void SetDefault(BindableObject bindable, bool value) => bindable.SetValue(DefaultProperty, bindable);
+        public static void SetDefault(BindableObject bindable, bool value) => bindable.SetValue(DefaultProperty, value);
     }
 }
