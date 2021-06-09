@@ -166,7 +166,7 @@ namespace Template.FormsApp.Droid.Components.Dialog
                     .SetCancelable(false)!
                     .Create()!;
                 alertDialog.SetOnShowListener(this);
-                alertDialog.ListView!.Selector = new ColorDrawable(Android.Graphics.Color.Blue) { Alpha = 64 };
+                alertDialog.ListView!.Selector = new ColorDrawable(Android.Graphics.Color.OrangeRed) { Alpha = 64 };
 
                 alertDialog.Show();
 

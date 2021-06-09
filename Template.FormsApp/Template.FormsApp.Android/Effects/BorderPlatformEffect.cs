@@ -3,6 +3,7 @@
 namespace Template.FormsApp.Droid.Effects
 {
     using System.ComponentModel;
+    using System.Diagnostics.CodeAnalysis;
 
     using Android.Graphics.Drawables;
 
@@ -13,25 +14,25 @@ namespace Template.FormsApp.Droid.Effects
 
     public sealed class BorderPlatformEffect : PlatformEffect
     {
+        private Drawable? originalBackground;
+
+        [AllowNull]
+        private GradientDrawable drawable;
+
         protected override void OnAttached()
         {
+            originalBackground = Control.Background;
+            drawable = new GradientDrawable();
+            Control.Background = drawable;
+
             UpdateBorder();
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:DisposeObjectsBeforeLosingScope", Justification = "Ignore")]
         protected override void OnDetached()
         {
-            var view = Container ?? Control;
-
-            var current = view.Background;
-            var backgroundColor = ResolveBackgroundColor();
-            view.SetBackground(backgroundColor != Color.Default
-                ? new ColorDrawable(backgroundColor.ToAndroid())
-                : null);
-            current?.Dispose();
-
-            Control?.SetPadding(0, 0, 0, 0);
-            view.ClipToOutline = false;
+            drawable.Dispose();
+            Control.Background = originalBackground;
         }
 
         protected override void OnElementPropertyChanged(PropertyChangedEventArgs args)
@@ -40,8 +41,6 @@ namespace Template.FormsApp.Droid.Effects
 
             if ((args.PropertyName == Border.WidthProperty.PropertyName) ||
                 (args.PropertyName == Border.ColorProperty.PropertyName) ||
-                (args.PropertyName == Border.RadiusProperty.PropertyName) ||
-                (args.PropertyName == Border.PaddingProperty.PropertyName) ||
                 (args.PropertyName == VisualElement.BackgroundColorProperty.PropertyName))
             {
                 UpdateBorder();
@@ -51,44 +50,13 @@ namespace Template.FormsApp.Droid.Effects
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:DisposeObjectsBeforeLosingScope", Justification = "Ignore")]
         private void UpdateBorder()
         {
-            var view = Container ?? Control;
-
-            var (left, top, right, bottom) = Border.GetPadding(Element);
-            var paddingLeft = (int)view.Context.ToPixels(left);
-            var paddingTop = (int)view.Context.ToPixels(top);
-            var paddingRight = (int)view.Context.ToPixels(right);
-            var paddingBottom = (int)view.Context.ToPixels(bottom);
-            var width = (int)view.Context.ToPixels(Border.GetWidth(Element));
+            var width = (int)Control.Context.ToPixels(Border.GetWidth(Element));
             var color = Border.GetColor(Element).ToAndroid();
-            var radius = view.Context.ToPixels(Border.GetRadius(Element));
 
-            var border = new GradientDrawable();
+            drawable.SetStroke(width, color);
+            drawable.SetColor(((View)Element).BackgroundColor.ToAndroid());
 
-            border.SetStroke(width, color);
-            border.SetCornerRadius(radius);
-
-            var backgroundColor = ResolveBackgroundColor();
-            if (backgroundColor != Color.Default)
-            {
-                border.SetColor(backgroundColor.ToAndroid());
-            }
-
-            Control?.SetPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
-            view.ClipToOutline = true;
-
-            var current = view.Background;
-            view.SetBackground(border);
-            current?.Dispose();
-        }
-
-        private Color ResolveBackgroundColor()
-        {
-            if (Element is BoxView boxView)
-            {
-                return boxView.Color;
-            }
-
-            return ((View)Element).BackgroundColor;
+            Control.Background = drawable;
         }
     }
 }

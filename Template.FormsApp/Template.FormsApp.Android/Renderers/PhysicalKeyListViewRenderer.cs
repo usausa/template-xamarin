@@ -26,7 +26,7 @@ namespace Template.FormsApp.Droid.Renderers
             // Selector
             //Control.SetDrawSelectorOnTop(true);
             var states = new StateListDrawable();
-            states.AddState(new[] { Android.Resource.Attribute.StateFocused }, new PaintDrawable(Color.Blue) { Alpha = 64 });
+            states.AddState(new[] { Android.Resource.Attribute.StateFocused }, new PaintDrawable(Color.OrangeRed) { Alpha = 64 });
             Control.Selector = states;
         }
     }

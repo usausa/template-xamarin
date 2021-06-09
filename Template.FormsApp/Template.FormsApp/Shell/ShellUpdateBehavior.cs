@@ -59,7 +59,7 @@ namespace Template.FormsApp.Shell
 
         private void NavigatorOnNavigated(object sender, Smart.Navigation.NavigationEventArgs e)
         {
-            UpdateShell(e.ToView);
+            UpdateShell(e.ToView as Element);
         }
 
         private void NavigatorOnExited(object sender, EventArgs e)
@@ -67,11 +67,11 @@ namespace Template.FormsApp.Shell
             UpdateShell(null);
         }
 
-        private void UpdateShell(object? view)
+        private void UpdateShell(BindableObject? view)
         {
             if (AssociatedObject?.BindingContext is IShellControl shell)
             {
-                ShellProperty.UpdateShellControl(shell, view as BindableObject);
+                ShellProperty.UpdateShellControl(shell, view);
             }
         }
     }

@@ -6,14 +6,6 @@ namespace Template.FormsApp.Effects
 
     public static class Border
     {
-        public static readonly BindableProperty PaddingProperty =
-            BindableProperty.CreateAttached(
-                "Padding",
-                typeof(Thickness),
-                typeof(Border),
-                default(Thickness),
-                propertyChanged: OnPropertyChanged);
-
         public static readonly BindableProperty WidthProperty =
             BindableProperty.CreateAttached(
                 "Width",
@@ -29,18 +21,6 @@ namespace Template.FormsApp.Effects
                 typeof(Border),
                 Color.Transparent);
 
-        public static readonly BindableProperty RadiusProperty =
-            BindableProperty.CreateAttached(
-                "Radius",
-                typeof(double),
-                typeof(Border),
-                default(double),
-                propertyChanged: OnPropertyChanged);
-
-        public static void SetPadding(BindableObject bindable, Thickness value) => bindable.SetValue(PaddingProperty, value);
-
-        public static Thickness GetPadding(BindableObject bindable) => (Thickness)bindable.GetValue(PaddingProperty);
-
         public static void SetWidth(BindableObject bindable, double value) => bindable.SetValue(WidthProperty, value);
 
         public static double GetWidth(BindableObject bindable) => (double)bindable.GetValue(WidthProperty);
@@ -48,10 +28,6 @@ namespace Template.FormsApp.Effects
         public static void SetColor(BindableObject bindable, Color value) => bindable.SetValue(ColorProperty, value);
 
         public static Color GetColor(BindableObject bindable) => (Color)bindable.GetValue(ColorProperty);
-
-        public static void SetRadius(BindableObject bindable, double value) => bindable.SetValue(RadiusProperty, value);
-
-        public static double GetRadius(BindableObject bindable) => (double)bindable.GetValue(RadiusProperty);
 
         private static void OnPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
@@ -61,10 +37,7 @@ namespace Template.FormsApp.Effects
             }
 
             var width = GetWidth(bindable);
-            var radius = GetRadius(bindable);
-            var (left, top, right, bottom) = GetPadding(bindable);
-            var on = (width > 0) || (radius > 0) || (left > 0) || (top > 0) || (right > 0) || (bottom > 0);
-
+            var on = width > 0;
             var effect = element.Effects.OfType<BorderEffect>().FirstOrDefault();
             if (on && effect is null)
             {
@@ -80,7 +53,7 @@ namespace Template.FormsApp.Effects
     public sealed class BorderEffect : RoutingEffect
     {
         public BorderEffect()
-            : base("KDH.BorderEffect")
+            : base("Locker.BorderEffect")
         {
         }
     }
