@@ -42,7 +42,7 @@ namespace Template.FormsApp.Services
                 client = CreateHttpClient();
             }
 
-            client.BaseAddress = new Uri(address);
+            client.BaseAddress = String.IsNullOrEmpty(address) ? null : new Uri(address);
         }
 
         public void SetToken(string token)

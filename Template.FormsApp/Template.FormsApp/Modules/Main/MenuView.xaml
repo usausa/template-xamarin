@@ -7,7 +7,8 @@
              x:Class="Template.FormsApp.Modules.Main.MenuView"
              x:DataType="{x:Type modules:MenuViewModel}"
              sr:BindingContextResolver.Type="{x:Type modules:MenuViewModel}"
-             shell:ShellProperty.Title="Menu">
+             shell:ShellProperty.Title="Menu"
+             shell:ShellProperty.FunctionVisible="False">
 
     <Grid Style="{StaticResource FillGrid}">
         <Grid.RowDefinitions>

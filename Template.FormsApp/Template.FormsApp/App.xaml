@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:sd="clr-namespace:Smart.Forms.Data;assembly=Smart.Forms"
              xmlns:resources="clr-namespace:Template.FormsApp.Resources;assembly=Template.FormsApp"
+             xmlns:effects="clr-namespace:Template.FormsApp.Effects;assembly=Template.FormsApp"
              x:Class="Template.FormsApp.App">
     <Application.Resources>
 
@@ -28,11 +29,17 @@
 
             <!-- Color -->
 
+            <Color x:Key="DisabledColor">#B8B5B2</Color>
+
+            <Color x:Key="SelectFocusColor">#FFF9C4</Color>
+
             <Color x:Key="NoErrorColor">Transparent</Color>
             <Color x:Key="ErrorColor">#EE1111</Color>
 
             <Color x:Key="BorderColor">DarkGray</Color>
             <Color x:Key="LineColor">Black</Color>
+
+            <Color x:Key="PopupBackgroundColor">White</Color>
 
             <!-- ================================================================================ -->
             <!-- Converter -->
@@ -43,14 +50,10 @@
             <sd:ReverseConverter x:Key="ReverseConverter" />
 
             <!-- ================================================================================ -->
-            <!-- Layout -->
-            <!-- ================================================================================ -->
-            <!-- ================================================================================ -->
             <!-- Main -->
             <!-- ================================================================================ -->
 
             <Style x:Key="MainGrid" TargetType="Grid">
-                <Setter Property="CompressedLayout.IsHeadless" Value="True" />
                 <Setter Property="RowSpacing" Value="0" />
                 <Setter Property="ColumnSpacing" Value="0" />
                 <Setter Property="Margin" Value="0" />
@@ -105,16 +108,119 @@
                 <Setter Property="HeightRequest" Value="{StaticResource FunctionGridHeight}" />
             </Style>
 
-            <Style x:Key="FunctionButton" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="{StaticResource MetroBlue}" />
+            <Style x:Key="FunctionButtonBase" TargetType="Button">
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="FontSize" Value="{StaticResource BigSize}" />
                 <Setter Property="CornerRadius" Value="0" />
                 <Setter Property="BorderWidth" Value="0" />
             </Style>
 
+            <Style x:Key="FunctionButton1"
+                   BasedOn="{StaticResource FunctionButtonBase}"
+                   TargetType="Button">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource MetroRed}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Focused">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource MetroRedDarker}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource DisabledColor}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style x:Key="FunctionButton2"
+                   BasedOn="{StaticResource FunctionButtonBase}"
+                   TargetType="Button">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource MetroBlue}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Focused">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource MetroBlueDarker}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource DisabledColor}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style x:Key="FunctionButton3"
+                   BasedOn="{StaticResource FunctionButtonBase}"
+                   TargetType="Button">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource MetroGreen}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Focused">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource MetroGreenDarker}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource DisabledColor}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style x:Key="FunctionButton4"
+                   BasedOn="{StaticResource FunctionButtonBase}"
+                   TargetType="Button">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource MetroOrange}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Focused">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource MetroOrangeDarker}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource DisabledColor}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
             <!-- ================================================================================ -->
-            <!-- Basic -->
+            <!-- Layout -->
             <!-- ================================================================================ -->
 
             <Style x:Key="FillGrid" TargetType="Grid">
@@ -131,21 +237,155 @@
                 <Setter Property="Margin" Value="0" />
             </Style>
 
-            <Style x:Key="PaddingLayout" TargetType="StackLayout">
-                <Setter Property="Padding" Value="3" />
+            <Style x:Key="HorizontalFillLayout" TargetType="StackLayout">
+                <Setter Property="Padding" Value="0" />
                 <Setter Property="Margin" Value="0" />
+                <Setter Property="Spacing" Value="0" />
+                <Setter Property="Orientation" Value="Horizontal" />
             </Style>
 
             <Style x:Key="MenuButton" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="{StaticResource MetroTeal}" />
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="FontSize" Value="{StaticResource BigSize}" />
                 <Setter Property="Margin" Value="3" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource MetroTeal}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Focused">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource MetroTealDarker}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource DisabledColor}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
             </Style>
 
-            <Style x:Key="DefaultLabel" TargetType="Label">
-                <Setter Property="FontSize" Value="{StaticResource BigSize}" />
+            <Style x:Key="NameLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="{StaticResource LargerSize}" />
+                <Setter Property="VerticalOptions" Value="Center" />
             </Style>
+
+            <Style x:Key="ValueLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="{StaticResource BigSize}" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <Style x:Key="ButtonBorderFrame" TargetType="Frame">
+                <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="CornerRadius" Value="0" />
+                <Setter Property="Padding" Value="1" />
+            </Style>
+
+            <Style x:Key="SelectButton" TargetType="Button">
+                <Setter Property="CornerRadius" Value="0" />
+                <Setter Property="FontSize" Value="{StaticResource BigSize}" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="Padding" Value="3,0" />
+                <Setter Property="effects:TextAlignment.On" Value="True" />
+                <Setter Property="effects:TextAlignment.Horizontal" Value="Start" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="White" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Focused">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource SelectFocusColor}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource DisabledColor}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style x:Key="InputEntry" TargetType="Entry">
+                <Setter Property="FontSize" Value="{StaticResource BigSize}" />
+                <Setter Property="effects:Border.Color" Value="{StaticResource BorderColor}" />
+                <Setter Property="effects:Border.Width" Value="1" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="Default" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Focused">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource SelectFocusColor}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource DisabledColor}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style x:Key="ItemListView" TargetType="ListView">
+                <Setter Property="HasUnevenRows" Value="True" />
+            </Style>
+
+            <Style x:Key="ItemListHeaderGrid" TargetType="Grid">
+                <Setter Property="BackgroundColor" Value="{StaticResource MetroYellow}" />
+                <Setter Property="Padding" Value="6,0,6,0" />
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="RowSpacing" Value="0" />
+                <Setter Property="ColumnSpacing" Value="0" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+            </Style>
+
+            <Style x:Key="ItemListItemGrid" TargetType="Grid">
+                <Setter Property="Padding" Value="6,0,6,0" />
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="RowSpacing" Value="0" />
+                <Setter Property="ColumnSpacing" Value="0" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+            </Style>
+
+            <Style x:Key="ItemListLabelBase" TargetType="Label">
+                <Setter Property="FontSize" Value="{StaticResource BigSize}" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <Style x:Key="ItemLeftLabel"
+                   BasedOn="{StaticResource ItemListLabelBase}"
+                   TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Start" />
+            </Style>
+
+            <Style x:Key="ItemRightLabel"
+                   BasedOn="{StaticResource ItemListLabelBase}"
+                   TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="End" />
+            </Style>
+
         </ResourceDictionary>
 
     </Application.Resources>
