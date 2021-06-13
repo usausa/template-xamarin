@@ -18,9 +18,9 @@
   <ItemGroup>
     <PackageReference Include="Acr.UserDialogs" Version="7.1.0.514" />
     <PackageReference Include="AutoMapper" Version="10.1.1" />
-    <PackageReference Include="Microsoft.Data.Sqlite" Version="5.0.6" />
-    <PackageReference Include="Rester" Version="2.0.0" />
-    <PackageReference Include="Rester.Serializers.System.Text.Json" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="5.0.7" />
+    <PackageReference Include="Rester" Version="2.0.1" />
+    <PackageReference Include="Rester.Serializers.System.Text.Json" Version="2.0.1" />
     <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.11" />
     <PackageReference Include="SkiaSharp" Version="2.80.2" />
     <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.2" />
