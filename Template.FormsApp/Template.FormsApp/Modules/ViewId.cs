@@ -4,25 +4,45 @@ namespace Template.FormsApp.Modules
     {
         Menu,
 
-        Data,
+        // Navigation
+        NavigationMenu,
 
-        EditList,
-        EditDetailNew,
-        EditDetailUpdate,
+        NavigationEditList,
+        NavigationEditDetailNew,
+        NavigationEditDetailUpdate,
 
-        Stack1,
-        Stack2,
-        Stack3,
+        NavigationStack1,
+        NavigationStack2,
+        NavigationStack3,
 
-        WizardInput1,
-        WizardInput2,
-        WizardResult,
+        NavigationWizardInput1,
+        NavigationWizardInput2,
+        NavigationWizardResult,
 
-        SharedInput,
-        SharedMain1,
-        SharedMain2,
+        NavigationSharedInput,
+        NavigationSharedMain1,
+        NavigationSharedMain2,
 
         NavigateCancel,
         NavigateInitialize,
+
+        // Database
+        Database,
+
+        // Device
+        DeviceMenu,
+        DeviceBarcode,
+        DeviceCamera,
+        DeviceMap,
+        DeviceSensor,
+
+        // Interface
+        InterfaceMenu,
+
+        // Toolkit
+        Toolkit,
+
+        // Component
+        Component,
     }
 }
