@@ -1,7 +1,6 @@
 namespace Template.FormsApp.Modules.Navigation.Navigate
 {
     using System.Threading.Tasks;
-    using System.Windows.Input;
 
     using Smart.Forms.ViewModels;
     using Smart.Navigation;

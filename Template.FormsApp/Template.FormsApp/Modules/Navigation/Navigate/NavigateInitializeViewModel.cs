@@ -2,13 +2,10 @@ namespace Template.FormsApp.Modules.Navigation.Navigate
 {
     using System.Threading.Tasks;
 
-    using Smart.Forms.Input;
     using Smart.Forms.ViewModels;
     using Smart.Navigation;
 
     using Template.FormsApp.Components.Dialog;
-
-    using XamarinFormsComponents.Dialogs;
 
     public class NavigateInitializeViewModel : AppViewModelBase
     {
