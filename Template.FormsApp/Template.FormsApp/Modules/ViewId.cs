@@ -23,8 +23,8 @@ namespace Template.FormsApp.Modules
         NavigationSharedMain1,
         NavigationSharedMain2,
 
-        NavigateCancel,
-        NavigateInitialize,
+        NavigationNavigateCancel,
+        NavigationNavigateInitialize,
 
         // Database
         Database,
@@ -36,13 +36,16 @@ namespace Template.FormsApp.Modules
         DeviceMap,
         DeviceSensor,
 
-        // Interface
-        InterfaceMenu,
+        // Component
+        ComponentMenu,
+
+        // Example(Smart)
+        ExampleMenu,
 
         // Toolkit
-        Toolkit,
+        ToolkitMenu,
 
-        // Component
-        Component,
+        // UI
+        UIMenu,
     }
 }

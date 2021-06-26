@@ -26,7 +26,8 @@
 
         <Button Grid.Row="0"
                 Style="{StaticResource MenuButton}"
-                IsEnabled="False"
+                Command="{Binding ForwardCommand}"
+                CommandParameter="{markup:ViewId NavigationMenu}"
                 input:Shortcut.Key="Num1"
                 Text="1. Navigation" />
         <Button Grid.Row="1"
