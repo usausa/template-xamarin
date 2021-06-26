@@ -11,7 +11,7 @@ namespace Template.FormsApp.Services
     using Smart.Data.Mapper;
     using Smart.Data.Mapper.Builders;
 
-    using Template.FormsApp.Helpers;
+    using Template.FormsApp.Helpers.Data;
     using Template.FormsApp.Models.Entity;
 
     public class DataServiceOptions

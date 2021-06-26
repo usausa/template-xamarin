@@ -1,4 +1,4 @@
-namespace Template.FormsApp.Helpers
+namespace Template.FormsApp.Helpers.Json
 {
     using System;
     using System.Globalization;

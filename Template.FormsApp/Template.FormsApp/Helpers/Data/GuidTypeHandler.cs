@@ -1,4 +1,4 @@
-namespace Template.FormsApp.Helpers
+namespace Template.FormsApp.Helpers.Data
 {
     using System;
     using System.Data;
