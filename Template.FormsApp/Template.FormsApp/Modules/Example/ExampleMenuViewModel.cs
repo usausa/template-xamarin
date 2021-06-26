@@ -1,12 +1,12 @@
-namespace Template.FormsApp.Modules.Interface
+namespace Template.FormsApp.Modules.Example
 {
     using System.Threading.Tasks;
 
     using Smart.Navigation;
 
-    public class InterfaceMenuViewModel : AppViewModelBase
+    public class ExampleMenuViewModel : AppViewModelBase
     {
-        public InterfaceMenuViewModel(ApplicationState applicationState)
+        public ExampleMenuViewModel(ApplicationState applicationState)
             : base(applicationState)
         {
         }
