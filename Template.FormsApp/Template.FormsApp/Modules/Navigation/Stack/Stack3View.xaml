@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Template.FormsApp.Modules.Navigation.Stack.Stack3View">
-    <ContentView.Content>
-        <StackLayout>
-            <Label Text="Hello Xamarin.Forms!" />
-        </StackLayout>
-    </ContentView.Content>
+             xmlns:sr="clr-namespace:Smart.Forms.Resolver;assembly=Smart.Forms"
+             xmlns:shell="clr-namespace:Template.FormsApp.Shell;assembly=Template.FormsApp"
+             xmlns:modules="clr-namespace:Template.FormsApp.Modules.Navigation.Stack;assembly=Template.FormsApp"
+             x:Class="Template.FormsApp.Modules.Navigation.Stack.Stack3View"
+             x:DataType="{x:Type modules:Stack3ViewModel}"
+             sr:BindingContextResolver.Type="{x:Type modules:Stack3ViewModel}"
+             shell:ShellProperty.Title="Navigation"
+             shell:ShellProperty.Function1Text="Back"
+             shell:ShellProperty.Function1Enabled="True">
+
+    <Grid Style="{StaticResource FillGrid}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+    </Grid>
+
 </ContentView>
