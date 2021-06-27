@@ -32,15 +32,17 @@ namespace Template.FormsApp.Modules
         // Device
         DeviceMenu,
         DeviceBarcode,
+        DeviceBluetooth,
         DeviceCamera,
+        DeviceLocation,
         DeviceMap,
         DeviceSensor,
 
         // Component
         ComponentMenu,
 
-        // Example(Smart)
-        ExampleMenu,
+        // Framework(Smart)
+        FrameworkMenu,
 
         // Toolkit
         ToolkitMenu,
