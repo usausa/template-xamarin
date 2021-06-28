@@ -1,5 +1,6 @@
 namespace Template.FormsApp.Droid
 {
+    using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Threading.Tasks;
 
@@ -9,6 +10,7 @@ namespace Template.FormsApp.Droid
     using Android.Content.PM;
     using Android.OS;
     using Android.Runtime;
+    using Android.Util;
     using Android.Views;
 
     using Smart.Forms.Resolver;
@@ -44,10 +46,9 @@ namespace Template.FormsApp.Droid
             base.OnCreate(savedInstanceState);
 
             // Setup crash report
-            TaskScheduler.UnobservedTaskException += (_, args) =>
-                CrashReportHelper.LogException(args.Exception);
-            AndroidEnvironment.UnhandledExceptionRaiser += (_, args) =>
-                CrashReportHelper.LogException(args.Exception);
+            //AppDomain.CurrentDomain.UnhandledException += (sender, args) => CrashReport(args.ExceptionObject as Exception);
+            TaskScheduler.UnobservedTaskException += (_, args) => CrashReport(args.Exception);
+            AndroidEnvironment.UnhandledExceptionRaiser += (_, args) => CrashReport(args.Exception);
 
             // Database
             SQLitePCL.Batteries_V2.Init();
@@ -92,6 +93,12 @@ namespace Template.FormsApp.Droid
             }
 
             return base.DispatchKeyEvent(e);
+        }
+
+        private static void CrashReport(Exception ex)
+        {
+            Log.Error("CrashReport", ex.ToString());
+            CrashReportHelper.LogException(ex);
         }
 
         private sealed class ComponentProvider : IComponentProvider
