@@ -6,7 +6,7 @@ namespace Template.FormsApp.Helpers
 
     public sealed class SettingParser
     {
-        private readonly Dictionary<string, string> values = new();
+        private readonly Dictionary<string, string> values = new(StringComparer.OrdinalIgnoreCase);
 
         public SettingParser(string data)
         {
