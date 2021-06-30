@@ -7,22 +7,8 @@
              x:Class="Template.FormsApp.Modules.Navigation.Stack.Stack1View"
              x:DataType="{x:Type modules:Stack1ViewModel}"
              sr:BindingContextResolver.Type="{x:Type modules:Stack1ViewModel}"
-             shell:ShellProperty.Title="Navigation"
+             shell:ShellProperty.Title="Stack1"
              shell:ShellProperty.Function1Text="Back"
-             shell:ShellProperty.Function1Enabled="True">
-
-    <Grid Style="{StaticResource FillGrid}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
-    </Grid>
-
-</ContentView>
+             shell:ShellProperty.Function4Text="Push-1"
+             shell:ShellProperty.Function1Enabled="True"
+             shell:ShellProperty.Function4Enabled="True" />

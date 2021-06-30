@@ -7,22 +7,8 @@
              x:Class="Template.FormsApp.Modules.Navigation.Stack.Stack3View"
              x:DataType="{x:Type modules:Stack3ViewModel}"
              sr:BindingContextResolver.Type="{x:Type modules:Stack3ViewModel}"
-             shell:ShellProperty.Title="Navigation"
-             shell:ShellProperty.Function1Text="Back"
-             shell:ShellProperty.Function1Enabled="True">
-
-    <Grid Style="{StaticResource FillGrid}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
-    </Grid>
-
-</ContentView>
+             shell:ShellProperty.Title="Stack3"
+             shell:ShellProperty.Function1Text="Pop-1"
+             shell:ShellProperty.Function2Text="Pop-2"
+             shell:ShellProperty.Function1Enabled="True"
+             shell:ShellProperty.Function2Enabled="True" />
