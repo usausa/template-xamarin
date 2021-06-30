@@ -7,22 +7,15 @@
              x:Class="Template.FormsApp.Modules.Navigation.Wizard.WizardInput1View"
              x:DataType="{x:Type modules:WizardInput1ViewModel}"
              sr:BindingContextResolver.Type="{x:Type modules:WizardInput1ViewModel}"
-             shell:ShellProperty.Title="Navigation"
-             shell:ShellProperty.Function1Text="Back"
-             shell:ShellProperty.Function1Enabled="True">
+             shell:ShellProperty.Title="WizardInput1"
+             shell:ShellProperty.Function1Text="◀️"
+             shell:ShellProperty.Function4Text="▶️"
+             shell:ShellProperty.Function1Enabled="True"
+             shell:ShellProperty.Function4Enabled="True">
 
-    <Grid Style="{StaticResource FillGrid}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
-    </Grid>
+    <StackLayout Style="{StaticResource FillLayout}">
+        <Entry Text="{Binding Context.Value.Data1}"
+               Placeholder="Data1" />
+    </StackLayout>
 
 </ContentView>

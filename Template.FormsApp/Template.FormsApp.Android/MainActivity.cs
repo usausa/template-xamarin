@@ -22,6 +22,8 @@ namespace Template.FormsApp.Droid
     using Template.FormsApp.Droid.Components.Dialog;
     using Template.FormsApp.Helpers;
 
+    using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
+
     [Activity(
         Name = "template.app.MainActivity",
         Icon = "@mipmap/icon",
@@ -71,6 +73,10 @@ namespace Template.FormsApp.Droid
 
             // Boot
             LoadApplication(new App(new ComponentProvider(this)));
+
+            // Adjust soft input
+            Xamarin.Forms.Application.Current.On<Xamarin.Forms.PlatformConfiguration.Android>()
+                .UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
