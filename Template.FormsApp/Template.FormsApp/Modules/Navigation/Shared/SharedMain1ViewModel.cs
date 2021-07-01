@@ -10,12 +10,9 @@ namespace Template.FormsApp.Modules.Navigation.Shared
     {
         public NotificationValue<string> No { get; } = new();
 
-        public ICommand CompleteCommand { get; }
-
         public SharedMain1ViewModel(ApplicationState applicationState)
             : base(applicationState)
         {
-            CompleteCommand = MakeAsyncCommand(() => Navigator.ForwardAsync(ViewId.Menu));
         }
 
         public override void OnNavigatedTo(INavigationContext context)
@@ -30,5 +27,7 @@ namespace Template.FormsApp.Modules.Navigation.Shared
             Navigator.ForwardAsync(ViewId.NavigationSharedInput, Parameters.MakeNextViewId(ViewId.NavigationSharedMain1));
 
         protected override Task OnNotifyFunction1() => OnNotifyBackAsync();
+
+        protected override Task OnNotifyFunction4() => Navigator.ForwardAsync(ViewId.NavigationMenu);
     }
 }

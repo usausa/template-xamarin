@@ -7,22 +7,15 @@
              x:Class="Template.FormsApp.Modules.Navigation.Shared.SharedMain1View"
              x:DataType="{x:Type modules:SharedMain1ViewModel}"
              sr:BindingContextResolver.Type="{x:Type modules:SharedMain1ViewModel}"
-             shell:ShellProperty.Title="Navigation"
-             shell:ShellProperty.Function1Text="Back"
-             shell:ShellProperty.Function1Enabled="True">
+             shell:ShellProperty.Title="SharedMain1"
+             shell:ShellProperty.Function1Text="◀️"
+             shell:ShellProperty.Function4Text="✔"
+             shell:ShellProperty.Function1Enabled="True"
+             shell:ShellProperty.Function4Enabled="True">
 
-    <Grid Style="{StaticResource FillGrid}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
-    </Grid>
+    <StackLayout Style="{StaticResource FillLayout}">
+        <Label Style="{StaticResource ItemLeftLabel}"
+               Text="{Binding No.Value}" />
+    </StackLayout>
 
 </ContentView>

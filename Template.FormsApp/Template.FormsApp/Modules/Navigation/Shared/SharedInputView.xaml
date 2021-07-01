@@ -7,22 +7,15 @@
              x:Class="Template.FormsApp.Modules.Navigation.Shared.SharedInputView"
              x:DataType="{x:Type modules:SharedInputViewModel}"
              sr:BindingContextResolver.Type="{x:Type modules:SharedInputViewModel}"
-             shell:ShellProperty.Title="Navigation"
-             shell:ShellProperty.Function1Text="Back"
-             shell:ShellProperty.Function1Enabled="True">
+             shell:ShellProperty.Title="SharedInput"
+             shell:ShellProperty.Function1Text="◀️"
+             shell:ShellProperty.Function4Text="▶️"
+             shell:ShellProperty.Function1Enabled="True"
+             shell:ShellProperty.Function4Enabled="True">
 
-    <Grid Style="{StaticResource FillGrid}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
-    </Grid>
+    <StackLayout Style="{StaticResource FillLayout}">
+        <Entry Text="{Binding No.Value}"
+               Placeholder="Data1" />
+    </StackLayout>
 
 </ContentView>
