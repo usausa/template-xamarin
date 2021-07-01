@@ -7,22 +7,6 @@
              x:Class="Template.FormsApp.Modules.Navigation.Navigate.NavigateInitializeView"
              x:DataType="{x:Type modules:NavigateInitializeViewModel}"
              sr:BindingContextResolver.Type="{x:Type modules:NavigateInitializeViewModel}"
-             shell:ShellProperty.Title="Navigation"
+             shell:ShellProperty.Title="Initialize"
              shell:ShellProperty.Function1Text="Back"
-             shell:ShellProperty.Function1Enabled="True">
-
-    <Grid Style="{StaticResource FillGrid}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
-    </Grid>
-
-</ContentView>
+             shell:ShellProperty.Function1Enabled="True" />

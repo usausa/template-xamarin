@@ -7,22 +7,6 @@
              x:Class="Template.FormsApp.Modules.Navigation.Navigate.NavigateCancelView"
              x:DataType="{x:Type modules:NavigateCancelViewModel}"
              sr:BindingContextResolver.Type="{x:Type modules:NavigateCancelViewModel}"
-             shell:ShellProperty.Title="Navigation"
+             shell:ShellProperty.Title="Cancel"
              shell:ShellProperty.Function1Text="Back"
-             shell:ShellProperty.Function1Enabled="True">
-
-    <Grid Style="{StaticResource FillGrid}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
-    </Grid>
-
-</ContentView>
+             shell:ShellProperty.Function1Enabled="True" />

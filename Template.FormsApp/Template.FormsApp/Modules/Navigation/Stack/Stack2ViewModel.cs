@@ -1,7 +1,6 @@
 namespace Template.FormsApp.Modules.Navigation.Stack
 {
     using System.Threading.Tasks;
-    using System.Windows.Input;
 
     using Smart.Navigation;
 
