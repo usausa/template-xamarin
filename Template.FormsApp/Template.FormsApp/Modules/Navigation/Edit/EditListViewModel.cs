@@ -7,26 +7,33 @@ namespace Template.FormsApp.Modules.Navigation.Edit
     using Smart.Collections.Generic;
     using Smart.Navigation;
 
+    using Template.FormsApp.Components.Dialog;
     using Template.FormsApp.Models.Entity;
     using Template.FormsApp.Services;
 
     public class EditListViewModel : AppViewModelBase
     {
+        private readonly IApplicationDialog dialog;
+
         private readonly DataService dataService;
 
         public ObservableCollection<WorkEntity> Items { get; } = new();
 
         public ICommand SelectCommand { get; }
+        public ICommand DeleteCommand { get; }
 
         public EditListViewModel(
             ApplicationState applicationState,
+            IApplicationDialog dialog,
             DataService dataService)
             : base(applicationState)
         {
+            this.dialog = dialog;
             this.dataService = dataService;
 
             SelectCommand = MakeAsyncCommand<WorkEntity>(x =>
                 Navigator.ForwardAsync(ViewId.NavigationEditDetailUpdate, new NavigationParameter().SetValue(x)));
+            DeleteCommand = MakeAsyncCommand<WorkEntity>(DeleteAsync);
         }
 
         public override async void OnNavigatedTo(INavigationContext context)
@@ -42,5 +49,17 @@ namespace Template.FormsApp.Modules.Navigation.Edit
         protected override Task OnNotifyFunction1() => OnNotifyBackAsync();
 
         protected override Task OnNotifyFunction4() => Navigator.ForwardAsync(ViewId.NavigationEditDetailNew);
+
+        private async Task DeleteAsync(WorkEntity entity)
+        {
+            if (!await dialog.Confirm($"Delete {entity.Name} ?"))
+            {
+                return;
+            }
+
+            await dataService.DeleteWorkAsync(entity.Id);
+
+            Items.Remove(entity);
+        }
     }
 }

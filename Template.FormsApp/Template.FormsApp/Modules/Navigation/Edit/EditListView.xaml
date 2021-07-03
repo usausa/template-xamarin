@@ -24,17 +24,23 @@
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="entity:WorkEntity">
                     <ViewCell>
-                        <Grid>
+                        <Grid Style="{StaticResource ItemListCellGrid}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="6*" />
+                                <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0"
-                                   Style="{StaticResource ItemLeftLabel}"
+                                   Style="{StaticResource ListItemLeftLabel}"
                                    Text="{Binding Id}" />
                             <Label Grid.Column="1"
-                                   Style="{StaticResource ItemLeftLabel}"
+                                   Style="{StaticResource ListItemLeftLabel}"
                                    Text="{Binding Name}" />
+                            <Button Grid.Column="2"
+                                    Style="{StaticResource ListItemButtonDanger}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type modules:EditListViewModel}}, Path=DeleteCommand}"
+                                    CommandParameter="{Binding}"
+                                    Text="×" />
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

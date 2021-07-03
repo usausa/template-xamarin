@@ -159,7 +159,7 @@ namespace Template.FormsApp.Services
         public ValueTask<int> UpdateWorkAsync(WorkEntity entity) =>
             provider.UsingAsync(con => con.ExecuteAsync(SqlUpdate<WorkEntity>.Set("Name = @Name", "Id = @Id"), entity));
 
-        public ValueTask<int> DeleteWorkAsync(int id) =>
+        public ValueTask<int> DeleteWorkAsync(long id) =>
             provider.UsingAsync(con => con.ExecuteAsync(SqlDelete<WorkEntity>.ByKey(), new { Id = id }));
     }
 }
