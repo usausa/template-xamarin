@@ -17,7 +17,6 @@ namespace Template.FormsApp.Modules.Navigation.Edit
         public ObservableCollection<WorkEntity> Items { get; } = new();
 
         public ICommand SelectCommand { get; }
-        public ICommand NewCommand { get; }
 
         public EditListViewModel(
             ApplicationState applicationState,
@@ -28,7 +27,6 @@ namespace Template.FormsApp.Modules.Navigation.Edit
 
             SelectCommand = MakeAsyncCommand<WorkEntity>(x =>
                 Navigator.ForwardAsync(ViewId.NavigationEditDetailUpdate, new NavigationParameter().SetValue(x)));
-            NewCommand = MakeAsyncCommand(() => Navigator.ForwardAsync(ViewId.NavigationEditDetailNew));
         }
 
         public override async void OnNavigatedTo(INavigationContext context)
@@ -42,5 +40,7 @@ namespace Template.FormsApp.Modules.Navigation.Edit
         protected override Task OnNotifyBackAsync() => Navigator.ForwardAsync(ViewId.NavigationMenu);
 
         protected override Task OnNotifyFunction1() => OnNotifyBackAsync();
+
+        protected override Task OnNotifyFunction4() => Navigator.ForwardAsync(ViewId.NavigationEditDetailNew);
     }
 }

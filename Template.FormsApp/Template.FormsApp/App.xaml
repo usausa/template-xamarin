@@ -48,34 +48,44 @@
             <!-- Basic -->
 
             <sd:ReverseConverter x:Key="ReverseConverter" />
+            <sd:NullToObjectConverter x:Key="NotEmptyConverter"
+                                      x:TypeArguments="x:Boolean"
+                                      HandleEmptyString="True"
+                                      NullValue="False"
+                                      NonNullValue="True" />
 
             <!-- ================================================================================ -->
             <!-- Main -->
             <!-- ================================================================================ -->
 
-            <Style x:Key="MainGrid" TargetType="Grid">
+            <Style x:Key="MainGrid"
+                   TargetType="Grid">
                 <Setter Property="RowSpacing" Value="0" />
                 <Setter Property="ColumnSpacing" Value="0" />
                 <Setter Property="Margin" Value="0" />
             </Style>
 
-            <OnPlatform x:Key="TitleHeight" x:TypeArguments="x:Double">
+            <OnPlatform x:Key="TitleHeight"
+                        x:TypeArguments="x:Double">
                 <On Platform="iOS">32.0</On>
                 <On Platform="Android">48.0</On>
             </OnPlatform>
 
-            <Style x:Key="TitleView" TargetType="BoxView">
+            <Style x:Key="TitleView"
+                   TargetType="BoxView">
                 <Setter Property="BackgroundColor" Value="{StaticResource MetroBlueDark}" />
                 <Setter Property="HeightRequest" Value="{StaticResource TitleHeight}" />
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />
             </Style>
 
-            <OnPlatform x:Key="TitleMargin" x:TypeArguments="Thickness">
+            <OnPlatform x:Key="TitleMargin"
+                        x:TypeArguments="Thickness">
                 <On Platform="iOS">2,0,2,0</On>
                 <On Platform="Android">4,0,4,0</On>
             </OnPlatform>
 
-            <Style x:Key="TitleLabel" TargetType="Label">
+            <Style x:Key="TitleLabel"
+                   TargetType="Label">
                 <Setter Property="BackgroundColor" Value="Transparent" />
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="FontSize" Value="{StaticResource ExtraBigSize}" />
@@ -86,7 +96,8 @@
                 <Setter Property="VerticalOptions" Value="Center" />
             </Style>
 
-            <Style x:Key="ContainerLayout" TargetType="AbsoluteLayout">
+            <Style x:Key="ContainerLayout"
+                   TargetType="AbsoluteLayout">
                 <Setter Property="CompressedLayout.IsHeadless" Value="True" />
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />
                 <Setter Property="VerticalOptions" Value="FillAndExpand" />
@@ -96,19 +107,22 @@
             <!-- Function -->
             <!-- ================================================================================ -->
 
-            <OnPlatform x:Key="FunctionGridHeight" x:TypeArguments="x:Double">
+            <OnPlatform x:Key="FunctionGridHeight"
+                        x:TypeArguments="x:Double">
                 <On Platform="iOS">40.0</On>
                 <On Platform="Android">56.0</On>
             </OnPlatform>
 
-            <Style x:Key="FunctionGrid" TargetType="Grid">
+            <Style x:Key="FunctionGrid"
+                   TargetType="Grid">
                 <Setter Property="RowSpacing" Value="0" />
                 <Setter Property="ColumnSpacing" Value="1" />
                 <Setter Property="Margin" Value="0" />
                 <Setter Property="HeightRequest" Value="{StaticResource FunctionGridHeight}" />
             </Style>
 
-            <Style x:Key="FunctionButtonBase" TargetType="Button">
+            <Style x:Key="FunctionButtonBase"
+                   TargetType="Button">
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="FontSize" Value="{StaticResource BigSize}" />
                 <Setter Property="CornerRadius" Value="0" />
@@ -223,7 +237,8 @@
             <!-- Dialog -->
             <!-- ================================================================================ -->
 
-            <Style x:Key="DialogTitleLabel" TargetType="Label">
+            <Style x:Key="DialogTitleLabel"
+                   TargetType="Label">
                 <Setter Property="BackgroundColor" Value="{StaticResource MetroBlueDark}" />
                 <Setter Property="HeightRequest" Value="{StaticResource TitleHeight}" />
                 <Setter Property="TextColor" Value="White" />
@@ -232,7 +247,8 @@
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
             </Style>
 
-            <Style x:Key="InputGrid" TargetType="Grid">
+            <Style x:Key="InputGrid"
+                   TargetType="Grid">
                 <Setter Property="CompressedLayout.IsHeadless" Value="True" />
                 <Setter Property="Margin" Value="3" />
                 <Setter Property="RowSpacing" Value="3" />
@@ -241,7 +257,8 @@
                 <Setter Property="VerticalOptions" Value="FillAndExpand" />
             </Style>
 
-            <Style x:Key="InputLabelBase" TargetType="Label">
+            <Style x:Key="InputLabelBase"
+                   TargetType="Label">
                 <Setter Property="BackgroundColor" Value="{StaticResource MetroGrayDark}" />
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="FontSize" Value="{StaticResource HugeSize}" />
@@ -254,7 +271,8 @@
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
             </Style>
 
-            <Style x:Key="InputTextButton" TargetType="Button">
+            <Style x:Key="InputTextButton"
+                   TargetType="Button">
                 <Setter Property="FontSize" Value="{StaticResource ExtraBigSize}" />
                 <Setter Property="BorderRadius" Value="3" />
                 <Setter Property="TextColor" Value="Black" />
@@ -281,7 +299,8 @@
                 </Setter>
             </Style>
 
-            <Style x:Key="InputCommandButton" TargetType="Button">
+            <Style x:Key="InputCommandButton"
+                   TargetType="Button">
                 <Setter Property="FontSize" Value="{StaticResource ExtraBigSize}" />
                 <Setter Property="BorderRadius" Value="3" />
                 <Setter Property="TextColor" Value="White" />
@@ -338,7 +357,8 @@
             <!-- Layout -->
             <!-- ================================================================================ -->
 
-            <Style x:Key="FillGrid" TargetType="Grid">
+            <Style x:Key="FillGrid"
+                   TargetType="Grid">
                 <Setter Property="Padding" Value="0" />
                 <Setter Property="Margin" Value="0" />
                 <Setter Property="RowSpacing" Value="0" />
@@ -347,19 +367,22 @@
                 <Setter Property="VerticalOptions" Value="FillAndExpand" />
             </Style>
 
-            <Style x:Key="FillLayout" TargetType="StackLayout">
+            <Style x:Key="FillLayout"
+                   TargetType="StackLayout">
                 <Setter Property="Padding" Value="0" />
                 <Setter Property="Margin" Value="0" />
             </Style>
 
-            <Style x:Key="HorizontalFillLayout" TargetType="StackLayout">
+            <Style x:Key="HorizontalFillLayout"
+                   TargetType="StackLayout">
                 <Setter Property="Padding" Value="0" />
                 <Setter Property="Margin" Value="0" />
                 <Setter Property="Spacing" Value="0" />
                 <Setter Property="Orientation" Value="Horizontal" />
             </Style>
 
-            <Style x:Key="MenuButton" TargetType="Button">
+            <Style x:Key="MenuButton"
+                   TargetType="Button">
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="FontSize" Value="{StaticResource BigSize}" />
                 <Setter Property="Margin" Value="3" />
@@ -386,7 +409,8 @@
                 </Setter>
             </Style>
 
-            <Style x:Key="ActionButton" TargetType="Button">
+            <Style x:Key="ActionButton"
+                   TargetType="Button">
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="FontSize" Value="{StaticResource BigSize}" />
                 <Setter Property="Margin" Value="3" />
@@ -413,24 +437,28 @@
                 </Setter>
             </Style>
 
-            <Style x:Key="NameLabel" TargetType="Label">
+            <Style x:Key="NameLabel"
+                   TargetType="Label">
                 <Setter Property="FontSize" Value="{StaticResource LargerSize}" />
                 <Setter Property="VerticalOptions" Value="Center" />
             </Style>
 
-            <Style x:Key="ValueLabel" TargetType="Label">
+            <Style x:Key="ValueLabel"
+                   TargetType="Label">
                 <Setter Property="FontSize" Value="{StaticResource BigSize}" />
                 <Setter Property="VerticalOptions" Value="Center" />
             </Style>
 
-            <Style x:Key="ButtonBorderFrame" TargetType="Frame">
+            <Style x:Key="ButtonBorderFrame"
+                   TargetType="Frame">
                 <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
                 <Setter Property="HasShadow" Value="False" />
                 <Setter Property="CornerRadius" Value="0" />
                 <Setter Property="Padding" Value="1" />
             </Style>
 
-            <Style x:Key="SelectButton" TargetType="Button">
+            <Style x:Key="SelectButton"
+                   TargetType="Button">
                 <Setter Property="CornerRadius" Value="0" />
                 <Setter Property="FontSize" Value="{StaticResource BigSize}" />
                 <Setter Property="VerticalOptions" Value="Center" />
@@ -461,7 +489,8 @@
                 </Setter>
             </Style>
 
-            <Style x:Key="InputEntry" TargetType="Entry">
+            <Style x:Key="InputEntry"
+                   TargetType="Entry">
                 <Setter Property="FontSize" Value="{StaticResource BigSize}" />
                 <Setter Property="effects:Border.Color" Value="{StaticResource BorderColor}" />
                 <Setter Property="effects:Border.Width" Value="1" />
@@ -488,11 +517,13 @@
                 </Setter>
             </Style>
 
-            <Style x:Key="ItemListView" TargetType="ListView">
+            <Style x:Key="ItemListView"
+                   TargetType="ListView">
                 <Setter Property="HasUnevenRows" Value="True" />
             </Style>
 
-            <Style x:Key="ItemListHeaderGrid" TargetType="Grid">
+            <Style x:Key="ItemListHeaderGrid"
+                   TargetType="Grid">
                 <Setter Property="BackgroundColor" Value="{StaticResource MetroYellow}" />
                 <Setter Property="Padding" Value="6,0,6,0" />
                 <Setter Property="Margin" Value="0" />
@@ -502,7 +533,8 @@
                 <Setter Property="VerticalOptions" Value="FillAndExpand" />
             </Style>
 
-            <Style x:Key="ItemListItemGrid" TargetType="Grid">
+            <Style x:Key="ItemListItemGrid"
+                   TargetType="Grid">
                 <Setter Property="Padding" Value="6,0,6,0" />
                 <Setter Property="Margin" Value="0" />
                 <Setter Property="RowSpacing" Value="0" />
@@ -511,9 +543,11 @@
                 <Setter Property="VerticalOptions" Value="FillAndExpand" />
             </Style>
 
-            <Style x:Key="ItemListLabelBase" TargetType="Label">
+            <Style x:Key="ItemListLabelBase"
+                   TargetType="Label">
                 <Setter Property="FontSize" Value="{StaticResource BigSize}" />
                 <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="LineBreakMode" Value="TailTruncation" />
             </Style>
 
             <Style x:Key="ItemLeftLabel"

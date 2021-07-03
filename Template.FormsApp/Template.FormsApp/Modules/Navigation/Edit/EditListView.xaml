@@ -1,28 +1,45 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:si="clr-namespace:Smart.Forms.Interactivity;assembly=Smart.Forms"
              xmlns:sr="clr-namespace:Smart.Forms.Resolver;assembly=Smart.Forms"
              xmlns:shell="clr-namespace:Template.FormsApp.Shell;assembly=Template.FormsApp"
              xmlns:modules="clr-namespace:Template.FormsApp.Modules.Navigation.Edit;assembly=Template.FormsApp"
+             xmlns:entity="clr-namespace:Template.FormsApp.Models.Entity;assembly=Template.FormsApp"
              x:Class="Template.FormsApp.Modules.Navigation.Edit.EditListView"
              x:DataType="{x:Type modules:EditListViewModel}"
              sr:BindingContextResolver.Type="{x:Type modules:EditListViewModel}"
-             shell:ShellProperty.Title="Navigation"
+             shell:ShellProperty.Title="EditList"
              shell:ShellProperty.Function1Text="Back"
-             shell:ShellProperty.Function1Enabled="True">
+             shell:ShellProperty.Function4Text="New"
+             shell:ShellProperty.Function1Enabled="True"
+             shell:ShellProperty.Function4Enabled="True">
 
-    <Grid Style="{StaticResource FillGrid}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
-    </Grid>
+    <StackLayout Style="{StaticResource FillLayout}">
+        <ListView Style="{StaticResource ItemListView}"
+                  ItemsSource="{Binding Items}">
+            <ListView.Behaviors>
+                <si:ListViewSelectedToCommandBehavior Command="{Binding SelectCommand}" />
+            </ListView.Behaviors>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="entity:WorkEntity">
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="6*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0"
+                                   Style="{StaticResource ItemLeftLabel}"
+                                   Text="{Binding Id}" />
+                            <Label Grid.Column="1"
+                                   Style="{StaticResource ItemLeftLabel}"
+                                   Text="{Binding Name}" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 
 </ContentView>

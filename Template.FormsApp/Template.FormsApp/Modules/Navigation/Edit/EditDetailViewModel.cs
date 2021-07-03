@@ -1,9 +1,7 @@
 namespace Template.FormsApp.Modules.Navigation.Edit
 {
-    using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Threading.Tasks;
-    using System.Windows.Input;
 
     using Smart.ComponentModel;
     using Smart.Navigation;
@@ -22,17 +20,12 @@ namespace Template.FormsApp.Modules.Navigation.Edit
 
         public NotificationValue<string> Name { get; } = new();
 
-        public ICommand UpdateCommand { get; }
-
         public EditDetailViewModel(
             ApplicationState applicationState,
             DataService dataService)
             : base(applicationState)
         {
             this.dataService = dataService;
-
-            UpdateCommand = MakeAsyncCommand(UpdateAsync, () => !String.IsNullOrEmpty(Name.Value))
-                .Observe(Name);
         }
 
         public override void OnNavigatingTo(INavigationContext context)
@@ -52,7 +45,7 @@ namespace Template.FormsApp.Modules.Navigation.Edit
 
         protected override Task OnNotifyFunction1() => OnNotifyBackAsync();
 
-        private async Task UpdateAsync()
+        protected override async Task OnNotifyFunction4()
         {
             if (IsUpdate.Value)
             {
