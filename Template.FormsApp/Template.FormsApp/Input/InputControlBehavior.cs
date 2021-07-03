@@ -34,7 +34,7 @@ namespace Template.FormsApp.Input
             var focused = FindFocused();
             if (focused is not null)
             {
-                foreach (var behavior in focused.Behaviors.OfType<ShortcutBehavior>())
+                foreach (var behavior in focused.Behaviors.OfType<IShortcutBehavior>())
                 {
                     if (behavior.Handle(key))
                     {

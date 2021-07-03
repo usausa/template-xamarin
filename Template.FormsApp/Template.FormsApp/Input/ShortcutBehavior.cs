@@ -8,7 +8,7 @@ namespace Template.FormsApp.Input
 
     using Xamarin.Forms;
 
-    public sealed class ShortcutBehavior : BehaviorBase<Element>
+    public sealed class ShortcutBehavior : BehaviorBase<Element>, IShortcutBehavior
     {
         public static readonly BindableProperty KeyCodeProperty = BindableProperty.Create(
             nameof(KeyCode),
