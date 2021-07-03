@@ -6,6 +6,11 @@ namespace Template.FormsApp.Droid
 
     using Template.FormsApp.Input;
 
+    using Xamarin.Forms;
+    using Xamarin.Forms.Platform.Android;
+
+    using ListView = Android.Widget.ListView;
+
     public class KeyInputDriver
     {
         private static readonly ConvertEntry[] OtherEntries =
@@ -20,6 +25,8 @@ namespace Template.FormsApp.Droid
         public KeyInputDriver(Activity activity)
         {
             this.activity = activity;
+
+            DependencyService.Register<IInputService, InputService>();
         }
 
         public bool Process(KeyEvent e)
@@ -152,6 +159,15 @@ namespace Template.FormsApp.Droid
             {
                 AndroidKeycode = androidKeycode;
                 InputKeyCode = inputKeyCode;
+            }
+        }
+
+        private class InputService : IInputService
+        {
+            public int ResolveSelectedPosition(Xamarin.Forms.ListView element)
+            {
+                var renderer = Platform.GetRenderer(element) as ListViewRenderer;
+                return renderer?.Control.SelectedItemPosition - 1 ?? -1;
             }
         }
     }

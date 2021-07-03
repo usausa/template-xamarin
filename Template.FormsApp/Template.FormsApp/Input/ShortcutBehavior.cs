@@ -78,7 +78,7 @@ namespace Template.FormsApp.Input
 
         public bool Handle(KeyCode key)
         {
-            if (KeyCode != key)
+            if ((KeyCode != key) || (AssociatedObject is null))
             {
                 return false;
             }
