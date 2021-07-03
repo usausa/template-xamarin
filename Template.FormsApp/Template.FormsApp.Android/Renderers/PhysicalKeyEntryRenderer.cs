@@ -7,6 +7,8 @@ namespace Template.FormsApp.Droid.Renderers
     using Android.Views.InputMethods;
     using Android.Widget;
 
+    using Template.FormsApp.Droid.Helpers;
+
     using Xamarin.Forms;
     using Xamarin.Forms.Platform.Android;
 
@@ -57,6 +59,34 @@ namespace Template.FormsApp.Droid.Renderers
             }
 
             return true;
+        }
+
+        // [MEMO] EntryRenderer.OnFocusChangeRequested hack
+        protected override void OnFocusChangeRequested(object sender, VisualElement.FocusRequestArgs e)
+        {
+            if (Control == null)
+            {
+                return;
+            }
+
+            e.Result = true;
+
+            if (e.Focus)
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    if (Control == null || Control.IsDisposed())
+                    {
+                        return;
+                    }
+
+                    Control?.RequestFocus();
+                });
+            }
+            else
+            {
+                Control.ClearFocus();
+            }
         }
     }
 }

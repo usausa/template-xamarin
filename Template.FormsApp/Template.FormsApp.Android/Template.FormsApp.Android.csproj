@@ -110,6 +110,7 @@
     <Compile Include="Effects\InputFilterPlatformEffect.cs" />
     <Compile Include="Effects\TextAlignmentPlatformEffect.cs" />
     <Compile Include="Helpers\AlignmentExtensions.cs" />
+    <Compile Include="Helpers\JavaObjectExtensions.cs" />
     <Compile Include="Helpers\KeyboardExtensions.cs" />
     <Compile Include="KeyInputDriver.cs" />
     <Compile Include="MainActivity.cs" />
