@@ -31,6 +31,18 @@ namespace Template.FormsApp.Input
                 return false;
             }
 
+            var focused = FindFocused();
+            if (focused is not null)
+            {
+                foreach (var behavior in focused.Behaviors.OfType<ShortcutBehavior>())
+                {
+                    if (behavior.Handle(key))
+                    {
+                        return true;
+                    }
+                }
+            }
+
             if (key == KeyCode.Up)
             {
                 ElementHelper.MoveFocus(AssociatedObject, false);
