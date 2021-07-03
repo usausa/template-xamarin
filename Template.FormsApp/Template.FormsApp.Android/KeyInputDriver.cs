@@ -8,6 +8,13 @@ namespace Template.FormsApp.Droid
 
     public class KeyInputDriver
     {
+        private static readonly ConvertEntry[] OtherEntries =
+        {
+            new(Keycode.Del, KeyCode.Del),
+            new(Keycode.Minus, KeyCode.Minus),
+            new(Keycode.Period, KeyCode.Period)
+        };
+
         private readonly Activity activity;
 
         public KeyInputDriver(Activity activity)
@@ -113,23 +120,39 @@ namespace Template.FormsApp.Droid
                 return true;
             }
 
-            // DEL
-            if (e.KeyCode == Keycode.Del)
+            // Others
+            foreach (var entry in OtherEntries)
             {
-                if (activity.CurrentFocus is EditText)
+                if (e.KeyCode == entry.AndroidKeycode)
                 {
-                    return false;
-                }
+                    if (activity.CurrentFocus is EditText)
+                    {
+                        return false;
+                    }
 
-                if (e.Action == KeyEventActions.Up)
-                {
-                    InputManager.Default.Process(KeyCode.Del);
-                }
+                    if (e.Action == KeyEventActions.Up)
+                    {
+                        InputManager.Default.Process(entry.InputKeyCode);
+                    }
 
-                return true;
+                    return true;
+                }
             }
 
             return false;
+        }
+
+        private class ConvertEntry
+        {
+            public Keycode AndroidKeycode { get; }
+
+            public KeyCode InputKeyCode { get; }
+
+            public ConvertEntry(Keycode androidKeycode, KeyCode inputKeyCode)
+            {
+                AndroidKeycode = androidKeycode;
+                InputKeyCode = inputKeyCode;
+            }
         }
     }
 }

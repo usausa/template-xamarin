@@ -2,20 +2,17 @@ namespace Template.FormsApp.Models.Input
 {
     public class NumberInputParameter
     {
+        public string Title { get; }
+
         public string Value { get; }
 
         public int MaxLength { get; }
 
-        public int Scale { get; }
-
-        public bool AllowEmpty { get; }
-
-        public NumberInputParameter(string value, int maxLength, int scale, bool allowEmpty)
+        public NumberInputParameter(string title, string value, int maxLength)
         {
+            Title = title;
             Value = value;
             MaxLength = maxLength;
-            Scale = scale;
-            AllowEmpty = allowEmpty;
         }
     }
 }

@@ -39,7 +39,7 @@ namespace Template.FormsApp.Modules.Navigation
 
         private async Task ShowModalAsync()
         {
-            var result = await popupNavigator.InputNumberAsync(string.Empty, 8);
+            var result = await popupNavigator.InputNumberAsync("Number", string.Empty, 8);
             if (result != null)
             {
                 await dialog.Information($"result=[{result}]");
