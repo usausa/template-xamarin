@@ -526,12 +526,14 @@
             </Style>
 
             <Style x:Key="LeftValueLabel"
-                   BasedOn="ValueLabelBase" TargetType="Label">
+                   BasedOn="{StaticResource ValueLabelBase}"
+                   TargetType="Label">
                 <Setter Property="HorizontalOptions" Value="Start" />
             </Style>
 
             <Style x:Key="RightValueLabel"
-                   BasedOn="ValueLabelBase" TargetType="Label">
+                   BasedOn="{StaticResource ValueLabelBase}"
+                   TargetType="Label">
                 <Setter Property="HorizontalOptions" Value="End" />
             </Style>
 
