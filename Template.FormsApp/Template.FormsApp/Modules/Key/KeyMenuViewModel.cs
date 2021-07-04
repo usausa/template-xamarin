@@ -36,7 +36,8 @@ namespace Template.FormsApp.Modules.Key
             {
                 selected = await dialog.Select(Enumerable.Range(1, 15).Select(x => $"Item-{x}").ToArray(), selected);
                 await dialog.Information($"result=[{selected}]");
-            });        }
+            });
+        }
 
         protected override Task OnNotifyBackAsync() => Navigator.ForwardAsync(ViewId.Menu);
 
