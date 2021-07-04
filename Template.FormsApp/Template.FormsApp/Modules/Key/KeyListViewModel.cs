@@ -18,13 +18,15 @@ namespace Template.FormsApp.Modules.Key
         public NotificationValue<string> Selected { get; } = new();
 
         public ICommand SelectCommand { get; }
+        public ICommand DeleteCommand { get; }
 
         public KeyListViewModel(ApplicationState applicationState)
             : base(applicationState)
         {
             Items.AddRange(Enumerable.Range(1, 20).Select(x => new DataEntity { Id = x, Name = $"Name-{x}" }));
 
-            SelectCommand = MakeDelegateCommand<DataEntity>(x => Selected.Value = $"{x.Id} : {x.Name}");
+            SelectCommand = MakeDelegateCommand<DataEntity>(x => Selected.Value = $"Select id=[{x.Id}]");
+            DeleteCommand = MakeDelegateCommand<DataEntity>(x => Selected.Value = $"Delete id=[{x.Id}]");
         }
 
         protected override Task OnNotifyBackAsync() => Navigator.ForwardAsync(ViewId.KeyMenu);
