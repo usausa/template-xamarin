@@ -68,7 +68,7 @@ namespace Template.FormsApp.Effects
     public sealed class TextAlignmentEffect : RoutingEffect
     {
         public TextAlignmentEffect()
-            : base("Locker.TextAlignmentEffect")
+            : base("Template.TextAlignmentEffect")
         {
         }
     }

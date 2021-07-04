@@ -441,14 +441,6 @@
                 </Setter>
             </Style>
 
-            <Style x:Key="ButtonBorderFrame"
-                   TargetType="Frame">
-                <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
-                <Setter Property="HasShadow" Value="False" />
-                <Setter Property="CornerRadius" Value="0" />
-                <Setter Property="Padding" Value="1" />
-            </Style>
-
             <Style x:Key="SelectButton"
                    TargetType="Button">
                 <Setter Property="CornerRadius" Value="0" />
@@ -480,6 +472,18 @@
                     </VisualStateGroupList>
                 </Setter>
             </Style>
+
+            <Style x:Key="ButtonBorderFrame"
+                   TargetType="Frame">
+                <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="CornerRadius" Value="0" />
+                <Setter Property="Padding" Value="1" />
+            </Style>
+
+            <!-- ================================================================================ -->
+            <!-- Entry -->
+            <!-- ================================================================================ -->
 
             <Style x:Key="InputEntry"
                    TargetType="Entry">

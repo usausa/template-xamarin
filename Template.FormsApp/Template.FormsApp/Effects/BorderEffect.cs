@@ -53,7 +53,7 @@ namespace Template.FormsApp.Effects
     public sealed class BorderEffect : RoutingEffect
     {
         public BorderEffect()
-            : base("Locker.BorderEffect")
+            : base("Template.BorderEffect")
         {
         }
     }
