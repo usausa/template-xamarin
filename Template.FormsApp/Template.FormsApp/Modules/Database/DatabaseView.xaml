@@ -41,7 +41,7 @@
                 Text="Query" />
 
         <Label Grid.Row="4"
-               Style="{StaticResource ValueLabel}"
+               Style="{StaticResource LeftValueLabel}"
                Text="{Binding BulkDataCount.Value, StringFormat='Count: {0}'}" />
         <Button Grid.Row="5"
                 Style="{StaticResource ActionButton}"

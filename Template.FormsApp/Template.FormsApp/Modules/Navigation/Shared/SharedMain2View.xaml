@@ -14,7 +14,7 @@
              shell:ShellProperty.Function4Enabled="True">
 
     <StackLayout Style="{StaticResource FillLayout}">
-        <Label Style="{StaticResource ItemLeftLabel}"
+        <Label Style="{StaticResource LeftValueLabel}"
                Text="{Binding No.Value}" />
     </StackLayout>
 
