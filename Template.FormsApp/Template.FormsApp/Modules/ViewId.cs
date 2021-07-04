@@ -26,6 +26,13 @@ namespace Template.FormsApp.Modules
         NavigationNavigateCancel,
         NavigationNavigateInitialize,
 
+        // Key
+        KeyMenu,
+
+        KeyEntry,
+        KeyList,
+        KeyMisc,
+
         // Database
         Database,
 

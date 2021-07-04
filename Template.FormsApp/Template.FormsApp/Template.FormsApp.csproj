@@ -63,6 +63,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Modules\Key\KeyMenuView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Modules\Navigation\Modal\InputNumberView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
