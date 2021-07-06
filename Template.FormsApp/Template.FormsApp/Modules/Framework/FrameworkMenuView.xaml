@@ -7,7 +7,7 @@
              x:Class="Template.FormsApp.Modules.Framework.FrameworkMenuView"
              x:DataType="{x:Type modules:FrameworkMenuViewModel}"
              sr:BindingContextResolver.Type="{x:Type modules:FrameworkMenuViewModel}"
-             shell:ShellProperty.Title="Navigation"
+             shell:ShellProperty.Title="Smart"
              shell:ShellProperty.Function1Text="Back"
              shell:ShellProperty.Function1Enabled="True">
 

@@ -49,24 +49,25 @@
                 Text="4. Device" />
         <Button Grid.Row="4"
                 Style="{StaticResource MenuButton}"
-                IsEnabled="False"
+                Command="{Binding ForwardCommand}"
+                CommandParameter="{markup:ViewId FrameworkMenu}"
                 input:Shortcut.Key="Num5"
-                Text="5. Interface" />
+                Text="5. Smart" />
         <Button Grid.Row="5"
                 Style="{StaticResource MenuButton}"
                 IsEnabled="False"
                 input:Shortcut.Key="Num6"
-                Text="" />
+                Text="6. Toolkit" />
         <Button Grid.Row="6"
                 Style="{StaticResource MenuButton}"
                 IsEnabled="False"
                 input:Shortcut.Key="Num7"
-                Text="7. Toolkit" />
+                Text="7. Component" />
         <Button Grid.Row="7"
                 Style="{StaticResource MenuButton}"
                 IsEnabled="False"
                 input:Shortcut.Key="Num8"
-                Text="8. Component" />
+                Text="8. Interface" />
     </Grid>
 
 </ContentView>
