@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
@@ -18,12 +18,12 @@
   <ItemGroup>
     <PackageReference Include="Acr.UserDialogs" Version="7.1.0.514" />
     <PackageReference Include="AutoMapper" Version="10.1.1" />
-    <PackageReference Include="Microsoft.Data.Sqlite" Version="5.0.7" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="5.0.8" />
     <PackageReference Include="Rester" Version="2.0.1" />
     <PackageReference Include="Rester.Serializers.System.Text.Json" Version="2.0.1" />
     <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.12" />
-    <PackageReference Include="SkiaSharp" Version="2.80.2" />
-    <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.2" />
+    <PackageReference Include="SkiaSharp" Version="2.80.3" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.3" />
     <PackageReference Include="System.Interactive" Version="5.0.0" />
     <PackageReference Include="System.Linq.Async" Version="5.0.0" />
     <PackageReference Include="System.Reactive" Version="5.0.0" />
@@ -35,17 +35,17 @@
     <PackageReference Include="Usa.Smart.Forms" Version="2.2.1" />
     <PackageReference Include="Usa.Smart.Forms.Reactive" Version="2.2.1" />
     <PackageReference Include="Usa.Smart.Forms.Resolver" Version="2.2.1" />
-    <PackageReference Include="Usa.Smart.Navigation" Version="2.1.0" />
-    <PackageReference Include="Usa.Smart.Navigation.Forms" Version="2.1.0" />
-    <PackageReference Include="Usa.Smart.Navigation.Resolver" Version="2.1.0" />
+    <PackageReference Include="Usa.Smart.Navigation" Version="2.2.0" />
+    <PackageReference Include="Usa.Smart.Navigation.Forms" Version="2.2.0" />
+    <PackageReference Include="Usa.Smart.Navigation.Resolver" Version="2.2.0" />
     <PackageReference Include="Usa.Smart.Reactive" Version="2.0.2" />
     <PackageReference Include="Usa.Smart.Resolver" Version="2.0.0" />
     <PackageReference Include="Usa.Smart.Resolver.Xamarin" Version="2.0.0" />
     <PackageReference Include="Usa.Smart.Text.Japanese" Version="2.0.0" />
-    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.1.0" />
-    <PackageReference Include="Xamarin.CommunityToolkit.Markup" Version="1.1.0" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.2.0" />
+    <PackageReference Include="Xamarin.CommunityToolkit.Markup" Version="1.2.0" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2083" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
     <PackageReference Include="XamarinFormsComponents.Core" Version="2.0.2" />
     <PackageReference Include="XamarinFormsComponents.Dialogs" Version="2.0.2" />
     <PackageReference Include="XamarinFormsComponents.Locations" Version="2.0.2" />
