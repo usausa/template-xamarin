@@ -6,8 +6,6 @@ namespace Template.FormsApp
     using System.Text.Encodings.Web;
     using System.Text.Unicode;
 
-    using AutoMapper;
-
     using Rester;
 
     using Smart.Data.Mapper;
@@ -104,11 +102,6 @@ namespace Template.FormsApp
             config.BindSingleton<INavigator>(_ => navigator);
 
             config.BindSingleton<ApplicationState>();
-
-            config.BindSingleton<IMapper>(new Mapper(new MapperConfiguration(c =>
-            {
-                c.AddProfile<MappingProfile>();
-            })));
 
             config.BindSingleton<Configuration>();
             config.BindSingleton<Session>();
