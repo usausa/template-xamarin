@@ -76,7 +76,7 @@ namespace Template.FormsApp.Behaviors
             controller.Text = e.NewTextValue;
         }
 
-        private void BindableOnCompleted(object sender, EventArgs e)
+        private static void BindableOnCompleted(object sender, EventArgs e)
         {
             var entry = (Entry)sender;
             var controller = EntryBind.GetModel(entry);

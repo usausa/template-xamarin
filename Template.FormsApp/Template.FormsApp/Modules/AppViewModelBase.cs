@@ -42,21 +42,15 @@ namespace Template.FormsApp.Modules
 
         public Task NavigatorNotifyAsync(ShellEvent parameter)
         {
-            switch (parameter)
+            return parameter switch
             {
-                case ShellEvent.Back:
-                    return OnNotifyBackAsync();
-                case ShellEvent.Function1:
-                    return OnNotifyFunction1();
-                case ShellEvent.Function2:
-                    return OnNotifyFunction2();
-                case ShellEvent.Function3:
-                    return OnNotifyFunction3();
-                case ShellEvent.Function4:
-                    return OnNotifyFunction4();
-                default:
-                    return Task.CompletedTask;
-            }
+                ShellEvent.Back => OnNotifyBackAsync(),
+                ShellEvent.Function1 => OnNotifyFunction1(),
+                ShellEvent.Function2 => OnNotifyFunction2(),
+                ShellEvent.Function3 => OnNotifyFunction3(),
+                ShellEvent.Function4 => OnNotifyFunction4(),
+                _ => Task.CompletedTask
+            };
         }
 
         protected virtual Task OnNotifyBackAsync() => Task.CompletedTask;

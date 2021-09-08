@@ -55,6 +55,6 @@ namespace Template.FormsApp.Modules
         ToolkitMenu,
 
         // UI
-        UIMenu,
+        UIMenu
     }
 }
