@@ -12,7 +12,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Font Awesome 5 Free-Regular-400.otf" />
+    <None Remove="Resources\MaterialIcons-Regular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\MaterialIcons-Regular.ttf" />
   </ItemGroup>
 
   <ItemGroup>

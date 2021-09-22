@@ -1,6 +1,10 @@
 [assembly: Xamarin.Forms.Xaml.XamlCompilation(Xamarin.Forms.Xaml.XamlCompilationOptions.Compile)]
 [assembly: Xamarin.Forms.Internals.Preserve(AllMembers = true)]
-[assembly: Xamarin.Forms.ExportFont("Font Awesome 5 Free-Regular-400.otf", Alias = "FARegular")]
+
+// MaterialIcons
+// https://github.com/google/material-design-icons
+// https://fonts.google.com/icons
+[assembly: Xamarin.Forms.ExportFont("MaterialIcons-Regular.ttf", Alias = "MaterialIcons")]
 
 // ReSharper disable CheckNamespace
 namespace System.Runtime.CompilerServices
