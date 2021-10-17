@@ -8,6 +8,8 @@ namespace Template.FormsApp.Components.Device
 
         NetworkState GetNetworkState();
 
+        void SetOrientation(Orientation orientation);
+
         string? GetVersion();
     }
 }

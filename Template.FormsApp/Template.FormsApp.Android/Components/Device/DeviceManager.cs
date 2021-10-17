@@ -1,6 +1,7 @@
 namespace Template.FormsApp.Droid.Components.Device
 {
     using Android.App;
+    using Android.Content.PM;
 
     using Template.FormsApp.Components.Device;
 
@@ -12,6 +13,29 @@ namespace Template.FormsApp.Droid.Components.Device
         {
             this.activity = activity;
         }
+
+#pragma warning disable CS0618
+        public override void SetOrientation(Orientation orientation)
+        {
+            var display = activity.WindowManager!.DefaultDisplay!;
+
+            switch (orientation)
+            {
+                case Orientation.Landscape:
+                    if (display.Width < display.Height)
+                    {
+                        activity.RequestedOrientation = ScreenOrientation.Landscape;
+                    }
+                    break;
+                case Orientation.Portrait:
+                    if (display.Width > display.Height)
+                    {
+                        activity.RequestedOrientation = ScreenOrientation.Portrait;
+                    }
+                    break;
+            }
+        }
+#pragma warning restore CS0618
 
         public override string? GetVersion()
         {

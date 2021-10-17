@@ -37,6 +37,8 @@ namespace Template.FormsApp.Components.Device
 
         public NetworkState GetNetworkState() => GetNetworkState(Connectivity.NetworkAccess, Connectivity.ConnectionProfiles);
 
+        public abstract void SetOrientation(Orientation orientation);
+
         public abstract string? GetVersion();
     }
 }
