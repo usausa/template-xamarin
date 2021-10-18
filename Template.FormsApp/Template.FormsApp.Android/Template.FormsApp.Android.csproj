@@ -25,7 +25,7 @@
     </NuGetPackageImportStamp>
     <UseShortFileNames>True</UseShortFileNames>
     <AndroidEnablePreloadAssemblies>True</AndroidEnablePreloadAssemblies>
-    <CodeAnalysisRuleSet>..\..\Template.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\..\Analyzers.ruleset</CodeAnalysisRuleSet>
     <AndroidKeyStore>true</AndroidKeyStore>
     <AndroidSigningKeyStore>example.keystore</AndroidSigningKeyStore>
     <AndroidSigningStorePass>example</AndroidSigningStorePass>
