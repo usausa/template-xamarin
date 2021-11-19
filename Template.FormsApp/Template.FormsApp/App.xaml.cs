@@ -4,6 +4,7 @@ namespace Template.FormsApp
     using System.IO;
     using System.Reflection;
     using System.Text.Encodings.Web;
+    using System.Text.Json.Serialization;
     using System.Text.Unicode;
 
     using Rester;
@@ -50,7 +51,7 @@ namespace Template.FormsApp
             {
                 config.Converters.Add(new DateTimeConverter());
                 config.Encoder = JavaScriptEncoder.Create(UnicodeRanges.All);
-                config.IgnoreNullValues = true;
+                config.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
             });
 
             // Config Resolver
