@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31129.286
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.FormsApp.Android", "Template.FormsApp\Template.FormsApp.Android\Template.FormsApp.Android.csproj", "{7642C7F7-C6FC-4CD1-8E1B-3D8EE4FB3240}"
 EndProject
