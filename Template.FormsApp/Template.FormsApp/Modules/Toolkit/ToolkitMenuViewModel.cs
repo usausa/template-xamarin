@@ -1,16 +1,15 @@
-namespace Template.FormsApp.Modules.Toolkit
+namespace Template.FormsApp.Modules.Toolkit;
+
+using System.Threading.Tasks;
+
+using Smart.Navigation;
+
+public class ToolkitMenuViewModel : AppViewModelBase
 {
-    using System.Threading.Tasks;
-
-    using Smart.Navigation;
-
-    public class ToolkitMenuViewModel : AppViewModelBase
+    public ToolkitMenuViewModel(ApplicationState applicationState)
+        : base(applicationState)
     {
-        public ToolkitMenuViewModel(ApplicationState applicationState)
-            : base(applicationState)
-        {
-        }
-
-        protected override Task OnNotifyBackAsync() => Navigator.ForwardAsync(ViewId.Menu);
     }
+
+    protected override Task OnNotifyBackAsync() => Navigator.ForwardAsync(ViewId.Menu);
 }

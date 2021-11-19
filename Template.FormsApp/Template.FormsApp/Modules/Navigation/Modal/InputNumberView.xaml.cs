@@ -1,13 +1,12 @@
-namespace Template.FormsApp.Modules.Navigation.Modal
-{
-    using XamarinFormsComponents.Popup;
+namespace Template.FormsApp.Modules.Navigation.Modal;
 
-    [Popup(DialogId.InputNumber)]
-    public partial class InputNumberView
+using XamarinFormsComponents.Popup;
+
+[Popup(DialogId.InputNumber)]
+public partial class InputNumberView
+{
+    public InputNumberView()
     {
-        public InputNumberView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

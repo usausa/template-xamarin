@@ -1,13 +1,12 @@
-namespace Template.FormsApp.Modules.Navigation.Shared
-{
-    using Smart.Navigation.Attributes;
+namespace Template.FormsApp.Modules.Navigation.Shared;
 
-    [View(ViewId.NavigationSharedInput)]
-    public partial class SharedInputView
+using Smart.Navigation.Attributes;
+
+[View(ViewId.NavigationSharedInput)]
+public partial class SharedInputView
+{
+    public SharedInputView()
     {
-        public SharedInputView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

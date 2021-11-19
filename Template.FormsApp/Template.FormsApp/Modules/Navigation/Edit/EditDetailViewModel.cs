@@ -1,63 +1,62 @@
-namespace Template.FormsApp.Modules.Navigation.Edit
+namespace Template.FormsApp.Modules.Navigation.Edit;
+
+using System.Diagnostics.CodeAnalysis;
+using System.Threading.Tasks;
+
+using Smart.ComponentModel;
+using Smart.Navigation;
+
+using Template.FormsApp.Models.Entity;
+using Template.FormsApp.Services;
+
+public class EditDetailViewModel : AppViewModelBase
 {
-    using System.Diagnostics.CodeAnalysis;
-    using System.Threading.Tasks;
+    private readonly DataService dataService;
 
-    using Smart.ComponentModel;
-    using Smart.Navigation;
+    [AllowNull]
+    private WorkEntity entity;
 
-    using Template.FormsApp.Models.Entity;
-    using Template.FormsApp.Services;
+    public NotificationValue<bool> IsUpdate { get; } = new();
 
-    public class EditDetailViewModel : AppViewModelBase
+    public NotificationValue<string> Name { get; } = new();
+
+    public EditDetailViewModel(
+        ApplicationState applicationState,
+        DataService dataService)
+        : base(applicationState)
     {
-        private readonly DataService dataService;
+        this.dataService = dataService;
+    }
 
-        [AllowNull]
-        private WorkEntity entity;
-
-        public NotificationValue<bool> IsUpdate { get; } = new();
-
-        public NotificationValue<string> Name { get; } = new();
-
-        public EditDetailViewModel(
-            ApplicationState applicationState,
-            DataService dataService)
-            : base(applicationState)
+    public override void OnNavigatingTo(INavigationContext context)
+    {
+        if (!context.Attribute.IsRestore())
         {
-            this.dataService = dataService;
-        }
-
-        public override void OnNavigatingTo(INavigationContext context)
-        {
-            if (!context.Attribute.IsRestore())
-            {
-                IsUpdate.Value = Equals(context.ToId, ViewId.NavigationEditDetailUpdate);
-                if (IsUpdate.Value)
-                {
-                    entity = context.Parameter.GetValue<WorkEntity>();
-                    Name.Value = entity.Name;
-                }
-            }
-        }
-
-        protected override Task OnNotifyBackAsync() => Navigator.ForwardAsync(ViewId.NavigationEditList);
-
-        protected override Task OnNotifyFunction1() => OnNotifyBackAsync();
-
-        protected override async Task OnNotifyFunction4()
-        {
+            IsUpdate.Value = Equals(context.ToId, ViewId.NavigationEditDetailUpdate);
             if (IsUpdate.Value)
             {
-                entity.Name = Name.Value;
-                await dataService.UpdateWorkAsync(entity);
+                entity = context.Parameter.GetValue<WorkEntity>();
+                Name.Value = entity.Name;
             }
-            else
-            {
-                await dataService.InsertWorkAsync(Name.Value);
-            }
-
-            await Navigator.ForwardAsync(ViewId.NavigationEditList);
         }
+    }
+
+    protected override Task OnNotifyBackAsync() => Navigator.ForwardAsync(ViewId.NavigationEditList);
+
+    protected override Task OnNotifyFunction1() => OnNotifyBackAsync();
+
+    protected override async Task OnNotifyFunction4()
+    {
+        if (IsUpdate.Value)
+        {
+            entity.Name = Name.Value;
+            await dataService.UpdateWorkAsync(entity);
+        }
+        else
+        {
+            await dataService.InsertWorkAsync(Name.Value);
+        }
+
+        await Navigator.ForwardAsync(ViewId.NavigationEditList);
     }
 }

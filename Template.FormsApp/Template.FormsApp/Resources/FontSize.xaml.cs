@@ -1,10 +1,9 @@
-namespace Template.FormsApp.Resources
+namespace Template.FormsApp.Resources;
+
+public partial class FontSize
 {
-    public partial class FontSize
+    public FontSize()
     {
-        public FontSize()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

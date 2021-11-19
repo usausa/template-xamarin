@@ -1,13 +1,12 @@
-namespace Template.FormsApp.Modules.Device
-{
-    using Smart.Navigation.Attributes;
+namespace Template.FormsApp.Modules.Device;
 
-    [View(ViewId.DeviceBarcode)]
-    public partial class DeviceBarcodeView
+using Smart.Navigation.Attributes;
+
+[View(ViewId.DeviceBarcode)]
+public partial class DeviceBarcodeView
+{
+    public DeviceBarcodeView()
     {
-        public DeviceBarcodeView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

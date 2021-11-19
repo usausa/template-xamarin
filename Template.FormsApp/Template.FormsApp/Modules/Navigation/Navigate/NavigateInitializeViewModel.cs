@@ -1,42 +1,41 @@
-namespace Template.FormsApp.Modules.Navigation.Navigate
+namespace Template.FormsApp.Modules.Navigation.Navigate;
+
+using System.Threading.Tasks;
+
+using Smart.Forms.ViewModels;
+using Smart.Navigation;
+
+using Template.FormsApp.Components.Dialog;
+
+public class NavigateInitializeViewModel : AppViewModelBase
 {
-    using System.Threading.Tasks;
+    private readonly IApplicationDialog dialog;
 
-    using Smart.Forms.ViewModels;
-    using Smart.Navigation;
-
-    using Template.FormsApp.Components.Dialog;
-
-    public class NavigateInitializeViewModel : AppViewModelBase
+    public NavigateInitializeViewModel(
+        ApplicationState applicationState,
+        IApplicationDialog dialog)
+        : base(applicationState)
     {
-        private readonly IApplicationDialog dialog;
+        this.dialog = dialog;
+    }
 
-        public NavigateInitializeViewModel(
-            ApplicationState applicationState,
-            IApplicationDialog dialog)
-            : base(applicationState)
+    public override async void OnNavigatedTo(INavigationContext context)
+    {
+        if (!context.Attribute.IsRestore())
         {
-            this.dialog = dialog;
+            await Navigator.PostActionAsync(() => BusyState.Using(InitializeAsync));
         }
+    }
 
-        public override async void OnNavigatedTo(INavigationContext context)
+    protected override Task OnNotifyBackAsync() => Navigator.ForwardAsync(ViewId.NavigationMenu);
+
+    protected override Task OnNotifyFunction1() => OnNotifyBackAsync();
+
+    protected async Task InitializeAsync()
+    {
+        using (dialog.Loading("Initialize"))
         {
-            if (!context.Attribute.IsRestore())
-            {
-                await Navigator.PostActionAsync(() => BusyState.Using(InitializeAsync));
-            }
-        }
-
-        protected override Task OnNotifyBackAsync() => Navigator.ForwardAsync(ViewId.NavigationMenu);
-
-        protected override Task OnNotifyFunction1() => OnNotifyBackAsync();
-
-        protected async Task InitializeAsync()
-        {
-            using (dialog.Loading("Initialize"))
-            {
-                await Task.Delay(5000);
-            }
+            await Task.Delay(5000);
         }
     }
 }

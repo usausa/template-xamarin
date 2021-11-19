@@ -1,77 +1,76 @@
-namespace Template.FormsApp.Models.Input
+namespace Template.FormsApp.Models.Input;
+
+using System;
+
+using Smart.ComponentModel;
+
+public class NumberInputModel : NotificationObject
 {
-    using System;
+    private string text = "0";
 
-    using Smart.ComponentModel;
+    public int MaxLength { get; set; }
 
-    public class NumberInputModel : NotificationObject
+    public int Scale { get; set; }
+
+    public bool AllowEmpty { get; set; }
+
+    private int IntegerLength => Scale > 0 ? MaxLength - Scale - 1 : MaxLength;
+
+    public string Text
     {
-        private string text = "0";
+        get => text;
+        set => SetProperty(ref text, String.IsNullOrEmpty(value) ? (AllowEmpty ? string.Empty : "0") : value);
+    }
 
-        public int MaxLength { get; set; }
+    public string NormalizeText => text.EndsWith(".", StringComparison.InvariantCulture) ? text[..^1] : text;
 
-        public int Scale { get; set; }
+    public void Clear()
+    {
+        Text = AllowEmpty ? string.Empty : "0";
+    }
 
-        public bool AllowEmpty { get; set; }
+    public void Pop()
+    {
+        Text = text.Length > 1 ? text[..^1] : (AllowEmpty ? string.Empty : "0");
+    }
 
-        private int IntegerLength => Scale > 0 ? MaxLength - Scale - 1 : MaxLength;
-
-        public string Text
+    public void Push(string key)
+    {
+        if (text.Length + key.Length > MaxLength)
         {
-            get => text;
-            set => SetProperty(ref text, String.IsNullOrEmpty(value) ? (AllowEmpty ? string.Empty : "0") : value);
+            return;
         }
 
-        public string NormalizeText => text.EndsWith(".", StringComparison.InvariantCulture) ? text[..^1] : text;
-
-        public void Clear()
+        if (key == ".")
         {
-            Text = AllowEmpty ? string.Empty : "0";
-        }
-
-        public void Pop()
-        {
-            Text = text.Length > 1 ? text[..^1] : (AllowEmpty ? string.Empty : "0");
-        }
-
-        public void Push(string key)
-        {
-            if (text.Length + key.Length > MaxLength)
+            if (String.IsNullOrEmpty(text) || (text == "0"))
             {
-                return;
+                Text = "0.";
             }
-
-            if (key == ".")
+            else if (text.IndexOf('.', StringComparison.OrdinalIgnoreCase) < 0)
             {
-                if (String.IsNullOrEmpty(text) || (text == "0"))
+                Text = text + ".";
+            }
+        }
+        else
+        {
+            var index = text.IndexOf(".", StringComparison.Ordinal);
+            if (index >= 0)
+            {
+                if (text.Length - index <= Scale)
                 {
-                    Text = "0.";
-                }
-                else if (text.IndexOf('.', StringComparison.OrdinalIgnoreCase) < 0)
-                {
-                    Text = text + ".";
+                    Text = text + key;
                 }
             }
             else
             {
-                var index = text.IndexOf(".", StringComparison.Ordinal);
-                if (index >= 0)
+                if (text == "0")
                 {
-                    if (text.Length - index <= Scale)
-                    {
-                        Text = text + key;
-                    }
+                    Text = key;
                 }
-                else
+                else if (text.Length + key.Length <= IntegerLength)
                 {
-                    if (text == "0")
-                    {
-                        Text = key;
-                    }
-                    else if (text.Length + key.Length <= IntegerLength)
-                    {
-                        Text = text + key;
-                    }
+                    Text = text + key;
                 }
             }
         }

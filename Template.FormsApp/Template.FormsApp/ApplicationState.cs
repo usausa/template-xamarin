@@ -1,8 +1,7 @@
-namespace Template.FormsApp
-{
-    using Smart.Forms.ViewModels;
+namespace Template.FormsApp;
 
-    public sealed class ApplicationState : BusyState
-    {
-    }
+using Smart.Forms.ViewModels;
+
+public sealed class ApplicationState : BusyState
+{
 }

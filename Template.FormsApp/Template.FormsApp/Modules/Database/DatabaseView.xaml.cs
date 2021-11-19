@@ -1,13 +1,12 @@
-namespace Template.FormsApp.Modules.Database
-{
-    using Smart.Navigation.Attributes;
+namespace Template.FormsApp.Modules.Database;
 
-    [View(ViewId.Database)]
-    public partial class DatabaseView
+using Smart.Navigation.Attributes;
+
+[View(ViewId.Database)]
+public partial class DatabaseView
+{
+    public DatabaseView()
     {
-        public DatabaseView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

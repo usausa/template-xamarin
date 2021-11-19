@@ -1,10 +1,9 @@
-namespace Template.FormsApp.Messaging
-{
-    using System;
-    using System.Threading.Tasks;
+namespace Template.FormsApp.Messaging;
 
-    public sealed class CameraCaptureEventArgs : EventArgs
-    {
-        public TaskCompletionSource<byte[]?> CompletionSource { get; } = new();
-    }
+using System;
+using System.Threading.Tasks;
+
+public sealed class CameraCaptureEventArgs : EventArgs
+{
+    public TaskCompletionSource<byte[]?> CompletionSource { get; } = new();
 }

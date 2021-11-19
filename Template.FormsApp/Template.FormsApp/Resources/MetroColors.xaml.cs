@@ -1,10 +1,9 @@
-namespace Template.FormsApp.Resources
+namespace Template.FormsApp.Resources;
+
+public partial class MetroColors
 {
-    public partial class MetroColors
+    public MetroColors()
     {
-        public MetroColors()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

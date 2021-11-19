@@ -1,33 +1,32 @@
-namespace Template.FormsApp.Input
+namespace Template.FormsApp.Input;
+
+using System.Collections.Generic;
+
+using Xamarin.Forms;
+
+public class InputManager
 {
-    using System.Collections.Generic;
+    public static InputManager Default { get; } = new();
 
-    using Xamarin.Forms;
+    private readonly List<IInputHandler> handlers = new();
 
-    public class InputManager
+    public void PushHandler(IInputHandler handler)
     {
-        public static InputManager Default { get; } = new();
+        handlers.Add(handler);
+    }
 
-        private readonly List<IInputHandler> handlers = new();
+    public void PopHandler(IInputHandler handler)
+    {
+        handlers.Remove(handler);
+    }
 
-        public void PushHandler(IInputHandler handler)
-        {
-            handlers.Add(handler);
-        }
+    public bool Process(KeyCode key)
+    {
+        return handlers.Count > 0 && handlers[^1].Handle(key);
+    }
 
-        public void PopHandler(IInputHandler handler)
-        {
-            handlers.Remove(handler);
-        }
-
-        public bool Process(KeyCode key)
-        {
-            return handlers.Count > 0 && handlers[^1].Handle(key);
-        }
-
-        public VisualElement? FindFocused()
-        {
-            return handlers.Count > 0 ? handlers[^1].FindFocused() : null;
-        }
+    public VisualElement? FindFocused()
+    {
+        return handlers.Count > 0 ? handlers[^1].FindFocused() : null;
     }
 }

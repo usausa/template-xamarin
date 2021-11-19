@@ -1,55 +1,54 @@
-namespace Template.FormsApp.Services
+namespace Template.FormsApp.Services;
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+public class ParameterBuilder
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
+    private readonly StringBuilder parameterString = new();
 
-    public class ParameterBuilder
+    public void Add(string key, string value)
     {
-        private readonly StringBuilder parameterString = new();
+        parameterString.Append(parameterString.Length == 0 ? '?' : '&');
+        parameterString.Append(key);
+        parameterString.Append('=');
+        parameterString.Append(value);
+    }
 
-        public void Add(string key, string value)
+    public void AddIfNotEmpty(string key, string value)
+    {
+        if (!String.IsNullOrEmpty(value))
         {
-            parameterString.Append(parameterString.Length == 0 ? '?' : '&');
-            parameterString.Append(key);
-            parameterString.Append('=');
-            parameterString.Append(value);
+            Add(key, value);
         }
+    }
 
-        public void AddIfNotEmpty(string key, string value)
+    public void AddIfHasValue<T>(string key, T? value)
+        where T : struct
+    {
+        if (value.HasValue)
         {
-            if (!String.IsNullOrEmpty(value))
-            {
-                Add(key, value);
-            }
+            Add(key, value.Value.ToString());
         }
+    }
 
-        public void AddIfHasValue<T>(string key, T? value)
-            where T : struct
-        {
-            if (value.HasValue)
-            {
-                Add(key, value.Value.ToString());
-            }
-        }
+    public void AddValue<T>(string key, T value)
+        where T : struct
+    {
+        Add(key, value.ToString());
+    }
 
-        public void AddValue<T>(string key, T value)
-            where T : struct
+    public void AddValues(string key, IEnumerable<string> values)
+    {
+        foreach (var value in values)
         {
-            Add(key, value.ToString());
+            Add(key, value);
         }
+    }
 
-        public void AddValues(string key, IEnumerable<string> values)
-        {
-            foreach (var value in values)
-            {
-                Add(key, value);
-            }
-        }
-
-        public StringBuilder ToParameter()
-        {
-            return parameterString;
-        }
+    public StringBuilder ToParameter()
+    {
+        return parameterString;
     }
 }

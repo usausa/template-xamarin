@@ -1,21 +1,20 @@
-namespace Template.FormsApp.Usecase
+namespace Template.FormsApp.Usecase;
+
+using System.Threading.Tasks;
+
+public class SampleUsecase
 {
-    using System.Threading.Tasks;
+    private readonly NetworkOperator networkOperator;
 
-    public class SampleUsecase
+    public SampleUsecase(
+        NetworkOperator networkOperator)
     {
-        private readonly NetworkOperator networkOperator;
+        this.networkOperator = networkOperator;
+    }
 
-        public SampleUsecase(
-            NetworkOperator networkOperator)
-        {
-            this.networkOperator = networkOperator;
-        }
-
-        public async ValueTask PostPingAsync()
-        {
-            // TODO
-            await networkOperator.ExecuteVerbose(n => n.PostPingAsync());
-        }
+    public async ValueTask PostPingAsync()
+    {
+        // TODO
+        await networkOperator.ExecuteVerbose(n => n.PostPingAsync());
     }
 }

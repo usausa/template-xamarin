@@ -1,62 +1,61 @@
-namespace Template.FormsApp.Input
+namespace Template.FormsApp.Input;
+
+using System.Collections;
+using System.Windows.Input;
+
+using Smart.Forms.Interactivity;
+
+using Xamarin.Forms;
+
+public sealed class ListViewShortcutBehavior : BehaviorBase<ListView>, IShortcutBehavior
 {
-    using System.Collections;
-    using System.Windows.Input;
+    public static readonly BindableProperty KeyCodeProperty = BindableProperty.Create(
+        nameof(KeyCode),
+        typeof(KeyCode),
+        typeof(ListViewShortcutBehavior));
 
-    using Smart.Forms.Interactivity;
+    public static readonly BindableProperty CommandProperty = BindableProperty.Create(
+        nameof(Command),
+        typeof(ICommand),
+        typeof(ListViewShortcutBehavior));
 
-    using Xamarin.Forms;
-
-    public sealed class ListViewShortcutBehavior : BehaviorBase<ListView>, IShortcutBehavior
+    public KeyCode KeyCode
     {
-        public static readonly BindableProperty KeyCodeProperty = BindableProperty.Create(
-            nameof(KeyCode),
-            typeof(KeyCode),
-            typeof(ListViewShortcutBehavior));
+        get => (KeyCode)GetValue(KeyCodeProperty);
+        set => SetValue(KeyCodeProperty, value);
+    }
 
-        public static readonly BindableProperty CommandProperty = BindableProperty.Create(
-            nameof(Command),
-            typeof(ICommand),
-            typeof(ListViewShortcutBehavior));
+    public ICommand? Command
+    {
+        get => (ICommand)GetValue(CommandProperty);
+        set => SetValue(CommandProperty, value);
+    }
 
-        public KeyCode KeyCode
+    public bool Handle(KeyCode key)
+    {
+        if ((KeyCode != key) || (AssociatedObject is null))
         {
-            get => (KeyCode)GetValue(KeyCodeProperty);
-            set => SetValue(KeyCodeProperty, value);
+            return false;
         }
 
-        public ICommand? Command
+        var command = Command;
+        if (command is null)
         {
-            get => (ICommand)GetValue(CommandProperty);
-            set => SetValue(CommandProperty, value);
+            return false;
         }
 
-        public bool Handle(KeyCode key)
+        var service = DependencyService.Get<IInputService>();
+        var selected = service.ResolveSelectedPosition(AssociatedObject);
+        if ((selected >= 0) && (AssociatedObject.ItemsSource is IList list))
         {
-            if ((KeyCode != key) || (AssociatedObject is null))
+            var parameter = list[selected];
+
+            if (command.CanExecute(parameter))
             {
-                return false;
+                command.Execute(parameter);
             }
-
-            var command = Command;
-            if (command is null)
-            {
-                return false;
-            }
-
-            var service = DependencyService.Get<IInputService>();
-            var selected = service.ResolveSelectedPosition(AssociatedObject);
-            if ((selected >= 0) && (AssociatedObject.ItemsSource is IList list))
-            {
-                var parameter = list[selected];
-
-                if (command.CanExecute(parameter))
-                {
-                    command.Execute(parameter);
-                }
-            }
-
-            return true;
         }
+
+        return true;
     }
 }

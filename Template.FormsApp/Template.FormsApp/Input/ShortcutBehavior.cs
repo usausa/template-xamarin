@@ -1,123 +1,122 @@
-namespace Template.FormsApp.Input
+namespace Template.FormsApp.Input;
+
+using System;
+using System.Reflection;
+using System.Windows.Input;
+
+using Smart.Forms.Interactivity;
+
+using Xamarin.Forms;
+
+public sealed class ShortcutBehavior : BehaviorBase<Element>, IShortcutBehavior
 {
-    using System;
-    using System.Reflection;
-    using System.Windows.Input;
+    public static readonly BindableProperty KeyCodeProperty = BindableProperty.Create(
+        nameof(KeyCode),
+        typeof(KeyCode),
+        typeof(ShortcutBehavior));
 
-    using Smart.Forms.Interactivity;
+    public static readonly BindableProperty CommandProperty = BindableProperty.Create(
+        nameof(Command),
+        typeof(ICommand),
+        typeof(ShortcutBehavior));
 
-    using Xamarin.Forms;
+    public static readonly BindableProperty CommandParameterProperty = BindableProperty.Create(
+        nameof(CommandParameter),
+        typeof(object),
+        typeof(ShortcutBehavior));
 
-    public sealed class ShortcutBehavior : BehaviorBase<Element>, IShortcutBehavior
+    public static readonly BindableProperty ParameterPropertyProperty = BindableProperty.Create(
+        nameof(ParameterProperty),
+        typeof(string),
+        typeof(ShortcutBehavior));
+
+    public static readonly BindableProperty ConverterProperty = BindableProperty.Create(
+        nameof(Converter),
+        typeof(IValueConverter),
+        typeof(ShortcutBehavior));
+
+    public static readonly BindableProperty ConverterParameterProperty = BindableProperty.Create(
+        nameof(ConverterParameter),
+        typeof(object),
+        typeof(ShortcutBehavior));
+
+    public KeyCode KeyCode
     {
-        public static readonly BindableProperty KeyCodeProperty = BindableProperty.Create(
-            nameof(KeyCode),
-            typeof(KeyCode),
-            typeof(ShortcutBehavior));
+        get => (KeyCode)GetValue(KeyCodeProperty);
+        set => SetValue(KeyCodeProperty, value);
+    }
 
-        public static readonly BindableProperty CommandProperty = BindableProperty.Create(
-            nameof(Command),
-            typeof(ICommand),
-            typeof(ShortcutBehavior));
+    public ICommand? Command
+    {
+        get => (ICommand)GetValue(CommandProperty);
+        set => SetValue(CommandProperty, value);
+    }
 
-        public static readonly BindableProperty CommandParameterProperty = BindableProperty.Create(
-            nameof(CommandParameter),
-            typeof(object),
-            typeof(ShortcutBehavior));
+    public object? CommandParameter
+    {
+        get => GetValue(CommandParameterProperty);
+        set => SetValue(CommandParameterProperty, value);
+    }
 
-        public static readonly BindableProperty ParameterPropertyProperty = BindableProperty.Create(
-            nameof(ParameterProperty),
-            typeof(string),
-            typeof(ShortcutBehavior));
+    public string? ParameterProperty
+    {
+        get => (string)GetValue(ParameterPropertyProperty);
+        set => SetValue(ParameterPropertyProperty, value);
+    }
 
-        public static readonly BindableProperty ConverterProperty = BindableProperty.Create(
-            nameof(Converter),
-            typeof(IValueConverter),
-            typeof(ShortcutBehavior));
+    public IValueConverter? Converter
+    {
+        get => (IValueConverter)GetValue(ConverterProperty);
+        set => SetValue(ConverterProperty, value);
+    }
 
-        public static readonly BindableProperty ConverterParameterProperty = BindableProperty.Create(
-            nameof(ConverterParameter),
-            typeof(object),
-            typeof(ShortcutBehavior));
+    public object? ConverterParameter
+    {
+        get => GetValue(ConverterParameterProperty);
+        set => SetValue(ConverterParameterProperty, value);
+    }
 
-        public KeyCode KeyCode
+    public bool Handle(KeyCode key)
+    {
+        if ((KeyCode != key) || (AssociatedObject is null))
         {
-            get => (KeyCode)GetValue(KeyCodeProperty);
-            set => SetValue(KeyCodeProperty, value);
+            return false;
         }
 
-        public ICommand? Command
+        var command = Command;
+        if (command is null)
         {
-            get => (ICommand)GetValue(CommandProperty);
-            set => SetValue(CommandProperty, value);
+            return false;
         }
 
-        public object? CommandParameter
-        {
-            get => GetValue(CommandParameterProperty);
-            set => SetValue(CommandParameterProperty, value);
-        }
+        var parameter = CommandParameter;
 
-        public string? ParameterProperty
+        if ((parameter is null) && !IsSet(CommandParameterProperty))
         {
-            get => (string)GetValue(ParameterPropertyProperty);
-            set => SetValue(ParameterPropertyProperty, value);
-        }
-
-        public IValueConverter? Converter
-        {
-            get => (IValueConverter)GetValue(ConverterProperty);
-            set => SetValue(ConverterProperty, value);
-        }
-
-        public object? ConverterParameter
-        {
-            get => GetValue(ConverterParameterProperty);
-            set => SetValue(ConverterParameterProperty, value);
-        }
-
-        public bool Handle(KeyCode key)
-        {
-            if ((KeyCode != key) || (AssociatedObject is null))
+            var property = ParameterProperty;
+            if (!String.IsNullOrEmpty(property))
             {
-                return false;
-            }
-
-            var command = Command;
-            if (command is null)
-            {
-                return false;
-            }
-
-            var parameter = CommandParameter;
-
-            if ((parameter is null) && !IsSet(CommandParameterProperty))
-            {
-                var property = ParameterProperty;
-                if (!String.IsNullOrEmpty(property))
+                object? value = AssociatedObject;
+                foreach (var part in property.Split('.'))
                 {
-                    object? value = AssociatedObject;
-                    foreach (var part in property.Split('.'))
+                    if (value is null)
                     {
-                        if (value is null)
-                        {
-                            break;
-                        }
-
-                        var pi = value.GetType().GetRuntimeProperty(part);
-                        value = pi.GetValue(value);
+                        break;
                     }
 
-                    parameter = Converter?.Convert(value, typeof(object), ConverterParameter, null) ?? value;
+                    var pi = value.GetType().GetRuntimeProperty(part);
+                    value = pi.GetValue(value);
                 }
-            }
 
-            if (command.CanExecute(parameter))
-            {
-                command.Execute(parameter);
+                parameter = Converter?.Convert(value, typeof(object), ConverterParameter, null) ?? value;
             }
-
-            return true;
         }
+
+        if (command.CanExecute(parameter))
+        {
+            command.Execute(parameter);
+        }
+
+        return true;
     }
 }

@@ -1,20 +1,19 @@
-namespace Template.FormsApp
+namespace Template.FormsApp;
+
+using Smart.Navigation;
+
+using Template.FormsApp.Shell;
+
+public partial class MainPage
 {
-    using Smart.Navigation;
-
-    using Template.FormsApp.Shell;
-
-    public partial class MainPage
+    public MainPage()
     {
-        public MainPage()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+    }
 
-        protected override bool OnBackButtonPressed()
-        {
-            (BindingContext as MainPageViewModel)?.Navigator.NotifyAsync(ShellEvent.Back);
-            return true;
-        }
+    protected override bool OnBackButtonPressed()
+    {
+        (BindingContext as MainPageViewModel)?.Navigator.NotifyAsync(ShellEvent.Back);
+        return true;
     }
 }

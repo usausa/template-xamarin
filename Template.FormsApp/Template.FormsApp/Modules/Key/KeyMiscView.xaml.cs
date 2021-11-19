@@ -1,13 +1,12 @@
-namespace Template.FormsApp.Modules.Key
-{
-    using Smart.Navigation.Attributes;
+namespace Template.FormsApp.Modules.Key;
 
-    [View(ViewId.KeyMisc)]
-    public partial class KeyMiscView
+using Smart.Navigation.Attributes;
+
+[View(ViewId.KeyMisc)]
+public partial class KeyMiscView
+{
+    public KeyMiscView()
     {
-        public KeyMiscView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

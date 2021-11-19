@@ -1,82 +1,81 @@
-namespace Template.FormsApp
+namespace Template.FormsApp;
+
+using System;
+using System.Threading.Tasks;
+
+using Smart.Navigation;
+
+using Template.FormsApp.Behaviors;
+using Template.FormsApp.Helpers;
+
+using Xamarin.Forms;
+
+public static class Extensions
 {
-    using System;
-    using System.Threading.Tasks;
+    //--------------------------------------------------------------------------------
+    // Page
+    //--------------------------------------------------------------------------------
 
-    using Smart.Navigation;
-
-    using Template.FormsApp.Behaviors;
-    using Template.FormsApp.Helpers;
-
-    using Xamarin.Forms;
-
-    public static class Extensions
+    public static void SetDefaultFocus(this Page page)
     {
-        //--------------------------------------------------------------------------------
-        // Page
-        //--------------------------------------------------------------------------------
-
-        public static void SetDefaultFocus(this Page page)
+        var first = default(VisualElement);
+        foreach (var visualElement in ElementHelper.EnumerateActive(page))
         {
-            var first = default(VisualElement);
-            foreach (var visualElement in ElementHelper.EnumerateActive(page))
+            if (Focus.GetDefault(visualElement))
             {
-                if (Focus.GetDefault(visualElement))
-                {
-                    visualElement.Focus();
-                    return;
-                }
-
-                first ??= visualElement;
+                visualElement.Focus();
+                return;
             }
 
-            first?.Focus();
+            first ??= visualElement;
         }
 
-        //--------------------------------------------------------------------------------
-        // Navigation
-        //--------------------------------------------------------------------------------
+        first?.Focus();
+    }
 
-        public static async ValueTask PostForwardAsync(this INavigator navigator, object viewId, NavigationParameter? parameter = null)
+    //--------------------------------------------------------------------------------
+    // Navigation
+    //--------------------------------------------------------------------------------
+
+    public static async ValueTask PostForwardAsync(this INavigator navigator, object viewId, NavigationParameter? parameter = null)
+    {
+        if (navigator.Executing)
         {
-            if (navigator.Executing)
+            async void ExecutingChanged(object sender, EventArgs args)
             {
-                async void ExecutingChanged(object sender, EventArgs args)
+                if (!navigator.Executing)
                 {
-                    if (!navigator.Executing)
-                    {
-                        navigator.ExecutingChanged -= ExecutingChanged;
-                        await navigator.ForwardAsync(viewId, parameter);
-                    }
+                    navigator.ExecutingChanged -= ExecutingChanged;
+                    await navigator.ForwardAsync(viewId, parameter);
                 }
+            }
 
-                navigator.ExecutingChanged += ExecutingChanged;
-            }
-            else
-            {
-                await navigator.ForwardAsync(viewId, parameter);
-            }
+            navigator.ExecutingChanged += ExecutingChanged;
         }
-
-        public static async ValueTask PostActionAsync(this INavigator navigator, Func<Task> task)
+        else
         {
-            if (navigator.Executing)
-            {
-                async void ExecutingChanged(object sender, EventArgs args)
-                {
-                    if (!navigator.Executing)
-                    {
-                        navigator.ExecutingChanged -= ExecutingChanged;
-                        await task();
-                    }
-                }
+            await navigator.ForwardAsync(viewId, parameter);
+        }
+    }
 
-                navigator.ExecutingChanged += ExecutingChanged;
-            }
-            else
+    public static async ValueTask PostActionAsync(this INavigator navigator, Func<Task> task)
+    {
+        if (navigator.Executing)
+        {
+            async void ExecutingChanged(object sender, EventArgs args)
             {
-                await task();
+                if (!navigator.Executing)
+                {
+                    navigator.ExecutingChanged -= ExecutingChanged;
+                    await task();
+                }
             }
+
+            navigator.ExecutingChanged += ExecutingChanged;
+        }
+        else
+        {
+            await task();
         }
     }
 }

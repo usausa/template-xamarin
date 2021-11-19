@@ -1,11 +1,10 @@
-namespace Template.FormsApp.Shell
+namespace Template.FormsApp.Shell;
+
+public enum ShellEvent
 {
-    public enum ShellEvent
-    {
-        Back,
-        Function1,
-        Function2,
-        Function3,
-        Function4
-    }
+    Back,
+    Function1,
+    Function2,
+    Function3,
+    Function4
 }

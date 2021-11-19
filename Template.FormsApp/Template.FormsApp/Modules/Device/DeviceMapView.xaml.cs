@@ -1,13 +1,12 @@
-namespace Template.FormsApp.Modules.Device
-{
-    using Smart.Navigation.Attributes;
+namespace Template.FormsApp.Modules.Device;
 
-    [View(ViewId.DeviceMap)]
-    public partial class DeviceMapView
+using Smart.Navigation.Attributes;
+
+[View(ViewId.DeviceMap)]
+public partial class DeviceMapView
+{
+    public DeviceMapView()
     {
-        public DeviceMapView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

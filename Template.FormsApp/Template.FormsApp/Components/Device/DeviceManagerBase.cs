@@ -1,44 +1,43 @@
-namespace Template.FormsApp.Components.Device
+namespace Template.FormsApp.Components.Device;
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reactive.Subjects;
+
+using Xamarin.Essentials;
+
+[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1001:TypesThatOwnDisposableFieldsShouldBeDisposable", Justification = "Ignore")]
+public abstract class DeviceManagerBase : IDeviceManager
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Reactive.Subjects;
+    private readonly BehaviorSubject<NetworkState> networkState;
 
-    using Xamarin.Essentials;
+    public IObservable<NetworkState> NetworkState => networkState;
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1001:TypesThatOwnDisposableFieldsShouldBeDisposable", Justification = "Ignore")]
-    public abstract class DeviceManagerBase : IDeviceManager
+    protected DeviceManagerBase()
     {
-        private readonly BehaviorSubject<NetworkState> networkState;
-
-        public IObservable<NetworkState> NetworkState => networkState;
-
-        protected DeviceManagerBase()
+        networkState = new BehaviorSubject<NetworkState>(GetNetworkState(Connectivity.NetworkAccess, Connectivity.ConnectionProfiles));
+        Connectivity.ConnectivityChanged += (_, args) =>
         {
-            networkState = new BehaviorSubject<NetworkState>(GetNetworkState(Connectivity.NetworkAccess, Connectivity.ConnectionProfiles));
-            Connectivity.ConnectivityChanged += (_, args) =>
-            {
-                networkState.OnNext(GetNetworkState(args.NetworkAccess, args.ConnectionProfiles));
-            };
-        }
-
-        private static NetworkState GetNetworkState(NetworkAccess access, IEnumerable<ConnectionProfile> profiles)
-        {
-            if (access != NetworkAccess.None && access != NetworkAccess.Unknown)
-            {
-                return profiles.Any(x => x == ConnectionProfile.Ethernet || x == ConnectionProfile.WiFi)
-                    ? Template.FormsApp.Components.Device.NetworkState.ConnectedHighSpeed
-                    : Template.FormsApp.Components.Device.NetworkState.Connected;
-            }
-
-            return Template.FormsApp.Components.Device.NetworkState.Disconnected;
-        }
-
-        public NetworkState GetNetworkState() => GetNetworkState(Connectivity.NetworkAccess, Connectivity.ConnectionProfiles);
-
-        public abstract void SetOrientation(Orientation orientation);
-
-        public abstract string? GetVersion();
+            networkState.OnNext(GetNetworkState(args.NetworkAccess, args.ConnectionProfiles));
+        };
     }
+
+    private static NetworkState GetNetworkState(NetworkAccess access, IEnumerable<ConnectionProfile> profiles)
+    {
+        if (access != NetworkAccess.None && access != NetworkAccess.Unknown)
+        {
+            return profiles.Any(x => x == ConnectionProfile.Ethernet || x == ConnectionProfile.WiFi)
+                ? Template.FormsApp.Components.Device.NetworkState.ConnectedHighSpeed
+                : Template.FormsApp.Components.Device.NetworkState.Connected;
+        }
+
+        return Template.FormsApp.Components.Device.NetworkState.Disconnected;
+    }
+
+    public NetworkState GetNetworkState() => GetNetworkState(Connectivity.NetworkAccess, Connectivity.ConnectionProfiles);
+
+    public abstract void SetOrientation(Orientation orientation);
+
+    public abstract string? GetVersion();
 }

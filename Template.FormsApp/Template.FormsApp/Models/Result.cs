@@ -1,31 +1,30 @@
-namespace Template.FormsApp.Models
+namespace Template.FormsApp.Models;
+
+public interface IResult<out T>
 {
-    public interface IResult<out T>
+    bool IsSuccess { get; }
+
+    T Value { get; }
+}
+
+public static class Result
+{
+    public static IResult<T> Success<T>(T value) => new ResultImpl<T>(true, value);
+
+    public static IResult<T> Failed<T>() => ResultImpl<T>.FailedResult;
+
+    private class ResultImpl<T> : IResult<T>
     {
-        bool IsSuccess { get; }
+        public static readonly ResultImpl<T> FailedResult = new(false, default!);
 
-        T Value { get; }
-    }
+        public bool IsSuccess { get; }
 
-    public static class Result
-    {
-        public static IResult<T> Success<T>(T value) => new ResultImpl<T>(true, value);
+        public T Value { get; }
 
-        public static IResult<T> Failed<T>() => ResultImpl<T>.FailedResult;
-
-        private class ResultImpl<T> : IResult<T>
+        public ResultImpl(bool isSuccess, T value)
         {
-            public static readonly ResultImpl<T> FailedResult = new(false, default!);
-
-            public bool IsSuccess { get; }
-
-            public T Value { get; }
-
-            public ResultImpl(bool isSuccess, T value)
-            {
-                IsSuccess = isSuccess;
-                Value = value;
-            }
+            IsSuccess = isSuccess;
+            Value = value;
         }
     }
 }

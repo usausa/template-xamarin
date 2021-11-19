@@ -1,25 +1,24 @@
-namespace Template.FormsApp.Modules.Navigation.Wizard
+namespace Template.FormsApp.Modules.Navigation.Wizard;
+
+using System.Threading.Tasks;
+
+using Smart.ComponentModel;
+using Smart.Navigation;
+using Smart.Navigation.Plugins.Scope;
+
+public class WizardInput2ViewModel : AppViewModelBase
 {
-    using System.Threading.Tasks;
+    [Scope]
+    public NotificationValue<WizardContext> Context { get; } = new();
 
-    using Smart.ComponentModel;
-    using Smart.Navigation;
-    using Smart.Navigation.Plugins.Scope;
-
-    public class WizardInput2ViewModel : AppViewModelBase
+    public WizardInput2ViewModel(ApplicationState applicationState)
+        : base(applicationState)
     {
-        [Scope]
-        public NotificationValue<WizardContext> Context { get; } = new();
-
-        public WizardInput2ViewModel(ApplicationState applicationState)
-            : base(applicationState)
-        {
-        }
-
-        protected override Task OnNotifyBackAsync() => Navigator.ForwardAsync(ViewId.NavigationWizardInput1);
-
-        protected override Task OnNotifyFunction1() => OnNotifyBackAsync();
-
-        protected override Task OnNotifyFunction4() => Navigator.ForwardAsync(ViewId.NavigationWizardResult);
     }
+
+    protected override Task OnNotifyBackAsync() => Navigator.ForwardAsync(ViewId.NavigationWizardInput1);
+
+    protected override Task OnNotifyFunction1() => OnNotifyBackAsync();
+
+    protected override Task OnNotifyFunction4() => Navigator.ForwardAsync(ViewId.NavigationWizardResult);
 }

@@ -1,13 +1,12 @@
-namespace Template.FormsApp.Modules.Device
-{
-    using Smart.Navigation.Attributes;
+namespace Template.FormsApp.Modules.Device;
 
-    [View(ViewId.DeviceBluetooth)]
-    public partial class DeviceBluetoothView
+using Smart.Navigation.Attributes;
+
+[View(ViewId.DeviceBluetooth)]
+public partial class DeviceBluetoothView
+{
+    public DeviceBluetoothView()
     {
-        public DeviceBluetoothView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

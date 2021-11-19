@@ -1,7 +1,6 @@
-namespace Template.FormsApp.State
+namespace Template.FormsApp.State;
+
+public class Session
 {
-    public class Session
-    {
-        // TODO
-    }
+    // TODO
 }

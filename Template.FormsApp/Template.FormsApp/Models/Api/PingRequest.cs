@@ -1,6 +1,5 @@
-namespace Template.FormsApp.Models.Api
+namespace Template.FormsApp.Models.Api;
+
+public class PingRequest
 {
-    public class PingRequest
-    {
-    }
 }

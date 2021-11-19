@@ -1,19 +1,18 @@
-namespace Template.FormsApp.Components.Dialog
+namespace Template.FormsApp.Components.Dialog;
+
+using System.Threading.Tasks;
+
+using XamarinFormsComponents.Dialogs;
+
+public interface IApplicationDialog
 {
-    using System.Threading.Tasks;
+    ValueTask Information(string message, string? title = null, string ok = "OK");
 
-    using XamarinFormsComponents.Dialogs;
+    ValueTask<bool> Confirm(string message, bool defaultPositive = false, string? title = null, string ok = "OK", string cancel = "Cancel");
 
-    public interface IApplicationDialog
-    {
-        ValueTask Information(string message, string? title = null, string ok = "OK");
+    ValueTask<int> Select(string[] items, int selected = -1, string? title = null);
 
-        ValueTask<bool> Confirm(string message, bool defaultPositive = false, string? title = null, string ok = "OK", string cancel = "Cancel");
+    IProgress Progress(string title);
 
-        ValueTask<int> Select(string[] items, int selected = -1, string? title = null);
-
-        IProgress Progress(string title);
-
-        IProgress Loading(string title);
-    }
+    IProgress Loading(string title);
 }

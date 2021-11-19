@@ -1,48 +1,47 @@
-namespace Template.FormsApp.Effects
+namespace Template.FormsApp.Effects;
+
+using System;
+using System.Linq;
+
+using Xamarin.Forms;
+
+public sealed class InputFilterEffect : RoutingEffect
 {
-    using System;
-    using System.Linq;
+    public static readonly BindableProperty RuleProperty = BindableProperty.CreateAttached(
+        "Rule",
+        typeof(Func<string, bool>),
+        typeof(InputFilterEffect),
+        null,
+        propertyChanged: OnChanged);
 
-    using Xamarin.Forms;
+    public static Func<string, bool>? GetRule(BindableObject bindable) => (Func<string, bool>?)bindable.GetValue(RuleProperty);
 
-    public sealed class InputFilterEffect : RoutingEffect
+    public static void SetRule(BindableObject bindable, Func<string, bool?> value) => bindable.SetValue(RuleProperty, value);
+
+    private static void OnChanged(BindableObject bindable, object? oldValue, object? newValue)
     {
-        public static readonly BindableProperty RuleProperty = BindableProperty.CreateAttached(
-            "Rule",
-            typeof(Func<string, bool>),
-            typeof(InputFilterEffect),
-            null,
-            propertyChanged: OnChanged);
-
-        public static Func<string, bool>? GetRule(BindableObject bindable) => (Func<string, bool>?)bindable.GetValue(RuleProperty);
-
-        public static void SetRule(BindableObject bindable, Func<string, bool?> value) => bindable.SetValue(RuleProperty, value);
-
-        private static void OnChanged(BindableObject bindable, object? oldValue, object? newValue)
+        if (bindable is not Element element)
         {
-            if (bindable is not Element element)
-            {
-                return;
-            }
+            return;
+        }
 
-            if (oldValue is not null)
+        if (oldValue is not null)
+        {
+            var effect = element.Effects.FirstOrDefault(x => x is InputFilterEffect);
+            if (effect != null)
             {
-                var effect = element.Effects.FirstOrDefault(x => x is InputFilterEffect);
-                if (effect != null)
-                {
-                    element.Effects.Remove(effect);
-                }
-            }
-
-            if (newValue is not null)
-            {
-                element.Effects.Add(new InputFilterEffect());
+                element.Effects.Remove(effect);
             }
         }
 
-        public InputFilterEffect()
-            : base("Template.InputFilterEffect")
+        if (newValue is not null)
         {
+            element.Effects.Add(new InputFilterEffect());
         }
+    }
+
+    public InputFilterEffect()
+        : base("Template.InputFilterEffect")
+    {
     }
 }

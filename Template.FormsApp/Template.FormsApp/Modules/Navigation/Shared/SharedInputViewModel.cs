@@ -1,33 +1,32 @@
-namespace Template.FormsApp.Modules.Navigation.Shared
+namespace Template.FormsApp.Modules.Navigation.Shared;
+
+using System.Threading.Tasks;
+
+using Smart.ComponentModel;
+using Smart.Navigation;
+
+public class SharedInputViewModel : AppViewModelBase
 {
-    using System.Threading.Tasks;
+    private ViewId nextViewId;
 
-    using Smart.ComponentModel;
-    using Smart.Navigation;
+    public NotificationValue<string> No { get; } = new();
 
-    public class SharedInputViewModel : AppViewModelBase
+    public SharedInputViewModel(ApplicationState applicationState)
+        : base(applicationState)
     {
-        private ViewId nextViewId;
-
-        public NotificationValue<string> No { get; } = new();
-
-        public SharedInputViewModel(ApplicationState applicationState)
-            : base(applicationState)
-        {
-        }
-
-        public override void OnNavigatedTo(INavigationContext context)
-        {
-            if (!context.Attribute.IsRestore())
-            {
-                nextViewId = context.Parameter.GetNextViewId();
-            }
-        }
-
-        protected override Task OnNotifyBackAsync() => Navigator.ForwardAsync(ViewId.NavigationMenu);
-
-        protected override Task OnNotifyFunction1() => OnNotifyBackAsync();
-
-        protected override Task OnNotifyFunction4() => Navigator.ForwardAsync(nextViewId, Parameters.MakeNextViewId(nextViewId).WithNo(No.Value));
     }
+
+    public override void OnNavigatedTo(INavigationContext context)
+    {
+        if (!context.Attribute.IsRestore())
+        {
+            nextViewId = context.Parameter.GetNextViewId();
+        }
+    }
+
+    protected override Task OnNotifyBackAsync() => Navigator.ForwardAsync(ViewId.NavigationMenu);
+
+    protected override Task OnNotifyFunction1() => OnNotifyBackAsync();
+
+    protected override Task OnNotifyFunction4() => Navigator.ForwardAsync(nextViewId, Parameters.MakeNextViewId(nextViewId).WithNo(No.Value));
 }

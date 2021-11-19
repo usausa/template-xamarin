@@ -1,49 +1,48 @@
-namespace Template.FormsApp.Modules.Navigation
+namespace Template.FormsApp.Modules.Navigation;
+
+using System.Threading.Tasks;
+using System.Windows.Input;
+
+using Smart.Navigation;
+
+using Template.FormsApp.Components.Dialog;
+
+using XamarinFormsComponents.Popup;
+
+public class NavigationMenuViewModel : AppViewModelBase
 {
-    using System.Threading.Tasks;
-    using System.Windows.Input;
+    private readonly IApplicationDialog dialog;
 
-    using Smart.Navigation;
+    private readonly IPopupNavigator popupNavigator;
 
-    using Template.FormsApp.Components.Dialog;
+    public ICommand ForwardCommand { get; }
+    public ICommand SharedCommand { get; }
+    public ICommand ModalCommand { get; }
 
-    using XamarinFormsComponents.Popup;
-
-    public class NavigationMenuViewModel : AppViewModelBase
+    public NavigationMenuViewModel(
+        ApplicationState applicationState,
+        IApplicationDialog dialog,
+        IPopupNavigator popupNavigator)
+    : base(applicationState)
     {
-        private readonly IApplicationDialog dialog;
+        this.dialog = dialog;
+        this.popupNavigator = popupNavigator;
 
-        private readonly IPopupNavigator popupNavigator;
+        ForwardCommand = MakeAsyncCommand<ViewId>(x => Navigator.ForwardAsync(x));
+        SharedCommand = MakeAsyncCommand<ViewId>(x => Navigator.ForwardAsync(ViewId.NavigationSharedInput, Parameters.MakeNextViewId(x)));
+        ModalCommand = MakeAsyncCommand(ShowModalAsync);
+    }
 
-        public ICommand ForwardCommand { get; }
-        public ICommand SharedCommand { get; }
-        public ICommand ModalCommand { get; }
+    protected override Task OnNotifyBackAsync() => Navigator.ForwardAsync(ViewId.Menu);
 
-        public NavigationMenuViewModel(
-            ApplicationState applicationState,
-            IApplicationDialog dialog,
-            IPopupNavigator popupNavigator)
-        : base(applicationState)
+    protected override Task OnNotifyFunction1() => OnNotifyBackAsync();
+
+    private async Task ShowModalAsync()
+    {
+        var result = await popupNavigator.InputNumberAsync("Number", string.Empty, 8);
+        if (result != null)
         {
-            this.dialog = dialog;
-            this.popupNavigator = popupNavigator;
-
-            ForwardCommand = MakeAsyncCommand<ViewId>(x => Navigator.ForwardAsync(x));
-            SharedCommand = MakeAsyncCommand<ViewId>(x => Navigator.ForwardAsync(ViewId.NavigationSharedInput, Parameters.MakeNextViewId(x)));
-            ModalCommand = MakeAsyncCommand(ShowModalAsync);
-        }
-
-        protected override Task OnNotifyBackAsync() => Navigator.ForwardAsync(ViewId.Menu);
-
-        protected override Task OnNotifyFunction1() => OnNotifyBackAsync();
-
-        private async Task ShowModalAsync()
-        {
-            var result = await popupNavigator.InputNumberAsync("Number", string.Empty, 8);
-            if (result != null)
-            {
-                await dialog.Information($"result=[{result}]");
-            }
+            await dialog.Information($"result=[{result}]");
         }
     }
 }

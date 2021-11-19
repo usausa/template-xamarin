@@ -1,13 +1,12 @@
-namespace Template.FormsApp.Modules.Device
-{
-    using Smart.Navigation.Attributes;
+namespace Template.FormsApp.Modules.Device;
 
-    [View(ViewId.DeviceCamera)]
-    public partial class DeviceCameraView
+using Smart.Navigation.Attributes;
+
+[View(ViewId.DeviceCamera)]
+public partial class DeviceCameraView
+{
+    public DeviceCameraView()
     {
-        public DeviceCameraView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

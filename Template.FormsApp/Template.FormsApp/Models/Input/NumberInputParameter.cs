@@ -1,18 +1,17 @@
-namespace Template.FormsApp.Models.Input
+namespace Template.FormsApp.Models.Input;
+
+public class NumberInputParameter
 {
-    public class NumberInputParameter
+    public string Title { get; }
+
+    public string Value { get; }
+
+    public int MaxLength { get; }
+
+    public NumberInputParameter(string title, string value, int maxLength)
     {
-        public string Title { get; }
-
-        public string Value { get; }
-
-        public int MaxLength { get; }
-
-        public NumberInputParameter(string title, string value, int maxLength)
-        {
-            Title = title;
-            Value = value;
-            MaxLength = maxLength;
-        }
+        Title = title;
+        Value = value;
+        MaxLength = maxLength;
     }
 }

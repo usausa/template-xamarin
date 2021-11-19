@@ -1,13 +1,12 @@
-namespace Template.FormsApp.Modules.Navigation.Navigate
-{
-    using Smart.Navigation.Attributes;
+namespace Template.FormsApp.Modules.Navigation.Navigate;
 
-    [View(ViewId.NavigationNavigateCancel)]
-    public partial class NavigateCancelView
+using Smart.Navigation.Attributes;
+
+[View(ViewId.NavigationNavigateCancel)]
+public partial class NavigateCancelView
+{
+    public NavigateCancelView()
     {
-        public NavigateCancelView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

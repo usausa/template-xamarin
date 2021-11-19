@@ -1,11 +1,10 @@
-namespace Template.FormsApp.Input
+namespace Template.FormsApp.Input;
+
+using Xamarin.Forms;
+
+public interface IInputHandler
 {
-    using Xamarin.Forms;
+    bool Handle(KeyCode key);
 
-    public interface IInputHandler
-    {
-        bool Handle(KeyCode key);
-
-        VisualElement? FindFocused();
-    }
+    VisualElement? FindFocused();
 }

@@ -1,13 +1,12 @@
-namespace Template.FormsApp.Modules.Key
-{
-    using Smart.Navigation.Attributes;
+namespace Template.FormsApp.Modules.Key;
 
-    [View(ViewId.KeyList)]
-    public partial class KeyListView
+using Smart.Navigation.Attributes;
+
+[View(ViewId.KeyList)]
+public partial class KeyListView
+{
+    public KeyListView()
     {
-        public KeyListView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

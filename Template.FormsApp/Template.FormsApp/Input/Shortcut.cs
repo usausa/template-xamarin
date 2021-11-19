@@ -1,17 +1,16 @@
-namespace Template.FormsApp.Input
+namespace Template.FormsApp.Input;
+
+using Xamarin.Forms;
+
+public static class Shortcut
 {
-    using Xamarin.Forms;
+    public static readonly BindableProperty KeyProperty = BindableProperty.CreateAttached(
+        "Key",
+        typeof(KeyCode),
+        typeof(Shortcut),
+        null);
 
-    public static class Shortcut
-    {
-        public static readonly BindableProperty KeyProperty = BindableProperty.CreateAttached(
-            "Key",
-            typeof(KeyCode),
-            typeof(Shortcut),
-            null);
+    public static KeyCode GetKey(BindableObject bindable) => (KeyCode)bindable.GetValue(KeyProperty);
 
-        public static KeyCode GetKey(BindableObject bindable) => (KeyCode)bindable.GetValue(KeyProperty);
-
-        public static void SetKey(BindableObject bindable, KeyCode value) => bindable.SetValue(KeyProperty, value);
-    }
+    public static void SetKey(BindableObject bindable, KeyCode value) => bindable.SetValue(KeyProperty, value);
 }

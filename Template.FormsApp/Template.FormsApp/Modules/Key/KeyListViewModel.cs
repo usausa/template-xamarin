@@ -1,36 +1,35 @@
-namespace Template.FormsApp.Modules.Key
+namespace Template.FormsApp.Modules.Key;
+
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Input;
+
+using Smart.Collections.Generic;
+using Smart.ComponentModel;
+using Smart.Navigation;
+
+using Template.FormsApp.Models.Entity;
+
+public class KeyListViewModel : AppViewModelBase
 {
-    using System.Collections.ObjectModel;
-    using System.Linq;
-    using System.Threading.Tasks;
-    using System.Windows.Input;
+    public ObservableCollection<DataEntity> Items { get; } = new();
 
-    using Smart.Collections.Generic;
-    using Smart.ComponentModel;
-    using Smart.Navigation;
+    public NotificationValue<string> Selected { get; } = new();
 
-    using Template.FormsApp.Models.Entity;
+    public ICommand SelectCommand { get; }
+    public ICommand DeleteCommand { get; }
 
-    public class KeyListViewModel : AppViewModelBase
+    public KeyListViewModel(ApplicationState applicationState)
+        : base(applicationState)
     {
-        public ObservableCollection<DataEntity> Items { get; } = new();
+        Items.AddRange(Enumerable.Range(1, 20).Select(x => new DataEntity { Id = x, Name = $"Name-{x}" }));
 
-        public NotificationValue<string> Selected { get; } = new();
-
-        public ICommand SelectCommand { get; }
-        public ICommand DeleteCommand { get; }
-
-        public KeyListViewModel(ApplicationState applicationState)
-            : base(applicationState)
-        {
-            Items.AddRange(Enumerable.Range(1, 20).Select(x => new DataEntity { Id = x, Name = $"Name-{x}" }));
-
-            SelectCommand = MakeDelegateCommand<DataEntity>(x => Selected.Value = $"Select id=[{x.Id}]");
-            DeleteCommand = MakeDelegateCommand<DataEntity>(x => Selected.Value = $"Delete id=[{x.Id}]");
-        }
-
-        protected override Task OnNotifyBackAsync() => Navigator.ForwardAsync(ViewId.KeyMenu);
-
-        protected override Task OnNotifyFunction1() => OnNotifyBackAsync();
+        SelectCommand = MakeDelegateCommand<DataEntity>(x => Selected.Value = $"Select id=[{x.Id}]");
+        DeleteCommand = MakeDelegateCommand<DataEntity>(x => Selected.Value = $"Delete id=[{x.Id}]");
     }
+
+    protected override Task OnNotifyBackAsync() => Navigator.ForwardAsync(ViewId.KeyMenu);
+
+    protected override Task OnNotifyFunction1() => OnNotifyBackAsync();
 }

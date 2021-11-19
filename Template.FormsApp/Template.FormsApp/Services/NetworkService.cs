@@ -1,71 +1,70 @@
-namespace Template.FormsApp.Services
+namespace Template.FormsApp.Services;
+
+using System;
+using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
+
+using Rester;
+
+using Template.FormsApp.Models.Api;
+
+public sealed class NetworkService : IDisposable
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Net;
-    using System.Net.Http;
-    using System.Threading.Tasks;
+    private HttpClient client;
 
-    using Rester;
+    private readonly Dictionary<string, object> headers = new();
 
-    using Template.FormsApp.Models.Api;
-
-    public sealed class NetworkService : IDisposable
+    public NetworkService()
     {
-        private HttpClient client;
+        client = CreateHttpClient();
+    }
 
-        private readonly Dictionary<string, object> headers = new();
-
-        public NetworkService()
+    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Reliability", "CA2000:DisposeObjectsBeforeLosingScope", Justification = "Ignore")]
+    private static HttpClient CreateHttpClient()
+    {
+        return new(new HttpClientHandler
         {
+            AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
+            ServerCertificateCustomValidationCallback = (_, _, _, _) => true
+        })
+        {
+            Timeout = new TimeSpan(0, 0, 1, 0)
+        };
+    }
+
+    public void SetAddress(string address)
+    {
+        if (client.BaseAddress is not null)
+        {
+            client.Dispose();
             client = CreateHttpClient();
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Reliability", "CA2000:DisposeObjectsBeforeLosingScope", Justification = "Ignore")]
-        private static HttpClient CreateHttpClient()
-        {
-            return new(new HttpClientHandler
-            {
-                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
-                ServerCertificateCustomValidationCallback = (_, _, _, _) => true
-            })
-            {
-                Timeout = new TimeSpan(0, 0, 1, 0)
-            };
-        }
+        client.BaseAddress = String.IsNullOrEmpty(address) ? null : new Uri(address);
+    }
 
-        public void SetAddress(string address)
-        {
-            if (client.BaseAddress is not null)
-            {
-                client.Dispose();
-                client = CreateHttpClient();
-            }
+    public void SetToken(string token)
+    {
+        headers["Token"] = token;
+    }
 
-            client.BaseAddress = String.IsNullOrEmpty(address) ? null : new Uri(address);
-        }
+    public void Dispose()
+    {
+        client.Dispose();
+    }
 
-        public void SetToken(string token)
-        {
-            headers["Token"] = token;
-        }
+    //--------------------------------------------------------------------------------
+    // TODO
+    //--------------------------------------------------------------------------------
 
-        public void Dispose()
-        {
-            client.Dispose();
-        }
-
-        //--------------------------------------------------------------------------------
+    public async ValueTask<IRestResponse<PingRequest>> PostPingAsync()
+    {
         // TODO
-        //--------------------------------------------------------------------------------
-
-        public async ValueTask<IRestResponse<PingRequest>> PostPingAsync()
-        {
-            // TODO
-            return await client.PostAsync<PingRequest>(
-                "api/ping",
-                new PingRequest(),
-                headers);
-        }
+        return await client.PostAsync<PingRequest>(
+            "api/ping",
+            new PingRequest(),
+            headers);
     }
 }

@@ -1,8 +1,7 @@
-namespace Template.FormsApp.Components.Device
+namespace Template.FormsApp.Components.Device;
+
+public enum Orientation
 {
-    public enum Orientation
-    {
-        Portrait,
-        Landscape
-    }
+    Portrait,
+    Landscape
 }

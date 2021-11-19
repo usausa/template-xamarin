@@ -1,7 +1,6 @@
-namespace Template.FormsApp.Input
+namespace Template.FormsApp.Input;
+
+public interface IShortcutBehavior
 {
-    public interface IShortcutBehavior
-    {
-        bool Handle(KeyCode key);
-    }
+    bool Handle(KeyCode key);
 }

@@ -1,129 +1,128 @@
-namespace Template.FormsApp.Behaviors
+namespace Template.FormsApp.Behaviors;
+
+using System;
+using System.ComponentModel;
+using System.Linq;
+
+using Smart.Forms.Interactivity;
+
+using Template.FormsApp.Helpers;
+using Template.FormsApp.Models.Entry;
+
+using Xamarin.Forms;
+
+public sealed class EntryBindBehavior : BehaviorBase<Entry>
 {
-    using System;
-    using System.ComponentModel;
-    using System.Linq;
+    private bool updating;
 
-    using Smart.Forms.Interactivity;
-
-    using Template.FormsApp.Helpers;
-    using Template.FormsApp.Models.Entry;
-
-    using Xamarin.Forms;
-
-    public sealed class EntryBindBehavior : BehaviorBase<Entry>
+    protected override void OnAttachedTo(Entry bindable)
     {
-        private bool updating;
+        base.OnAttachedTo(bindable);
 
-        protected override void OnAttachedTo(Entry bindable)
+        var controller = EntryBind.GetModel(bindable);
+        bindable.Completed += BindableOnCompleted;
+        bindable.TextChanged += BindableOnTextChanged;
+        controller.FocusRequested += ControllerOnFocusRequested;
+        controller.PropertyChanged += ControllerOnPropertyChanged;
+    }
+
+    protected override void OnDetachingFrom(Entry bindable)
+    {
+        var controller = EntryBind.GetModel(bindable);
+        bindable.Completed -= BindableOnCompleted;
+        bindable.TextChanged -= BindableOnTextChanged;
+        controller.FocusRequested -= ControllerOnFocusRequested;
+        controller.PropertyChanged -= ControllerOnPropertyChanged;
+
+        base.OnDetachingFrom(bindable);
+    }
+
+    private void ControllerOnPropertyChanged(object sender, PropertyChangedEventArgs e)
+    {
+        var entry = AssociatedObject;
+        if (entry is null)
         {
-            base.OnAttachedTo(bindable);
-
-            var controller = EntryBind.GetModel(bindable);
-            bindable.Completed += BindableOnCompleted;
-            bindable.TextChanged += BindableOnTextChanged;
-            controller.FocusRequested += ControllerOnFocusRequested;
-            controller.PropertyChanged += ControllerOnPropertyChanged;
+            return;
         }
 
-        protected override void OnDetachingFrom(Entry bindable)
+        if (e.PropertyName == nameof(EntryModel.Text))
         {
-            var controller = EntryBind.GetModel(bindable);
-            bindable.Completed -= BindableOnCompleted;
-            bindable.TextChanged -= BindableOnTextChanged;
-            controller.FocusRequested -= ControllerOnFocusRequested;
-            controller.PropertyChanged -= ControllerOnPropertyChanged;
-
-            base.OnDetachingFrom(bindable);
-        }
-
-        private void ControllerOnPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            var entry = AssociatedObject;
-            if (entry is null)
-            {
-                return;
-            }
-
-            if (e.PropertyName == nameof(EntryModel.Text))
-            {
-                var controller = EntryBind.GetModel(entry);
-                updating = true;
-                entry.Text = controller.Text;
-                updating = false;
-            }
-            else if (e.PropertyName == nameof(EntryModel.Enable))
-            {
-                var controller = EntryBind.GetModel(entry);
-                entry.IsEnabled = controller.Enable;
-            }
-        }
-
-        private void ControllerOnFocusRequested(object sender, EventArgs e)
-        {
-            AssociatedObject?.Focus();
-        }
-
-        private void BindableOnTextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (updating)
-            {
-                return;
-            }
-
-            var entry = (Entry)sender;
             var controller = EntryBind.GetModel(entry);
-            controller.Text = e.NewTextValue;
+            updating = true;
+            entry.Text = controller.Text;
+            updating = false;
         }
-
-        private static void BindableOnCompleted(object sender, EventArgs e)
+        else if (e.PropertyName == nameof(EntryModel.Enable))
         {
-            var entry = (Entry)sender;
             var controller = EntryBind.GetModel(entry);
-            var ice = new EntryCompleteEvent();
-            controller.HandleCompleted(ice);
-            if (!ice.HasError)
-            {
-                ElementHelper.MoveFocusInPage(entry, true);
-            }
+            entry.IsEnabled = controller.Enable;
         }
     }
 
-    public sealed class EntryBind
+    private void ControllerOnFocusRequested(object sender, EventArgs e)
     {
-        public static readonly BindableProperty ModelProperty = BindableProperty.CreateAttached(
-            "Model",
-            typeof(Template.FormsApp.Models.Entry.IEntryController),
-            typeof(EntryBind),
-            null,
-            propertyChanged: BindChanged);
+        AssociatedObject?.Focus();
+    }
 
-        public static Template.FormsApp.Models.Entry.IEntryController GetModel(BindableObject bindable) =>
-            (Template.FormsApp.Models.Entry.IEntryController)bindable.GetValue(ModelProperty);
-
-        public static void SetModel(BindableObject bindable, Template.FormsApp.Models.Entry.IEntryController value) =>
-            bindable.SetValue(ModelProperty, value);
-
-        private static void BindChanged(BindableObject bindable, object? oldValue, object? newValue)
+    private void BindableOnTextChanged(object sender, TextChangedEventArgs e)
+    {
+        if (updating)
         {
-            if (bindable is not Entry entry)
-            {
-                return;
-            }
+            return;
+        }
 
-            if (oldValue is not null)
-            {
-                var behavior = entry.Behaviors.FirstOrDefault(x => x is EntryBindBehavior);
-                if (behavior is not null)
-                {
-                    entry.Behaviors.Remove(behavior);
-                }
-            }
+        var entry = (Entry)sender;
+        var controller = EntryBind.GetModel(entry);
+        controller.Text = e.NewTextValue;
+    }
 
-            if (newValue is not null)
+    private static void BindableOnCompleted(object sender, EventArgs e)
+    {
+        var entry = (Entry)sender;
+        var controller = EntryBind.GetModel(entry);
+        var ice = new EntryCompleteEvent();
+        controller.HandleCompleted(ice);
+        if (!ice.HasError)
+        {
+            ElementHelper.MoveFocusInPage(entry, true);
+        }
+    }
+}
+
+public sealed class EntryBind
+{
+    public static readonly BindableProperty ModelProperty = BindableProperty.CreateAttached(
+        "Model",
+        typeof(Template.FormsApp.Models.Entry.IEntryController),
+        typeof(EntryBind),
+        null,
+        propertyChanged: BindChanged);
+
+    public static Template.FormsApp.Models.Entry.IEntryController GetModel(BindableObject bindable) =>
+        (Template.FormsApp.Models.Entry.IEntryController)bindable.GetValue(ModelProperty);
+
+    public static void SetModel(BindableObject bindable, Template.FormsApp.Models.Entry.IEntryController value) =>
+        bindable.SetValue(ModelProperty, value);
+
+    private static void BindChanged(BindableObject bindable, object? oldValue, object? newValue)
+    {
+        if (bindable is not Entry entry)
+        {
+            return;
+        }
+
+        if (oldValue is not null)
+        {
+            var behavior = entry.Behaviors.FirstOrDefault(x => x is EntryBindBehavior);
+            if (behavior is not null)
             {
-                entry.Behaviors.Add(new EntryBindBehavior());
+                entry.Behaviors.Remove(behavior);
             }
+        }
+
+        if (newValue is not null)
+        {
+            entry.Behaviors.Add(new EntryBindBehavior());
         }
     }
 }

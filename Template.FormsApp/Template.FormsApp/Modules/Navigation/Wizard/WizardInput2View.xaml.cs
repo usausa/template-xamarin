@@ -1,13 +1,12 @@
-namespace Template.FormsApp.Modules.Navigation.Wizard
-{
-    using Smart.Navigation.Attributes;
+namespace Template.FormsApp.Modules.Navigation.Wizard;
 
-    [View(ViewId.NavigationWizardInput2)]
-    public partial class WizardInput2View
+using Smart.Navigation.Attributes;
+
+[View(ViewId.NavigationWizardInput2)]
+public partial class WizardInput2View
+{
+    public WizardInput2View()
     {
-        public WizardInput2View()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

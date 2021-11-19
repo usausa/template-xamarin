@@ -1,7 +1,6 @@
-namespace Template.FormsApp.Domain
+namespace Template.FormsApp.Domain;
+
+public static class Length
 {
-    public static class Length
-    {
-        // TODO
-    }
+    // TODO
 }

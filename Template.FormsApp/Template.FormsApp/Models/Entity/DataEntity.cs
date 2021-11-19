@@ -1,18 +1,17 @@
-namespace Template.FormsApp.Models.Entity
+namespace Template.FormsApp.Models.Entity;
+
+using System;
+using System.Diagnostics.CodeAnalysis;
+
+using Smart.Data.Mapper.Attributes;
+
+public class DataEntity
 {
-    using System;
-    using System.Diagnostics.CodeAnalysis;
+    [PrimaryKey]
+    public long Id { get; set; }
 
-    using Smart.Data.Mapper.Attributes;
+    [AllowNull]
+    public string Name { get; set; }
 
-    public class DataEntity
-    {
-        [PrimaryKey]
-        public long Id { get; set; }
-
-        [AllowNull]
-        public string Name { get; set; }
-
-        public DateTime CreateAt { get; set; }
-    }
+    public DateTime CreateAt { get; set; }
 }

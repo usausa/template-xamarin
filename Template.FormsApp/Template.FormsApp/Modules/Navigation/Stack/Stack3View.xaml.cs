@@ -1,13 +1,12 @@
-namespace Template.FormsApp.Modules.Navigation.Stack
-{
-    using Smart.Navigation.Attributes;
+namespace Template.FormsApp.Modules.Navigation.Stack;
 
-    [View(ViewId.NavigationStack3)]
-    public partial class Stack3View
+using Smart.Navigation.Attributes;
+
+[View(ViewId.NavigationStack3)]
+public partial class Stack3View
+{
+    public Stack3View()
     {
-        public Stack3View()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

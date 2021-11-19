@@ -1,12 +1,11 @@
-namespace Template.FormsApp.Droid.Helpers
-{
-    using System;
+namespace Template.FormsApp.Droid.Helpers;
 
-    public static class JavaObjectExtensions
+using System;
+
+public static class JavaObjectExtensions
+{
+    public static bool IsDisposed(this Java.Lang.Object obj)
     {
-        public static bool IsDisposed(this Java.Lang.Object obj)
-        {
-            return obj.Handle == IntPtr.Zero;
-        }
+        return obj.Handle == IntPtr.Zero;
     }
 }

@@ -1,13 +1,12 @@
-namespace Template.FormsApp.Modules.Navigation
-{
-    using Smart.Navigation.Attributes;
+namespace Template.FormsApp.Modules.Navigation;
 
-    [View(ViewId.NavigationMenu)]
-    public partial class NavigationMenuView
+using Smart.Navigation.Attributes;
+
+[View(ViewId.NavigationMenu)]
+public partial class NavigationMenuView
+{
+    public NavigationMenuView()
     {
-        public NavigationMenuView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

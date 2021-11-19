@@ -1,10 +1,9 @@
-namespace Template.FormsApp.Resources
+namespace Template.FormsApp.Resources;
+
+public partial class MaterialColors
 {
-    public partial class MaterialColors
+    public MaterialColors()
     {
-        public MaterialColors()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

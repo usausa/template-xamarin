@@ -1,138 +1,137 @@
-namespace Template.FormsApp.Helpers
+namespace Template.FormsApp.Helpers;
+
+using System.Collections.Generic;
+
+using Smart.Forms;
+
+using Xamarin.Forms;
+
+public static class ElementHelper
 {
-    using System.Collections.Generic;
-
-    using Smart.Forms;
-
-    using Xamarin.Forms;
-
-    public static class ElementHelper
+    public static VisualElement? FindFocused(Element parent)
     {
-        public static VisualElement? FindFocused(Element parent)
+        foreach (var child in parent.LogicalChildren)
         {
-            foreach (var child in parent.LogicalChildren)
+            if ((child is VisualElement visualElement) && visualElement.IsFocused)
             {
-                if ((child is VisualElement visualElement) && visualElement.IsFocused)
-                {
-                    return visualElement;
-                }
-
-                var focused = FindFocused(child);
-                if (focused is not null)
-                {
-                    return focused;
-                }
+                return visualElement;
             }
 
-            return null;
+            var focused = FindFocused(child);
+            if (focused is not null)
+            {
+                return focused;
+            }
         }
 
-        public static bool MoveFocus(VisualElement parent, bool forward)
+        return null;
+    }
+
+    public static bool MoveFocus(VisualElement parent, bool forward)
+    {
+        var find = false;
+        var first = default(VisualElement);
+        var previous = default(VisualElement);
+        foreach (var visual in EnumerateActive(parent))
         {
-            var find = false;
-            var first = default(VisualElement);
-            var previous = default(VisualElement);
-            foreach (var visual in EnumerateActive(parent))
+            if (visual.IsFocused)
             {
-                if (visual.IsFocused)
+                if (forward)
                 {
-                    if (forward)
-                    {
-                        find = true;
-                    }
-                    else
-                    {
-                        return previous?.Focus() ?? false;
-                    }
+                    find = true;
                 }
-                else if (find)
+                else
                 {
-                    return visual.Focus();
+                    return previous?.Focus() ?? false;
                 }
-
-                previous = visual;
-                first ??= visual;
+            }
+            else if (find)
+            {
+                return visual.Focus();
             }
 
-            if (!find)
-            {
-                return first?.Focus() ?? false;
-            }
+            previous = visual;
+            first ??= visual;
+        }
 
+        if (!find)
+        {
+            return first?.Focus() ?? false;
+        }
+
+        return false;
+    }
+
+    public static bool MoveFocusInPage(VisualElement element, bool forward)
+    {
+        var page = element.FindParent<Page>();
+        if (page is null)
+        {
             return false;
         }
 
-        public static bool MoveFocusInPage(VisualElement element, bool forward)
+        var find = false;
+        var first = default(VisualElement);
+        var previous = default(VisualElement);
+        foreach (var visual in EnumerateActive(page))
         {
-            var page = element.FindParent<Page>();
-            if (page is null)
+            if (visual == element)
             {
-                return false;
-            }
-
-            var find = false;
-            var first = default(VisualElement);
-            var previous = default(VisualElement);
-            foreach (var visual in EnumerateActive(page))
-            {
-                if (visual == element)
+                if (forward)
                 {
-                    if (forward)
-                    {
-                        find = true;
-                    }
-                    else
-                    {
-                        return previous?.Focus() ?? false;
-                    }
+                    find = true;
                 }
-                else if (find)
+                else
                 {
-                    return visual.Focus();
+                    return previous?.Focus() ?? false;
                 }
-
-                previous = visual;
-                first ??= visual;
             }
-
-            if (!find)
+            else if (find)
             {
-                return first?.Focus() ?? false;
+                return visual.Focus();
             }
 
-            return false;
+            previous = visual;
+            first ??= visual;
         }
 
-        public static IEnumerable<VisualElement> EnumerateActive(Element parent)
+        if (!find)
         {
-            foreach (var child in parent.LogicalChildren)
-            {
-                if (child is VisualElement visualElement)
-                {
-                    if (!visualElement.IsEnabled || !visualElement.IsVisible)
-                    {
-                        continue;
-                    }
+            return first?.Focus() ?? false;
+        }
 
-                    if (visualElement.IsTabStop && IsFocusableElement(visualElement))
-                    {
-                        yield return visualElement;
-                    }
+        return false;
+    }
+
+    public static IEnumerable<VisualElement> EnumerateActive(Element parent)
+    {
+        foreach (var child in parent.LogicalChildren)
+        {
+            if (child is VisualElement visualElement)
+            {
+                if (!visualElement.IsEnabled || !visualElement.IsVisible)
+                {
+                    continue;
                 }
 
-                foreach (var descendant in EnumerateActive(child))
+                if (visualElement.IsTabStop && IsFocusableElement(visualElement))
                 {
-                    yield return descendant;
+                    yield return visualElement;
                 }
             }
-        }
 
-        private static bool IsFocusableElement(VisualElement visualElement)
-        {
-            return visualElement is Button ||
-                   visualElement is CheckBox ||
-                   visualElement is Entry ||
-                   visualElement is ListView;
+            foreach (var descendant in EnumerateActive(child))
+            {
+                yield return descendant;
+            }
         }
+    }
+
+    private static bool IsFocusableElement(VisualElement visualElement)
+    {
+        return visualElement is Button ||
+               visualElement is CheckBox ||
+               visualElement is Entry ||
+               visualElement is ListView;
     }
 }

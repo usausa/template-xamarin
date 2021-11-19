@@ -1,9 +1,8 @@
-namespace Template.FormsApp.Input
-{
-    using Xamarin.Forms;
+namespace Template.FormsApp.Input;
 
-    public interface IInputService
-    {
-        int ResolveSelectedPosition(ListView element);
-    }
+using Xamarin.Forms;
+
+public interface IInputService
+{
+    int ResolveSelectedPosition(ListView element);
 }

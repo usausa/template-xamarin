@@ -1,15 +1,14 @@
-namespace Template.FormsApp.Components.Device
+namespace Template.FormsApp.Components.Device;
+
+using System;
+
+public interface IDeviceManager
 {
-    using System;
+    IObservable<NetworkState> NetworkState { get; }
 
-    public interface IDeviceManager
-    {
-        IObservable<NetworkState> NetworkState { get; }
+    NetworkState GetNetworkState();
 
-        NetworkState GetNetworkState();
+    void SetOrientation(Orientation orientation);
 
-        void SetOrientation(Orientation orientation);
-
-        string? GetVersion();
-    }
+    string? GetVersion();
 }
