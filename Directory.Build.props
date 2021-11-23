@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <LangVersion>10.0</LangVersion>
-    <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
     <Deterministic>true</Deterministic>
     <NoWarn>$(NoWarn),1573,1591,1712</NoWarn>
     <MSBuildWarningsAsMessages>SA0001;MSB3277;XA4218;XA0122</MSBuildWarningsAsMessages>
