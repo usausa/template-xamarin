@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Acr.UserDialogs;
 
 using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
@@ -18,8 +19,10 @@ using Smart.Resolver;
 
 using Template.FormsApp.Components.Device;
 using Template.FormsApp.Components.Dialog;
+using Template.FormsApp.Components.Nfc;
 using Template.FormsApp.Droid.Components.Device;
 using Template.FormsApp.Droid.Components.Dialog;
+using Template.FormsApp.Droid.Components.Nfc;
 using Template.FormsApp.Helpers;
 
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
@@ -42,6 +45,9 @@ public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivit
     [AllowNull]
     private KeyInputDriver keyInputDriver;
 
+    [AllowNull]
+    private AndroidNfcReader nfcReader;
+
     protected override void OnCreate(Bundle savedInstanceState)
     {
         SetTheme(Resource.Style.MainTheme);
@@ -60,6 +66,7 @@ public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivit
 
         // Service
         deviceManager = new DeviceManager(this);
+        nfcReader = new AndroidNfcReader(this);
 
         // Components
         UserDialogs.Init(this);
@@ -101,6 +108,27 @@ public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivit
         return base.DispatchKeyEvent(e);
     }
 
+    protected override void OnPause()
+    {
+        nfcReader.Pause();
+
+        base.OnPause();
+    }
+
+    protected override void OnResume()
+    {
+        base.OnResume();
+
+        nfcReader.Resume();
+    }
+
+    protected override void OnNewIntent(Intent intent)
+    {
+        base.OnNewIntent(intent);
+
+        nfcReader.OnNewIntent(intent);
+    }
+
     private static void CrashReport(Exception ex)
     {
         Log.Error("CrashReport", ex.ToString());
@@ -122,6 +150,7 @@ public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivit
 
             config.Bind<IApplicationDialog>().To<ApplicationDialog>().InSingletonScope();
             config.Bind<IDeviceManager>().ToConstant(activity.deviceManager).InSingletonScope();
+            config.Bind<INfcReader>().ToConstant(activity.nfcReader).InSingletonScope();
         }
     }
 }
