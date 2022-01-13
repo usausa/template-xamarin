@@ -1,9 +1,8 @@
-namespace Template.FormsApp.Components.Nfc
-{
-    public interface INfc
-    {
-        byte[] Id { get; }
+namespace Template.FormsApp.Components.Nfc;
 
-        byte[] Access(byte[] command);
-    }
+public interface INfc
+{
+    byte[] Id { get; }
+
+    byte[] Access(byte[] command);
 }

@@ -1,11 +1,10 @@
-namespace Template.FormsApp.Components.Nfc
+namespace Template.FormsApp.Components.Nfc;
+
+public interface INfcReader
 {
-    public interface INfcReader
-    {
-        public NfcType NfcType { get; set; }
+    public NfcType NfcType { get; set; }
 
-        public bool Enable { get; set; }
+    public bool Enable { get; set; }
 
-        IObservable<INfc> Discovered { get; }
-    }
+    IObservable<INfc> Discovered { get; }
 }
