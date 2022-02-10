@@ -1,11 +1,5 @@
 namespace Template.FormsApp;
 
-using System.Windows.Input;
-
-using Smart.ComponentModel;
-using Smart.Forms.ViewModels;
-using Smart.Navigation;
-
 using Template.FormsApp.Shell;
 
 public class MainPageViewModel : ViewModelBase, IShellControl

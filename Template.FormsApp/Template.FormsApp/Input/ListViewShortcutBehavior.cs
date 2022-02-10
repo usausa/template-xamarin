@@ -1,8 +1,5 @@
 namespace Template.FormsApp.Input;
 
-using System.Collections;
-using System.Windows.Input;
-
 using Smart.Forms.Interactivity;
 
 using Xamarin.Forms;

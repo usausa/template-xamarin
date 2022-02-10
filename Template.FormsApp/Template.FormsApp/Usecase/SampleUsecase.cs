@@ -1,7 +1,5 @@
 namespace Template.FormsApp.Usecase;
 
-using System.Threading.Tasks;
-
 public class SampleUsecase
 {
     private readonly NetworkOperator networkOperator;

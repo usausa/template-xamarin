@@ -1,10 +1,5 @@
 namespace Template.FormsApp.Messaging;
 
-using System;
-using System.Threading.Tasks;
-
-using Smart.Forms.Messaging;
-
 public sealed class CameraCaptureRequest : IEventRequest<CameraCaptureEventArgs>
 {
     public event EventHandler<CameraCaptureEventArgs>? Requested;

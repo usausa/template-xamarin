@@ -1,13 +1,10 @@
 namespace Template.FormsApp.Behaviors;
 
-using System;
-using System.ComponentModel;
 using System.Linq;
 
 using Smart.Forms.Interactivity;
 
 using Template.FormsApp.Helpers;
-using Template.FormsApp.Models.Entry;
 
 using Xamarin.Forms;
 

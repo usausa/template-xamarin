@@ -1,7 +1,5 @@
 namespace Template.FormsApp.Helpers;
 
-using System;
-using System.Collections.Generic;
 using System.IO;
 
 public sealed class SettingParser

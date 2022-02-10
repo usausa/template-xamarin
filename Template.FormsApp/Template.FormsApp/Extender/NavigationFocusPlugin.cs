@@ -1,11 +1,8 @@
 namespace Template.FormsApp.Extender;
 
-using System.Collections.Generic;
-
 using Template.FormsApp.Helpers;
 
 using Smart.Forms;
-using Smart.Navigation;
 using Smart.Navigation.Plugins;
 
 using Xamarin.Forms;

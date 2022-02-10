@@ -1,10 +1,5 @@
 namespace Template.FormsApp;
 
-using System;
-using System.Threading.Tasks;
-
-using Smart.Navigation;
-
 using Template.FormsApp.Behaviors;
 using Template.FormsApp.Helpers;
 

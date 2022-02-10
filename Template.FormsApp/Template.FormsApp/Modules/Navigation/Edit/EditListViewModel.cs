@@ -1,14 +1,6 @@
 namespace Template.FormsApp.Modules.Navigation.Edit;
 
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
-using System.Windows.Input;
-
-using Smart.Collections.Generic;
-using Smart.Navigation;
-
 using Template.FormsApp.Components.Dialog;
-using Template.FormsApp.Models.Entity;
 using Template.FormsApp.Services;
 
 public class EditListViewModel : AppViewModelBase

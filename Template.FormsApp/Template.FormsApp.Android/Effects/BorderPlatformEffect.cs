@@ -2,9 +2,6 @@
 
 namespace Template.FormsApp.Droid.Effects;
 
-using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
-
 using Android.Graphics.Drawables;
 
 using Template.FormsApp.Effects;

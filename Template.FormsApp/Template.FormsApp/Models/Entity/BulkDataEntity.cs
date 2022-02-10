@@ -1,7 +1,5 @@
 namespace Template.FormsApp.Models.Entity;
 
-using System.Diagnostics.CodeAnalysis;
-
 using Smart.Data.Mapper.Attributes;
 
 public class BulkDataEntity

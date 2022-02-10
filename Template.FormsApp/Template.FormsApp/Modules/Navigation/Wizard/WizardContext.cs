@@ -1,7 +1,5 @@
 namespace Template.FormsApp.Modules.Navigation.Wizard;
 
-using System;
-
 using Smart;
 
 public sealed class WizardContext : IInitializable, IDisposable

@@ -1,9 +1,5 @@
 namespace Template.FormsApp.Modules.Toolkit;
 
-using System.Threading.Tasks;
-
-using Smart.Navigation;
-
 public class ToolkitMenuViewModel : AppViewModelBase
 {
     public ToolkitMenuViewModel(ApplicationState applicationState)

@@ -1,6 +1,5 @@
 namespace Template.FormsApp;
 
-using System;
 using System.IO;
 using System.Reflection;
 using System.Text.Encodings.Web;
@@ -11,7 +10,6 @@ using Rester;
 
 using Smart.Data.Mapper;
 using Smart.Forms.Resolver;
-using Smart.Navigation;
 using Smart.Resolver;
 
 using Template.FormsApp.Components.Dialog;

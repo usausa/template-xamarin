@@ -1,9 +1,6 @@
 namespace Template.FormsApp.Services;
 
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using System.Threading.Tasks;
 
 using Microsoft.Data.Sqlite;
 
@@ -12,7 +9,6 @@ using Smart.Data.Mapper;
 using Smart.Data.Mapper.Builders;
 
 using Template.FormsApp.Helpers.Data;
-using Template.FormsApp.Models.Entity;
 
 public class DataServiceOptions
 {

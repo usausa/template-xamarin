@@ -1,12 +1,5 @@
 namespace Template.FormsApp.Modules.Navigation.Edit;
 
-using System.Diagnostics.CodeAnalysis;
-using System.Threading.Tasks;
-
-using Smart.ComponentModel;
-using Smart.Navigation;
-
-using Template.FormsApp.Models.Entity;
 using Template.FormsApp.Services;
 
 public class EditDetailViewModel : AppViewModelBase

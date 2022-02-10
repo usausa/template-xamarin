@@ -1,7 +1,5 @@
 namespace Template.FormsApp.Helpers;
 
-using System.Collections.Generic;
-
 using Smart.Forms;
 
 using Xamarin.Forms;

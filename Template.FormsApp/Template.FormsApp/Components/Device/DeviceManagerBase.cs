@@ -1,7 +1,5 @@
 namespace Template.FormsApp.Components.Device;
 
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Subjects;
 

@@ -1,8 +1,6 @@
 namespace Template.FormsApp.Components.Dialog;
 
-using System;
 using System.Linq;
-using System.Threading.Tasks;
 
 using XamarinFormsComponents.Dialogs;
 

@@ -1,16 +1,9 @@
 namespace Template.FormsApp.Modules.Database;
 
-using System;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Input;
-
-using Smart.ComponentModel;
-using Smart.Navigation;
 
 using Template.FormsApp.Components.Dialog;
-using Template.FormsApp.Models.Entity;
 using Template.FormsApp.Services;
 
 public class DatabaseViewModel : AppViewModelBase

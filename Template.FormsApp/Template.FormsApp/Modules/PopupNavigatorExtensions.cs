@@ -1,9 +1,6 @@
 namespace Template.FormsApp.Modules;
 
-using System.Threading.Tasks;
-
 using Template.FormsApp.Input;
-using Template.FormsApp.Models.Input;
 
 using XamarinFormsComponents.Popup;
 

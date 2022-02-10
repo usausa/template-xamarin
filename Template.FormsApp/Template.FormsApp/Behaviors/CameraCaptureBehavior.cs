@@ -1,10 +1,8 @@
 namespace Template.FormsApp.Behaviors;
 
 using Smart.Forms.Interactivity;
-using Smart.Forms.Messaging;
 
 using Template.FormsApp.Helpers;
-using Template.FormsApp.Messaging;
 
 using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Forms;

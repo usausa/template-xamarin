@@ -1,12 +1,5 @@
 namespace Template.FormsApp.Modules.Navigation.Modal;
 
-using System.Threading.Tasks;
-using System.Windows.Input;
-
-using Smart.ComponentModel;
-
-using Template.FormsApp.Models.Input;
-
 using XamarinFormsComponents.Popup;
 
 public class InputNumberViewModel : AppDialogViewModelBase, IPopupResult<string>, IPopupInitialize<NumberInputParameter>

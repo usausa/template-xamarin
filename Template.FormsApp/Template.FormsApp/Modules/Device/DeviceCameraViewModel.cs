@@ -1,9 +1,5 @@
 namespace Template.FormsApp.Modules.Device;
 
-using System.Threading.Tasks;
-
-using Smart.Navigation;
-
 public class DeviceCameraViewModel : AppViewModelBase
 {
     public DeviceCameraViewModel(ApplicationState applicationState)

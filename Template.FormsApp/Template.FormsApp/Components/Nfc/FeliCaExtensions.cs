@@ -1,7 +1,5 @@
 namespace Template.FormsApp.Components.Nfc;
 
-using System.Diagnostics.CodeAnalysis;
-
 public class ReadBlock
 {
     public byte BlockNo { get; set; }

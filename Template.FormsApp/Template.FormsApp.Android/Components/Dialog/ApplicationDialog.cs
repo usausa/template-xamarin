@@ -1,8 +1,5 @@
 namespace Template.FormsApp.Droid.Components.Dialog;
 
-using System.Diagnostics.CodeAnalysis;
-using System.Threading.Tasks;
-
 using Android.App;
 using Android.Content;
 using Android.Graphics.Drawables;

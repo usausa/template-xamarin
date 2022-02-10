@@ -1,7 +1,5 @@
 namespace Template.FormsApp.Markup;
 
-using System;
-
 using Template.FormsApp.Modules;
 
 using Xamarin.Forms;

@@ -1,10 +1,5 @@
 namespace Template.FormsApp.Modules.Navigation;
 
-using System.Threading.Tasks;
-using System.Windows.Input;
-
-using Smart.Navigation;
-
 using Template.FormsApp.Components.Dialog;
 
 using XamarinFormsComponents.Popup;

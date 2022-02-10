@@ -1,10 +1,5 @@
 namespace Template.FormsApp.Modules.Navigation.Navigate;
 
-using System.Threading.Tasks;
-
-using Smart.Forms.ViewModels;
-using Smart.Navigation;
-
 using Template.FormsApp.Components.Dialog;
 
 public class NavigateInitializeViewModel : AppViewModelBase

@@ -1,7 +1,5 @@
 namespace Template.FormsApp.Modules.Main;
 
-using Smart.Navigation.Attributes;
-
 [View(ViewId.Menu)]
 public partial class MenuView
 {

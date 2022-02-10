@@ -1,11 +1,5 @@
 namespace Template.FormsApp.Modules;
 
-using System.Diagnostics.CodeAnalysis;
-using System.Threading.Tasks;
-
-using Smart.Forms.ViewModels;
-using Smart.Navigation;
-
 using Template.FormsApp.Shell;
 
 public class AppViewModelBase : ViewModelBase, INavigatorAware, INavigationEventSupport, INotifySupportAsync<ShellEvent>

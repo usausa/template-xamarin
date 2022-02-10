@@ -1,9 +1,5 @@
 namespace Template.FormsApp.Modules.Navigation.Stack;
 
-using System.Threading.Tasks;
-
-using Smart.Navigation;
-
 public class Stack2ViewModel : AppViewModelBase
 {
     public Stack2ViewModel(ApplicationState applicationState)

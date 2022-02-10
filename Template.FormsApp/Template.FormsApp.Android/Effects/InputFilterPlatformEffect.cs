@@ -3,7 +3,6 @@
 namespace Template.FormsApp.Droid.Effects;
 
 using System;
-using System.ComponentModel;
 
 using Android.Text;
 using Android.Widget;

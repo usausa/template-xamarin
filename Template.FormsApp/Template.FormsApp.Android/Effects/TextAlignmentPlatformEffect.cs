@@ -2,8 +2,6 @@
 
 namespace Template.FormsApp.Droid.Effects;
 
-using System.ComponentModel;
-
 using Android.Widget;
 
 using Template.FormsApp.Droid.Helpers;

@@ -1,13 +1,6 @@
 namespace Template.FormsApp.Modules.Key;
 
-using System;
 using System.Diagnostics;
-using System.Threading.Tasks;
-using System.Windows.Input;
-
-using Smart.Navigation;
-
-using Template.FormsApp.Models.Entry;
 
 public class KeyEntryViewModel : AppViewModelBase
 {

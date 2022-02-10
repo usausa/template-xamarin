@@ -1,7 +1,5 @@
 namespace Template.FormsApp.Modules.Navigation.Edit;
 
-using Smart.Navigation.Attributes;
-
 [View(ViewId.NavigationEditList)]
 public partial class EditListView
 {

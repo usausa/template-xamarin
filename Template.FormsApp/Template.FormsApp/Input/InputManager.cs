@@ -1,7 +1,5 @@
 namespace Template.FormsApp.Input;
 
-using System.Collections.Generic;
-
 using Xamarin.Forms;
 
 public class InputManager

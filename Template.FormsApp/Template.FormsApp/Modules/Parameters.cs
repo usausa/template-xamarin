@@ -1,7 +1,5 @@
 namespace Template.FormsApp.Modules;
 
-using Smart.Navigation;
-
 public static class Parameters
 {
     private const string NextViewId = nameof(NextViewId);

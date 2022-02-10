@@ -1,11 +1,5 @@
 namespace Template.FormsApp.Modules.Navigation.Wizard;
 
-using System.Threading.Tasks;
-
-using Smart.ComponentModel;
-using Smart.Navigation;
-using Smart.Navigation.Plugins.Scope;
-
 public class WizardInput2ViewModel : AppViewModelBase
 {
     [Scope]

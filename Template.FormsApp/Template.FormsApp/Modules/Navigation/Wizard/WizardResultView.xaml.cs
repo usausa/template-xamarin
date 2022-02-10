@@ -1,7 +1,5 @@
 namespace Template.FormsApp.Modules.Navigation.Wizard;
 
-using Smart.Navigation.Attributes;
-
 [View(ViewId.NavigationWizardResult)]
 public partial class WizardResultView
 {

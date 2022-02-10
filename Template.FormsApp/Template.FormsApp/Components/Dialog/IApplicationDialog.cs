@@ -1,7 +1,5 @@
 namespace Template.FormsApp.Components.Dialog;
 
-using System.Threading.Tasks;
-
 using XamarinFormsComponents.Dialogs;
 
 public interface IApplicationDialog

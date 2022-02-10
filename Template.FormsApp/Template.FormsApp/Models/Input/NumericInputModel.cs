@@ -1,9 +1,5 @@
 namespace Template.FormsApp.Models.Input;
 
-using System;
-
-using Smart.ComponentModel;
-
 public class NumberInputModel : NotificationObject
 {
     private string text = "0";

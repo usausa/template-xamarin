@@ -1,9 +1,5 @@
 namespace Template.FormsApp.Modules.UI;
 
-using System.Threading.Tasks;
-
-using Smart.Navigation;
-
 public class UIMenuViewModel : AppViewModelBase
 {
     public UIMenuViewModel(ApplicationState applicationState)

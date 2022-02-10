@@ -1,14 +1,9 @@
 namespace Template.FormsApp.Services;
 
-using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
 
 using Rester;
-
-using Template.FormsApp.Models.Api;
 
 public sealed class NetworkService : IDisposable
 {
@@ -21,7 +16,7 @@ public sealed class NetworkService : IDisposable
         client = CreateHttpClient();
     }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Reliability", "CA2000:DisposeObjectsBeforeLosingScope", Justification = "Ignore")]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:DisposeObjectsBeforeLosingScope", Justification = "Ignore")]
     private static HttpClient CreateHttpClient()
     {
         return new(new HttpClientHandler

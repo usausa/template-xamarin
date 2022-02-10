@@ -1,11 +1,5 @@
 namespace Template.FormsApp.Models.Entry;
 
-using System;
-using System.ComponentModel;
-using System.Windows.Input;
-
-using Smart.ComponentModel;
-
 public class EntryCompleteEvent
 {
     public bool HasError { get; set; }

@@ -1,7 +1,5 @@
 namespace Template.FormsApp;
 
-using Smart.Navigation;
-
 using Template.FormsApp.Shell;
 
 public partial class MainPage

@@ -1,8 +1,5 @@
 namespace Template.FormsApp.Behaviors;
 
-using System;
-using System.Windows.Input;
-
 using Smart.Forms.Interactivity;
 
 using Xamarin.Essentials;

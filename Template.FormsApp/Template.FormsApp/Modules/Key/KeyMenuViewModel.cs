@@ -1,10 +1,6 @@
 namespace Template.FormsApp.Modules.Key;
 
 using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Input;
-
-using Smart.Navigation;
 
 using Template.FormsApp.Components.Dialog;
 

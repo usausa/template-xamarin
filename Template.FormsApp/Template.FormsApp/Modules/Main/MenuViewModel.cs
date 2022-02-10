@@ -1,8 +1,5 @@
 namespace Template.FormsApp.Modules.Main;
 
-using System.Windows.Input;
-using Smart.Navigation;
-
 public class MenuViewModel : AppViewModelBase
 {
     public ICommand ForwardCommand { get; }

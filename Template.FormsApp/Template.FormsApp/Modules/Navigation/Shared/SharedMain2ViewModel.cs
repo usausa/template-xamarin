@@ -1,10 +1,5 @@
 namespace Template.FormsApp.Modules.Navigation.Shared;
 
-using System.Threading.Tasks;
-
-using Smart.ComponentModel;
-using Smart.Navigation;
-
 public class SharedMain2ViewModel : AppViewModelBase
 {
     public NotificationValue<string> No { get; } = new();

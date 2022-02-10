@@ -1,9 +1,6 @@
 namespace Template.FormsApp.Shell;
 
-using System;
-
 using Smart.Forms.Interactivity;
-using Smart.Navigation;
 
 using Xamarin.Forms;
 
