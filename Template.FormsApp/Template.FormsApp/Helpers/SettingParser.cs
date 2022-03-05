@@ -1,7 +1,5 @@
 namespace Template.FormsApp.Helpers;
 
-using System.IO;
-
 public sealed class SettingParser
 {
     private readonly Dictionary<string, string> values = new(StringComparer.OrdinalIgnoreCase);

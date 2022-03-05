@@ -1,7 +1,5 @@
 namespace Template.FormsApp.Helpers;
 
-using System.IO;
-
 using SkiaSharp;
 
 public static class ImageHelper

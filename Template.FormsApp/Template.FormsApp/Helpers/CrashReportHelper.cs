@@ -1,6 +1,5 @@
 namespace Template.FormsApp.Helpers;
 
-using System.IO;
 using System.Text;
 
 using Xamarin.Essentials;

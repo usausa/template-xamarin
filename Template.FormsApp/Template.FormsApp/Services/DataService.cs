@@ -1,7 +1,5 @@
 namespace Template.FormsApp.Services;
 
-using System.IO;
-
 using Microsoft.Data.Sqlite;
 
 using Smart.Data;
