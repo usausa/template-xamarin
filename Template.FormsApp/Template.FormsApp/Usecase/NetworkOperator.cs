@@ -60,11 +60,7 @@ public class NetworkOperator
                 case RestResult.Success:
                     return Result.Success(response.Content!);
                 case RestResult.Cancel:
-                    if (!verbose)
-                    {
-                        return Result.Failed<T>();
-                    }
-                    else if (!await dialogs.Confirm("Canceled.\r\nRetry ?"))
+                    if (!verbose || !await dialogs.Confirm("Canceled.\r\nRetry ?"))
                     {
                         return Result.Failed<T>();
                     }
@@ -134,11 +130,7 @@ public class NetworkOperator
                 case RestResult.Success:
                     return true;
                 case RestResult.Cancel:
-                    if (!verbose)
-                    {
-                        return false;
-                    }
-                    else if (!await dialogs.Confirm("Canceled.\r\nRetry ?"))
+                    if (!verbose || !await dialogs.Confirm("Canceled.\r\nRetry ?"))
                     {
                         return false;
                     }
