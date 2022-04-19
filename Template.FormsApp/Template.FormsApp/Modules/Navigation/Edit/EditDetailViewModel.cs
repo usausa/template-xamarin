@@ -6,8 +6,7 @@ public class EditDetailViewModel : AppViewModelBase
 {
     private readonly DataService dataService;
 
-    [AllowNull]
-    private WorkEntity entity;
+    private WorkEntity entity = default!;
 
     public NotificationValue<bool> IsUpdate { get; } = new();
 

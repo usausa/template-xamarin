@@ -7,6 +7,5 @@ public class WorkEntity
     [PrimaryKey]
     public long Id { get; set; }
 
-    [AllowNull]
-    public string Name { get; set; }
+    public string Name { get; set; } = default!;
 }

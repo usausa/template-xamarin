@@ -4,8 +4,7 @@ using XamarinFormsComponents.Popup;
 
 public class AppDialogViewModelBase : ViewModelBase, IPopupNavigatorAware
 {
-    [AllowNull]
-    public IPopupNavigator PopupNavigator { get; set; }
+    public IPopupNavigator PopupNavigator { get; set; } = default!;
 
     protected override void Dispose(bool disposing)
     {

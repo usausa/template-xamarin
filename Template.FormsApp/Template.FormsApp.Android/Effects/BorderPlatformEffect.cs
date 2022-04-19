@@ -13,8 +13,7 @@ public sealed class BorderPlatformEffect : PlatformEffect
 {
     private Drawable? originalBackground;
 
-    [AllowNull]
-    private GradientDrawable drawable;
+    private GradientDrawable drawable = default!;
 
     protected override void OnAttached()
     {

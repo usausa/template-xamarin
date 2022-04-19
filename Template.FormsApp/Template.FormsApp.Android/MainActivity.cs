@@ -37,14 +37,11 @@ using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
     WindowSoftInputMode = SoftInput.AdjustResize)]
 public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivity
 {
-    [AllowNull]
-    private DeviceManager deviceManager;
+    private DeviceManager deviceManager = default!;
 
-    [AllowNull]
-    private KeyInputDriver keyInputDriver;
+    private KeyInputDriver keyInputDriver = default!;
 
-    [AllowNull]
-    private AndroidNfcReader nfcReader;
+    private AndroidNfcReader nfcReader = default!;
 
     protected override void OnCreate(Bundle savedInstanceState)
     {

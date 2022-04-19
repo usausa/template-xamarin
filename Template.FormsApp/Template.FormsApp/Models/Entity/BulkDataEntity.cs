@@ -5,16 +5,13 @@ using Smart.Data.Mapper.Attributes;
 public class BulkDataEntity
 {
     [PrimaryKey(1)]
-    [AllowNull]
-    public string Key1 { get; set; }
+    public string Key1 { get; set; } = default!;
 
     [PrimaryKey(2)]
-    [AllowNull]
-    public string Key2 { get; set; }
+    public string Key2 { get; set; } = default!;
 
     [PrimaryKey(3)]
-    [AllowNull]
-    public string Key3 { get; set; }
+    public string Key3 { get; set; } = default!;
 
     public int Value1 { get; set; }
 

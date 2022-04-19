@@ -4,8 +4,7 @@ public class ReadBlock
 {
     public byte BlockNo { get; set; }
 
-    [AllowNull]
-    public byte[] BlockData { get; set; }
+    public byte[] BlockData { get; set; } = default!;
 }
 
 public static class FeliCaExtensions
