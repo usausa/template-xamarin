@@ -1,7 +1,5 @@
 namespace Template.FormsApp.Droid.Components.Nfc;
 
-using System;
-
 using Android.Nfc;
 using Android.Nfc.Tech;
 using Android.Util;

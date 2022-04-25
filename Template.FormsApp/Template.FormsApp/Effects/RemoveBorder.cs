@@ -1,7 +1,5 @@
 namespace Template.FormsApp.Effects;
 
-using System.Linq;
-
 using Xamarin.CommunityToolkit.Effects;
 using Xamarin.Forms;
 

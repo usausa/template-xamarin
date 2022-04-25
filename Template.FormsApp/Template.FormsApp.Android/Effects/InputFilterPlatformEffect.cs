@@ -2,8 +2,6 @@
 
 namespace Template.FormsApp.Droid.Effects;
 
-using System;
-
 using Android.Text;
 using Android.Widget;
 

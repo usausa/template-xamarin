@@ -1,7 +1,5 @@
 namespace Template.FormsApp.Modules.Key;
 
-using System.Linq;
-
 using Template.FormsApp.Components.Dialog;
 
 public class KeyMenuViewModel : AppViewModelBase

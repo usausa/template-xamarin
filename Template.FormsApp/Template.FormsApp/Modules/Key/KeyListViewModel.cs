@@ -1,7 +1,5 @@
 namespace Template.FormsApp.Modules.Key;
 
-using System.Linq;
-
 public class KeyListViewModel : AppViewModelBase
 {
     public ObservableCollection<DataEntity> Items { get; } = new();

@@ -1,7 +1,6 @@
 namespace Template.FormsApp.Modules.Database;
 
 using System.Diagnostics;
-using System.Linq;
 
 using Template.FormsApp.Components.Dialog;
 using Template.FormsApp.Services;

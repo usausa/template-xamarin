@@ -1,7 +1,5 @@
 namespace Template.FormsApp.Behaviors;
 
-using System.Linq;
-
 using Smart.Forms.Interactivity;
 
 using Template.FormsApp.Helpers;

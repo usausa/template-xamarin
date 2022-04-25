@@ -1,7 +1,5 @@
 namespace Template.FormsApp.Droid.Helpers;
 
-using System;
-
 using Android.Views;
 
 public static class AlignmentExtensions

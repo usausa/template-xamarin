@@ -1,6 +1,5 @@
 namespace Template.FormsApp.Components.Device;
 
-using System.Linq;
 using System.Reactive.Subjects;
 
 using Xamarin.Essentials;

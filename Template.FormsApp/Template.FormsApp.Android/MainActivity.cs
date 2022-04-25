@@ -1,7 +1,5 @@
 namespace Template.FormsApp.Droid;
 
-using System;
-
 using Acr.UserDialogs;
 
 using Android.App;

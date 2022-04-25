@@ -1,7 +1,5 @@
 namespace Template.FormsApp.Components.Dialog;
 
-using System.Linq;
-
 using XamarinFormsComponents.Dialogs;
 
 public abstract class ApplicationDialogBase : IApplicationDialog
