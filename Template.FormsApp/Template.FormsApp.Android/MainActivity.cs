@@ -10,7 +10,6 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 
-using Smart.Forms.Resolver;
 using Smart.Resolver;
 
 using Template.FormsApp.Components.Device;
