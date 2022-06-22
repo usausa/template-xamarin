@@ -53,7 +53,7 @@ public partial class App
 
         // Config Resolver
         resolver = CreateResolver(provider);
-        ResolveProvider.Default.UseSmartResolver(resolver);
+        ResolveProvider.Default.Provider = resolver;
 
         // Config Navigator
         navigator = new NavigatorConfig()
