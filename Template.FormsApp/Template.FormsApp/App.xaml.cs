@@ -30,7 +30,7 @@ public partial class App
 {
     private readonly SmartResolver resolver;
 
-    private readonly Navigator navigator;
+    private readonly INavigator navigator;
 
     public App(IComponentProvider provider)
     {
@@ -56,12 +56,7 @@ public partial class App
         ResolveProvider.Default.Provider = resolver;
 
         // Config Navigator
-        navigator = new NavigatorConfig()
-            .UseFormsNavigationProvider()
-            .AddPlugin<NavigationFocusPlugin>()
-            .UseResolver(resolver)
-            .UseIdViewMapper(m => m.AutoRegister(Assembly.GetExecutingAssembly().ExportedTypes))
-            .ToNavigator();
+        navigator = resolver.Get<INavigator>();
         navigator.Navigated += (_, args) =>
         {
             // for debug
@@ -77,7 +72,7 @@ public partial class App
         MainPage = resolver.Get<MainPage>();
     }
 
-    private SmartResolver CreateResolver(IComponentProvider provider)
+    private static SmartResolver CreateResolver(IComponentProvider provider)
     {
         var config = new ResolverConfig()
             .UseAutoBinding()
@@ -97,7 +92,13 @@ public partial class App
             adapter.UsePopupPageFactory<PopupPageFactory>();
         });
 
-        config.BindSingleton<INavigator>(_ => navigator);
+        config.AddNavigator(c =>
+        {
+            c.UseFormsNavigationProvider();
+            c.UseIdViewMapper(m => m.AutoRegister(Assembly.GetExecutingAssembly().ExportedTypes));
+            c.UseResolverPlugin();
+            c.AddPlugin<NavigationFocusPlugin>();
+        });
 
         config.BindSingleton<ApplicationState>();
 
