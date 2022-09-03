@@ -1,7 +1,5 @@
 namespace Template.FormsApp.Usecase;
 
-using System.Text;
-
 using Rester;
 
 using Template.FormsApp.Components.Device;

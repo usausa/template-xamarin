@@ -1,8 +1,5 @@
 namespace Template.FormsApp.Services;
 
-using System.Net;
-using System.Net.Http;
-
 using Rester;
 
 public sealed class NetworkService : IDisposable

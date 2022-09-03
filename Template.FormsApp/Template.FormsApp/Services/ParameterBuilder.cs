@@ -1,7 +1,5 @@
 namespace Template.FormsApp.Services;
 
-using System.Text;
-
 public class ParameterBuilder
 {
     private readonly StringBuilder parameterString = new();

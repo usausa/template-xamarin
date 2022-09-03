@@ -1,7 +1,5 @@
 namespace Template.FormsApp.Services;
 
-using System.Text;
-
 using Smart.Data.Mapper;
 
 public static class BuildHelper

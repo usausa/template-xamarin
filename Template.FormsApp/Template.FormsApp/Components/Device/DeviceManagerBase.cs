@@ -1,7 +1,5 @@
 namespace Template.FormsApp.Components.Device;
 
-using System.Reactive.Subjects;
-
 using Xamarin.Essentials;
 
 [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1001:TypesThatOwnDisposableFieldsShouldBeDisposable", Justification = "Ignore")]

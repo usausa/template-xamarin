@@ -1,7 +1,5 @@
 namespace Template.FormsApp.Helpers.Data;
 
-using System.Data;
-
 using Smart.Data.Mapper.Handlers;
 
 public sealed class GuidTypeHandler : TypeHandler<Guid>

@@ -1,7 +1,6 @@
 namespace Template.FormsApp.Droid.Components.Nfc;
 
 using System.Diagnostics;
-using System.Reactive.Subjects;
 
 using Android.App;
 using Android.Content;
