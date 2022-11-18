@@ -96,7 +96,7 @@ public partial class App
         {
             c.UseFormsNavigationProvider();
             c.UseIdViewMapper(m => m.AutoRegister(Assembly.GetExecutingAssembly().ExportedTypes));
-            c.UseResolverPlugin();
+            c.AddResolverPlugin();
             c.AddPlugin<NavigationFocusPlugin>();
         });
 

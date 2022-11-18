@@ -38,9 +38,9 @@
     <PackageReference Include="Usa.Smart.Forms" Version="2.6.0" />
     <PackageReference Include="Usa.Smart.Forms.Reactive" Version="2.6.0" />
     <PackageReference Include="Usa.Smart.Mapper" Version="0.5.0" />
-    <PackageReference Include="Usa.Smart.Navigation" Version="2.4.0" />
-    <PackageReference Include="Usa.Smart.Navigation.Forms" Version="2.4.0" />
-    <PackageReference Include="Usa.Smart.Navigation.Resolver" Version="2.4.0" />
+    <PackageReference Include="Usa.Smart.Navigation" Version="2.5.0" />
+    <PackageReference Include="Usa.Smart.Navigation.Forms" Version="2.5.0" />
+    <PackageReference Include="Usa.Smart.Navigation.Resolver" Version="2.5.0" />
     <PackageReference Include="Usa.Smart.Reactive" Version="2.2.0" />
     <PackageReference Include="Usa.Smart.Resolver" Version="2.3.0" />
     <PackageReference Include="Usa.Smart.Resolver.Xamarin" Version="2.3.0" />
@@ -49,13 +49,13 @@
     <PackageReference Include="Xamarin.CommunityToolkit.Markup" Version="2.0.5" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2515" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
-    <PackageReference Include="XamarinFormsComponents.Core" Version="2.1.0" />
-    <PackageReference Include="XamarinFormsComponents.Dialogs" Version="2.1.0" />
-    <PackageReference Include="XamarinFormsComponents.Locations" Version="2.1.0" />
-    <PackageReference Include="XamarinFormsComponents.Popup" Version="2.1.0" />
-    <PackageReference Include="XamarinFormsComponents.Resolver.Smart" Version="2.1.0" />
-    <PackageReference Include="XamarinFormsComponents.Serializers" Version="2.1.0" />
-    <PackageReference Include="XamarinFormsComponents.Settings" Version="2.1.0" />
+    <PackageReference Include="XamarinFormsComponents.Core" Version="2.2.0" />
+    <PackageReference Include="XamarinFormsComponents.Dialogs" Version="2.2.0" />
+    <PackageReference Include="XamarinFormsComponents.Locations" Version="2.2.0" />
+    <PackageReference Include="XamarinFormsComponents.Popup" Version="2.2.0" />
+    <PackageReference Include="XamarinFormsComponents.Resolver.Smart" Version="2.2.0" />
+    <PackageReference Include="XamarinFormsComponents.Serializers" Version="2.2.0" />
+    <PackageReference Include="XamarinFormsComponents.Settings" Version="2.2.0" />
     <PackageReference Include="ZXing.Net.Mobile" Version="2.4.1" />
     <PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.4.1" />
   </ItemGroup>
