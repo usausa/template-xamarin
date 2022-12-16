@@ -13,7 +13,7 @@ public static class Result
 
     public static IResult<T> Failed<T>() => ResultImpl<T>.FailedResult;
 
-    private class ResultImpl<T> : IResult<T>
+    private sealed class ResultImpl<T> : IResult<T>
     {
         public static readonly ResultImpl<T> FailedResult = new(false, default!);
 
