@@ -1,7 +1,5 @@
 namespace Template.FormsApp.Droid.Components.Nfc;
 
-using System.Diagnostics;
-
 using Android.App;
 using Android.Content;
 using Android.Nfc;
@@ -89,10 +87,9 @@ public sealed class AndroidNfcReader : INfcReader
         nfcAdapter.DisableForegroundDispatch(activity);
     }
 
-    public void OnNewIntent(Intent intent)
+    public void OnNewIntent(Intent? intent)
     {
-        Debug.WriteLine(intent.Action);
-        if (intent.Action == NfcAdapter.ActionTechDiscovered)
+        if (intent?.Action == NfcAdapter.ActionTechDiscovered)
         {
             try
             {

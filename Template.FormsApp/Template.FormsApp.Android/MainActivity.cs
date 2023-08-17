@@ -40,7 +40,7 @@ public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivit
 
     private AndroidNfcReader nfcReader = default!;
 
-    protected override void OnCreate(Bundle savedInstanceState)
+    protected override void OnCreate(Bundle? savedInstanceState)
     {
         SetTheme(Resource.Style.MainTheme);
         base.OnCreate(savedInstanceState);
@@ -114,7 +114,7 @@ public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivit
         nfcReader.Resume();
     }
 
-    protected override void OnNewIntent(Intent intent)
+    protected override void OnNewIntent(Intent? intent)
     {
         base.OnNewIntent(intent);
 
