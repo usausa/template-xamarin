@@ -5,9 +5,9 @@ using Xamarin.Forms;
 
 public static class CrashReportHelper
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Justification = "Ignore")]
     public static void LogException(Exception e)
     {
+#pragma warning disable CA1031
         try
         {
             var path = Path.Combine(FileSystem.AppDataDirectory, "dump.log");
@@ -23,6 +23,7 @@ public static class CrashReportHelper
         {
             // Ignore
         }
+#pragma warning restore CA1031
     }
 
     public static async ValueTask ShowReport()

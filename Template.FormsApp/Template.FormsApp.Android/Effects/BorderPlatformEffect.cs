@@ -24,7 +24,6 @@ public sealed class BorderPlatformEffect : PlatformEffect
         UpdateBorder();
     }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:DisposeObjectsBeforeLosingScope", Justification = "Ignore")]
     protected override void OnDetached()
     {
         drawable.Dispose();
@@ -43,7 +42,6 @@ public sealed class BorderPlatformEffect : PlatformEffect
         }
     }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:DisposeObjectsBeforeLosingScope", Justification = "Ignore")]
     private void UpdateBorder()
     {
         var width = (int)Control.Context.ToPixels(Border.GetWidth(Element));

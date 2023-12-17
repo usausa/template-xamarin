@@ -8,7 +8,7 @@ public static class ImageHelper
     private const double Rotate180 = 180d;
     private const double Rotate270 = 270d;
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator", Justification = "Ignore")]
+    // ReSharper disable CompareOfFloatsByEqualityOperator
     public static async ValueTask<byte[]> NormalizeImageAsync(byte[] data, int maxSize, double rotation, int quality)
     {
         return await Task.Run(() =>
@@ -52,4 +52,5 @@ public static class ImageHelper
             return ms.ToArray();
         });
     }
+    // ReSharper restore CompareOfFloatsByEqualityOperator
 }

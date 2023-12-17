@@ -19,9 +19,9 @@ public sealed class SettingParser
 
     public bool TryGetString(string key, out string value) => values.TryGetValue(key, out value);
 
-    public string? GetString(string key) => values.TryGetValue(key, out var value) ? value : default;
+    public string? GetString(string key) => values.GetValueOrDefault(key);
 
-    public string GetString(string key, string defaultValue) => values.TryGetValue(key, out var value) ? value : defaultValue;
+    public string GetString(string key, string defaultValue) => values.GetValueOrDefault(key, defaultValue);
 
     public bool TryGetInt(string key, out int value)
     {

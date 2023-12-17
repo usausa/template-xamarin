@@ -2,8 +2,7 @@ namespace Template.FormsApp.Components.Device;
 
 using Xamarin.Essentials;
 
-[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1001:TypesThatOwnDisposableFieldsShouldBeDisposable", Justification = "Ignore")]
-public abstract class DeviceManagerBase : IDeviceManager
+public abstract class DeviceManagerBase : IDeviceManager, IDisposable
 {
     private readonly BehaviorSubject<NetworkState> networkState;
 
@@ -16,6 +15,11 @@ public abstract class DeviceManagerBase : IDeviceManager
         {
             networkState.OnNext(GetNetworkState(args.NetworkAccess, args.ConnectionProfiles));
         };
+    }
+
+    public void Dispose()
+    {
+        networkState.Dispose();
     }
 
     private static NetworkState GetNetworkState(NetworkAccess access, IEnumerable<ConnectionProfile> profiles)

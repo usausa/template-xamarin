@@ -13,9 +13,9 @@ public sealed class NetworkService : IDisposable
         client = CreateHttpClient();
     }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:DisposeObjectsBeforeLosingScope", Justification = "Ignore")]
     private static HttpClient CreateHttpClient()
     {
+#pragma warning disable CA2000
         return new(new HttpClientHandler
         {
             AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
@@ -24,6 +24,7 @@ public sealed class NetworkService : IDisposable
         {
             Timeout = new TimeSpan(0, 0, 1, 0)
         };
+#pragma warning restore CA2000
     }
 
     public void SetAddress(string address)
@@ -51,10 +52,10 @@ public sealed class NetworkService : IDisposable
     // TODO
     //--------------------------------------------------------------------------------
 
-    public async ValueTask<IRestResponse<PingRequest>> PostPingAsync()
+    public ValueTask<IRestResponse<PingRequest>> PostPingAsync()
     {
         // TODO
-        return await client.PostAsync<PingRequest>(
+        return client.PostAsync<PingRequest>(
             "api/ping",
             new PingRequest(),
             headers);

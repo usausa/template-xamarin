@@ -24,14 +24,14 @@ public class NetworkOperator
         this.networkService = networkService;
     }
 
-    public async ValueTask<IResult<T>> ExecuteVerbose<T>(Func<NetworkService, ValueTask<IRestResponse<T>>> func)
+    public ValueTask<IResult<T>> ExecuteVerbose<T>(Func<NetworkService, ValueTask<IRestResponse<T>>> func)
     {
-        return await Execute(func, true);
+        return Execute(func, true);
     }
 
-    public async ValueTask<IResult<T>> Execute<T>(Func<NetworkService, ValueTask<IRestResponse<T>>> func)
+    public ValueTask<IResult<T>> Execute<T>(Func<NetworkService, ValueTask<IRestResponse<T>>> func)
     {
-        return await Execute(func, false);
+        return Execute(func, false);
     }
 
     private async ValueTask<IResult<T>> Execute<T>(Func<NetworkService, ValueTask<IRestResponse<T>>> func, bool verbose)
@@ -94,14 +94,14 @@ public class NetworkOperator
         }
     }
 
-    public async ValueTask<bool> ExecuteVerbose(Func<NetworkService, ValueTask<IRestResponse>> func)
+    public ValueTask<bool> ExecuteVerbose(Func<NetworkService, ValueTask<IRestResponse>> func)
     {
-        return await Execute(func, true);
+        return Execute(func, true);
     }
 
-    public async ValueTask<bool> Execute(Func<NetworkService, ValueTask<IRestResponse>> func)
+    public ValueTask<bool> Execute(Func<NetworkService, ValueTask<IRestResponse>> func)
     {
-        return await Execute(func, false);
+        return Execute(func, false);
     }
 
     private async ValueTask<bool> Execute(Func<NetworkService, ValueTask<IRestResponse>> func, bool verbose)

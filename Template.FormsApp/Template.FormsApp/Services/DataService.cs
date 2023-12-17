@@ -63,9 +63,9 @@ public class DataService
     // CRUD
     //--------------------------------------------------------------------------------
 
-    public async ValueTask<bool> InsertDataAsync(DataEntity entity)
+    public ValueTask<bool> InsertDataAsync(DataEntity entity)
     {
-        return await provider.UsingAsync(async con =>
+        return provider.UsingAsync(async con =>
         {
             try
             {
