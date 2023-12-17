@@ -19,7 +19,16 @@ public abstract class DeviceManagerBase : IDeviceManager, IDisposable
 
     public void Dispose()
     {
-        networkState.Dispose();
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (disposing)
+        {
+            networkState.Dispose();
+        }
     }
 
     private static NetworkState GetNetworkState(NetworkAccess access, IEnumerable<ConnectionProfile> profiles)
